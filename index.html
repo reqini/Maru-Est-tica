@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estética & Bienestar | Servicios de Masajes, Manicuría y Más</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F9F4EE;
+    --warm: #EDE3D6;
+    --blush: #D4A79A;
+    --rose: #B87A6E;
+    --deep: #6B3D35;
+    --bark: #2E1A15;
+    --gold: #C4975A;
+    --text: #2E1A15;
+    --muted: #7A5C54;
+    --white: #FFFAF7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 5%;
+    background: rgba(249,244,238,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(180,122,110,0.15);
+    transition: all 0.3s;
+  }
+  nav.scrolled {
+    padding: 12px 5%;
+    box-shadow: 0 2px 20px rgba(107,61,53,0.08);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--deep);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--blush); font-style: italic; }
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-cta {
+    background: var(--deep);
+    color: var(--cream) !important;
+    padding: 10px 22px;
+    border-radius: 2px;
+    transition: background 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--rose) !important; color: var(--white) !important; }
+  .nav-burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-burger span { display: block; width: 24px; height: 1.5px; background: var(--deep); transition: all 0.3s; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 6% 80px 8%;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    position: relative; padding-left: 40px;
+  }
+  .hero-tag::before {
+    content: ''; position: absolute; left: 0; top: 50%;
+    width: 28px; height: 1px; background: var(--gold);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 5vw, 76px);
+    font-weight: 300;
+    line-height: 1.08;
+    color: var(--bark);
+    margin-bottom: 28px;
+  }
+  .hero-title em { color: var(--rose); font-style: italic; }
+  .hero-sub {
+    font-size: 15px; line-height: 1.8; color: var(--muted);
+    max-width: 420px; margin-bottom: 48px; font-weight: 300;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--deep); color: var(--cream);
+    padding: 15px 32px; border-radius: 2px;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--rose); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent; color: var(--deep);
+    padding: 15px 32px; border-radius: 2px;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; border: 1px solid var(--deep); cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover { background: var(--deep); color: var(--cream); }
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 60px;
+    padding-top: 40px; border-top: 1px solid rgba(180,122,110,0.2);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300; color: var(--deep);
+    line-height: 1;
+  }
+  .stat-label { font-size: 11px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+
+  .hero-right {
+    position: relative; overflow: hidden;
+    background: var(--warm);
+  }
+  .hero-img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: saturate(0.85);
+  }
+  .hero-img-placeholder {
+    width: 100%; height: 100%; min-height: 600px;
+    background: linear-gradient(135deg, #D4A79A 0%, #B87A6E 40%, #8B5A52 100%);
+    background-image: url('./assets/perfil.jpg');
+    background-size: cover;
+    border-radius: 12px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 16px; color: rgba(255,255,255,0.7);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; letter-spacing: 4px;
+  }
+  .hero-badge {
+    position: absolute; bottom: 40px; left: -20px;
+    background: var(--white);
+    padding: 18px 28px;
+    border-radius: 2px;
+    box-shadow: 0 8px 32px rgba(107,61,53,0.12);
+    font-size: 13px;
+  }
+  .hero-badge strong {
+    display: block; font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: var(--deep); font-weight: 400;
+  }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 100px 8%; }
+  .section-tag {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); display: flex; align-items: center; gap: 16px;
+    margin-bottom: 20px;
+  }
+  .section-tag::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300; color: var(--bark); line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .section-title em { color: var(--rose); font-style: italic; }
+  .section-sub {
+    font-size: 15px; line-height: 1.8; color: var(--muted);
+    max-width: 520px; font-weight: 300;
+  }
+
+  /* ── SERVICIOS ── */
+  #servicios { background: var(--white); }
+  .servicios-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 70px; }
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+  }
+  .servicio-card {
+    background: var(--cream);
+    padding: 48px 40px;
+    transition: all 0.4s;
+    cursor: pointer;
+    border: 1px solid transparent;
+    position: relative; overflow: hidden;
+  }
+  .servicio-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--rose);
+    transition: width 0.4s;
+  }
+  .servicio-card:hover::after { width: 100%; }
+  .servicio-card:hover { background: var(--warm); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(107,61,53,0.1); }
+  .servicio-icon {
+    width: 52px; height: 52px;
+    background: var(--warm);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 28px;
+    font-size: 22px;
+  }
+  .servicio-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400; color: var(--bark);
+    margin-bottom: 12px;
+  }
+  .servicio-desc {
+    font-size: 14px; line-height: 1.7; color: var(--muted);
+    font-weight: 300; margin-bottom: 24px;
+  }
+  .servicio-precio {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--rose);
+  }
+  .servicio-precio small { font-size: 13px; color: var(--muted); font-family: 'Jost', sans-serif; }
+  .servicio-wsp {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 20px;
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--deep); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .servicio-wsp:hover { color: var(--rose); }
+
+  /* ── VIDEOS ── */
+  #videos { background: var(--bark); }
+  #videos .section-title { color: var(--cream); }
+  #videos .section-tag { color: var(--blush); }
+  #videos .section-tag::before { background: var(--blush); }
+  #videos .section-sub { color: rgba(249,244,238,0.6); }
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px; margin-top: 60px;
+  }
+  .video-card {
+    position: relative; border-radius: 4px; overflow: hidden;
+    background: rgba(255,255,255,0.05);
+    cursor: pointer;
+  }
+  .video-thumb {
+    width: 100%; aspect-ratio: 16/9;
+    background: linear-gradient(135deg, rgba(180,122,110,0.3), rgba(107,61,53,0.5));
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; color: rgba(255,255,255,0.8);
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .video-thumb::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--bark);
+    opacity: 0.2;
+  }
+  .video-card:hover .video-thumb { transform: scale(1.02); }
+  .play-btn {
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1;
+    transition: transform 0.3s;
+  }
+  .video-card:hover .play-btn { transform: scale(1.1); }
+  .play-btn svg { fill: var(--deep); margin-left: 4px; }
+  .video-label {
+    position: relative; z-index: 1;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; color: var(--cream); letter-spacing: 1px;
+  }
+  .video-info { padding: 18px 20px; }
+  .video-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400; color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .video-sub { font-size: 13px; color: rgba(249,244,238,0.5); font-weight: 300; }
+
+  /* ── RESEÑAS ── */
+  #resenas { background: var(--warm); }
+  .resenas-header { text-align: center; margin-bottom: 60px; }
+  .resenas-header .section-tag { justify-content: center; }
+  .stars {
+    color: var(--gold); font-size: 16px; letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+  .resenas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .resena-card {
+    background: var(--white);
+    padding: 40px 36px;
+    border-radius: 2px;
+    border-left: 3px solid var(--blush);
+    transition: transform 0.3s;
+  }
+  .resena-card:hover { transform: translateY(-4px); }
+  .resena-texto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 300; font-style: italic;
+    color: var(--bark); line-height: 1.6; margin-bottom: 28px;
+  }
+  .resena-autor { display: flex; align-items: center; gap: 14px; }
+  .resena-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--blush);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; color: var(--white);
+  }
+  .resena-nombre { font-size: 14px; font-weight: 500; color: var(--deep); }
+  .resena-fecha { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* ── TURNOS ── */
+  #turnos {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+    padding: 100px 8%;
+  }
+  .turnos-info {}
+  .calendar-widget {
+    background: var(--white);
+    border-radius: 4px;
+    border: 1px solid rgba(180,122,110,0.2);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(107,61,53,0.06);
+  }
+  .cal-header {
+    background: var(--deep);
+    padding: 20px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    color: var(--cream);
+  }
+  .cal-month {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 300; letter-spacing: 2px;
+  }
+  .cal-nav {
+    display: flex; gap: 8px;
+  }
+  .cal-nav button {
+    background: rgba(255,255,255,0.15); border: none;
+    color: var(--cream); cursor: pointer;
+    width: 30px; height: 30px; border-radius: 2px;
+    font-size: 14px; transition: background 0.2s;
+  }
+  .cal-nav button:hover { background: rgba(255,255,255,0.25); }
+  .cal-days-header {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    padding: 12px 12px 4px;
+    background: var(--warm);
+  }
+  .cal-day-name {
+    text-align: center; font-size: 11px; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--muted); padding: 4px;
+  }
+  .cal-days {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    padding: 8px 12px 20px;
+    gap: 4px;
+  }
+  .cal-day {
+    aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; border-radius: 2px;
+    cursor: pointer; transition: all 0.2s;
+    color: var(--text); position: relative;
+  }
+  .cal-day:hover { background: var(--warm); }
+  .cal-day.empty { cursor: default; }
+  .cal-day.today {
+    background: var(--blush); color: var(--white); font-weight: 500;
+  }
+  .cal-day.selected {
+    background: var(--deep); color: var(--cream);
+  }
+  .cal-day.available::after {
+    content: ''; position: absolute; bottom: 4px; left: 50%;
+    transform: translateX(-50%);
+    width: 4px; height: 4px; border-radius: 50%; background: var(--gold);
+  }
+  .cal-day.past { color: rgba(107,61,53,0.25); cursor: default; }
+
+  .turnos-form { padding: 24px; border-top: 1px solid rgba(180,122,110,0.1); }
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 12px 16px;
+    border: 1px solid rgba(180,122,110,0.25);
+    background: var(--cream); color: var(--text);
+    font-family: 'Jost', sans-serif; font-size: 14px;
+    border-radius: 2px; outline: none;
+    transition: border-color 0.3s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--rose);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .selected-date-display {
+    background: var(--warm); padding: 12px 16px;
+    border-radius: 2px; font-size: 14px; color: var(--deep);
+    margin-bottom: 20px; display: none;
+    border-left: 3px solid var(--blush);
+  }
+  .btn-wsp {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    background: #25D366; color: white;
+    padding: 16px; border: none; border-radius: 2px;
+    font-family: 'Jost', sans-serif;
+    font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+    cursor: pointer; transition: background 0.3s;
+  }
+  .btn-wsp:hover { background: #1fbd5c; }
+
+  /* ── COTIZACIÓN ── */
+  #cotizacion { background: var(--deep); padding: 100px 8%; }
+  #cotizacion .section-title { color: var(--cream); }
+  #cotizacion .section-tag { color: var(--blush); }
+  #cotizacion .section-tag::before { background: var(--blush); }
+  #cotizacion .section-sub { color: rgba(249,244,238,0.6); }
+  .cotizacion-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 80px; align-items: start; margin-top: 60px;
+  }
+  .cotizacion-info { color: rgba(249,244,238,0.8); }
+  .cotizacion-features { margin-top: 40px; display: flex; flex-direction: column; gap: 20px; }
+  .cot-feature { display: flex; gap: 16px; align-items: flex-start; }
+  .cot-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    background: rgba(212,167,154,0.2);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .cot-text { font-size: 14px; line-height: 1.6; font-weight: 300; }
+  .cot-text strong { display: block; color: var(--cream); margin-bottom: 4px; font-weight: 500; }
+
+  .cotizacion-form {
+    background: var(--cream);
+    padding: 48px 44px;
+    border-radius: 4px;
+  }
+  .cotizacion-form h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; color: var(--bark);
+    margin-bottom: 32px;
+  }
+  .checkbox-group {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin-top: 8px;
+  }
+  .checkbox-item {
+    display: flex; align-items: center; gap: 10px;
+    cursor: pointer; font-size: 14px; color: var(--text);
+  }
+  .checkbox-item input[type="checkbox"] {
+    width: 16px; height: 16px;
+    accent-color: var(--rose);
+    cursor: pointer;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bark);
+    padding: 70px 8% 40px;
+    color: rgba(249,244,238,0.7);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px; margin-bottom: 60px;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; color: var(--cream);
+    letter-spacing: 3px; margin-bottom: 16px;
+  }
+  .footer-logo span { color: var(--blush); font-style: italic; }
+  .footer-desc { font-size: 14px; line-height: 1.8; font-weight: 300; margin-bottom: 28px; }
+  .footer-social { display: flex; gap: 12px; }
+  .social-btn {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(249,244,238,0.2);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(249,244,238,0.6); text-decoration: none; font-size: 14px;
+    transition: all 0.3s;
+  }
+  .social-btn:hover { border-color: var(--blush); color: var(--blush); }
+  .footer-col h4 {
+    font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--cream); margin-bottom: 20px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a {
+    color: rgba(249,244,238,0.6); text-decoration: none; font-size: 14px;
+    font-weight: 300; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--blush); }
+  .footer-bottom {
+    border-top: 1px solid rgba(249,244,238,0.08);
+    padding-top: 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; font-weight: 300;
+  }
+  .wsp-float {
+    position: fixed; bottom: 32px; right: 32px; z-index: 998;
+    width: 58px; height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    text-decoration: none;
+    animation: pulse 2.5s infinite;
+    transition: transform 0.3s;
+  }
+  .wsp-float:hover { transform: scale(1.1); }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 32px rgba(37,211,102,0.7); }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .servicios-header { grid-template-columns: 1fr; }
+    #turnos { grid-template-columns: 1fr; }
+    .cotizacion-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .checkbox-group { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    section { padding: 70px 6%; }
+  }
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .hero-stats { flex-wrap: wrap; gap: 24px; }
+    .hero-left { padding: 60px 6%; }
+    #turnos { padding: 70px 6%; }
+    #cotizacion { padding: 70px 6%; }
+    .cotizacion-form { padding: 32px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Estética <span>&</span> Bienestar</a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#videos">Galería</a></li>
+    <li><a href="#resenas">Clientes</a></li>
+    <li><a href="#turnos">Turnos</a></li>
+    <li><a href="#cotizacion">Contacto</a></li>
+    <li><a href="#turnos" class="nav-cta">Reservar</a></li>
+  </ul>
+  <div class="nav-burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <span class="hero-tag">Profesional certificada</span>
+    <h1 class="hero-title">
+      Realzá tu<br>
+      <em>belleza natural</em><br>
+      con cuidado experto
+    </h1>
+    <p class="hero-sub">
+      Masajes terapéuticos, manicuría artística, lifting de pestañas y diseño de cejas. Cada tratamiento es una experiencia pensada para vos.
+    </p>
+    <div class="hero-btns">
+      <a href="#turnos" class="btn-primary">
+        📅 Reservar turno
+      </a>
+      <a href="#servicios" class="btn-secondary">
+        Ver servicios →
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">+500</div>
+        <div class="stat-label">Clientes satisfechas</div>
+      </div>
+      <div>
+        <div class="stat-num">8</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Productos premium</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <div style="font-size:64px;">✦</div>
+      <div style="font-size:20px;letter-spacing:6px;font-weight:300;">BELLEZA</div>
+      <div style="font-size:13px;letter-spacing:3px;color:rgba(255,255,255,0.5);">Tu foto aquí</div>
+    </div>
+    <div class="hero-badge">
+      <strong>⭐ 4.9 / 5</strong>
+      Basado en +180 reseñas
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="servicios-header">
+    <div>
+      <div class="section-tag">Lo que ofrezco</div>
+      <h2 class="section-title">Servicios que <em>transforman</em></h2>
+    </div>
+    <p class="section-sub">Cada tratamiento está diseñado para resaltar tu belleza única con técnicas actualizadas y productos de primera calidad.</p>
+  </div>
+  <div class="servicios-grid" id="serviciosGrid"></div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="section-tag">Galería</div>
+  <h2 class="section-title" style="color:var(--cream);">Mirá mis <em>trabajos</em></h2>
+  <p class="section-sub">Resultados reales, clientes reales. Cada trabajo es una muestra de dedicación y detalle.</p>
+  <div class="videos-grid">
+    <div class="video-card" onclick="openWsp('Hola! Vi tu galería y me gustaría saber más sobre tus servicios 🌸')">
+      <div class="video-thumb">
+        <div class="play-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="video-label">Masajes relajantes</span>
+      </div>
+      <div class="video-info">
+        <div class="video-title">Masaje descontracturante</div>
+        <div class="video-sub">Técnica de tejido profundo · 60 min</div>
+      </div>
+    </div>
+    <div class="video-card" onclick="openWsp('Hola! Vi tu galería de pestañas y me gustaría sacar un turno 🌸')">
+      <div class="video-thumb" style="background:linear-gradient(135deg,rgba(107,61,53,0.4),rgba(180,122,110,0.5))">
+        <div class="play-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="video-label">Lifting de pestañas</span>
+      </div>
+      <div class="video-info">
+        <div class="video-title">Resultado lifting + tinte</div>
+        <div class="video-sub">Efecto natural y duradero · Antes/Después</div>
+      </div>
+    </div>
+    <div class="video-card" onclick="openWsp('Hola! Me encantaron tus diseños de manicuría 💅')">
+      <div class="video-thumb" style="background:linear-gradient(135deg,rgba(196,151,90,0.3),rgba(107,61,53,0.4))">
+        <div class="play-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="video-label">Manicuría artística</span>
+      </div>
+      <div class="video-info">
+        <div class="video-title">Nail art · Semipermanente</div>
+        <div class="video-sub">Diseños únicos y personalizados</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section id="resenas">
+  <div class="resenas-header">
+    <div class="section-tag">Testimonios</div>
+    <h2 class="section-title">Lo que dicen <em>mis clientas</em></h2>
+    <div class="stars">★★★★★</div>
+    <p class="section-sub" style="margin:0 auto;">La opinión de cada clienta es mi mayor satisfacción y motivación para seguir creciendo.</p>
+  </div>
+  <div class="resenas-grid" id="resenasGrid"></div>
+</section>
+
+<!-- TURNOS -->
+<section id="turnos">
+  <div class="turnos-info">
+    <div class="section-tag">Agenda</div>
+    <h2 class="section-title">Reservá tu <em>turno</em></h2>
+    <p class="section-sub">Seleccioná el día que más te convenga, completá tus datos y te confirmo por WhatsApp en minutos.</p>
+
+    <div style="margin-top:40px;display:flex;flex-direction:column;gap:16px;">
+      <div style="display:flex;gap:14px;align-items:center;font-size:14px;color:var(--muted);">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;"></div>
+        Días disponibles marcados con punto dorado
+      </div>
+      <div style="display:flex;gap:14px;align-items:center;font-size:14px;color:var(--muted);">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--blush);flex-shrink:0;"></div>
+        Hoy resaltado en rosa
+      </div>
+      <div style="display:flex;gap:14px;align-items:center;font-size:14px;color:var(--muted);">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--deep);flex-shrink:0;"></div>
+        Tu día seleccionado
+      </div>
+    </div>
+
+    <div style="margin-top:40px;padding:28px;background:var(--white);border-radius:4px;border:1px solid rgba(180,122,110,0.15);">
+      <div style="font-size:13px;font-weight:500;color:var(--deep);margin-bottom:8px;">📍 Atención en domicilio / local</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;">Ofrezco servicios a domicilio en CABA y GBA. También podés visitarme en mi espacio. Consultame la disponibilidad.</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="calendar-widget">
+      <div class="cal-header">
+        <span class="cal-month" id="calMonthYear"></span>
+        <div class="cal-nav">
+          <button onclick="changeMonth(-1)">‹</button>
+          <button onclick="changeMonth(1)">›</button>
+        </div>
+      </div>
+      <div class="cal-days-header">
+        <div class="cal-day-name">Dom</div>
+        <div class="cal-day-name">Lun</div>
+        <div class="cal-day-name">Mar</div>
+        <div class="cal-day-name">Mié</div>
+        <div class="cal-day-name">Jue</div>
+        <div class="cal-day-name">Vie</div>
+        <div class="cal-day-name">Sáb</div>
+      </div>
+      <div class="cal-days" id="calDays"></div>
+
+      <div class="turnos-form">
+        <div class="selected-date-display" id="selectedDateDisplay">
+          📅 Fecha seleccionada: <strong id="selectedDateText"></strong>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tu nombre</label>
+            <input type="text" id="tn-nombre" placeholder="Nombre y apellido">
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" id="tn-tel" placeholder="11 xxxx-xxxx">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Servicio deseado</label>
+          <select id="tn-servicio">
+            <option value="">Seleccioná un servicio</option>
+            <option>Masaje relajante</option>
+            <option>Masaje descontracturante</option>
+            <option>Masaje con piedras calientes</option>
+            <option>Manicuría clásica</option>
+            <option>Manicuría semipermanente</option>
+            <option>Nail art</option>
+            <option>Lifting de pestañas</option>
+            <option>Extensiones de pestañas</option>
+            <option>Diseño de cejas</option>
+            <option>Laminado de cejas</option>
+            <option>Combo de servicios</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Horario preferido</label>
+          <select id="tn-horario">
+            <option value="">Elegí un horario</option>
+            <option>9:00 – 10:00</option>
+            <option>10:00 – 11:00</option>
+            <option>11:00 – 12:00</option>
+            <option>14:00 – 15:00</option>
+            <option>15:00 – 16:00</option>
+            <option>16:00 – 17:00</option>
+            <option>17:00 – 18:00</option>
+            <option>18:00 – 19:00</option>
+          </select>
+        </div>
+        <button class="btn-wsp" onclick="reservarTurno()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.99.58 3.841 1.58 5.397L2 22l4.747-1.548A9.952 9.952 0 0011.999 22c5.522 0 10-4.477 10-10S17.521 2 11.999 2zm0 18c-1.72 0-3.318-.49-4.666-1.34l-.334-.2-3.476 1.133 1.164-3.392-.218-.35A7.96 7.96 0 014 12c0-4.418 3.581-8 7.999-8 4.419 0 8 3.582 8 8s-3.581 8-8 8z"/></svg>
+          Confirmar turno por WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COTIZACIÓN -->
+<section id="cotizacion">
+  <div class="section-tag">Cotizá tu servicio</div>
+  <h2 class="section-title">¿Querés un <em>presupuesto?</em></h2>
+  <p class="section-sub">Contame qué necesitás y te respondo con todos los detalles. Sin compromiso.</p>
+
+  <div class="cotizacion-grid">
+    <div class="cotizacion-info">
+      <div class="cotizacion-features">
+        <div class="cot-feature">
+          <div class="cot-icon">🎀</div>
+          <div class="cot-text">
+            <strong>Paquetes personalizados</strong>
+            Armamos combos de servicios adaptados a tus necesidades y presupuesto.
+          </div>
+        </div>
+        <div class="cot-feature">
+          <div class="cot-icon">🏠</div>
+          <div class="cot-text">
+            <strong>Servicio a domicilio</strong>
+            Me traslado a tu hogar o lugar de trabajo. Consultá disponibilidad por zona.
+          </div>
+        </div>
+        <div class="cot-feature">
+          <div class="cot-icon">✨</div>
+          <div class="cot-text">
+            <strong>Eventos y grupos</strong>
+            Perfecta para despedidas, cumpleaños o días de spa con amigas.
+          </div>
+        </div>
+        <div class="cot-feature">
+          <div class="cot-icon">💬</div>
+          <div class="cot-text">
+            <strong>Respuesta en minutos</strong>
+            Te contesto por WhatsApp con toda la información que necesitás.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cotizacion-form">
+      <h3>Solicitar cotización</h3>
+      <div class="form-group">
+        <label>Nombre completo</label>
+        <input type="text" id="cot-nombre" placeholder="¿Cómo te llamás?">
+      </div>
+      <div class="form-group">
+        <label>Servicios de interés</label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" value="Masajes"> Masajes</label>
+          <label class="checkbox-item"><input type="checkbox" value="Manicuría"> Manicuría</label>
+          <label class="checkbox-item"><input type="checkbox" value="Pestañas"> Pestañas</label>
+          <label class="checkbox-item"><input type="checkbox" value="Cejas"> Cejas</label>
+          <label class="checkbox-item"><input type="checkbox" value="Paquete combo"> Combo</label>
+          <label class="checkbox-item"><input type="checkbox" value="Evento grupal"> Evento grupal</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>¿Para cuándo? (aproximado)</label>
+        <input type="text" id="cot-fecha" placeholder="Ej: próximo sábado, fin de mes...">
+      </div>
+      <div class="form-group">
+        <label>Comentarios adicionales</label>
+        <textarea id="cot-mensaje" rows="3" placeholder="Contame más detalles, preferencias, si es a domicilio..."></textarea>
+      </div>
+      <button class="btn-wsp" onclick="enviarCotizacion()" style="background:var(--deep);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.99.58 3.841 1.58 5.397L2 22l4.747-1.548A9.952 9.952 0 0011.999 22c5.522 0 10-4.477 10-10S17.521 2 11.999 2zm0 18c-1.72 0-3.318-.49-4.666-1.34l-.334-.2-3.476 1.133 1.164-3.392-.218-.35A7.96 7.96 0 014 12c0-4.418 3.581-8 7.999-8 4.419 0 8 3.582 8 8s-3.581 8-8 8z"/></svg>
+        Enviar consulta por WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Estética <span>&</span> Bienestar</div>
+      <p class="footer-desc">Profesional de la estética y el bienestar. Me dedico a realzar tu belleza natural con técnicas actualizadas y un trato personalizado.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">ig</a>
+        <a href="#" class="social-btn">fb</a>
+        <a href="https://wa.me/5491157935007" target="_blank" class="social-btn">ws</a>
+        <a href="#" class="social-btn">tt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul class="footer-links">
+        <li><a href="#servicios">Masajes</a></li>
+        <li><a href="#servicios">Manicuría</a></li>
+        <li><a href="#servicios">Pestañas</a></li>
+        <li><a href="#servicios">Cejas</a></li>
+        <li><a href="#servicios">Combos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Navegación</h4>
+      <ul class="footer-links">
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#videos">Galería</a></li>
+        <li><a href="#resenas">Reseñas</a></li>
+        <li><a href="#turnos">Turnos</a></li>
+        <li><a href="#cotizacion">Cotizá</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/5491157935007" target="_blank">📱 11 5793-5007</a></li>
+        <li><a href="#">📍 CABA / GBA</a></li>
+        <li><a href="#">🕐 Lun–Sáb 9–19hs</a></li>
+        <li><a href="#">✉ Escribinos</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Estética & Bienestar. Todos los derechos reservados.</span>
+    <span>Hecho con ♥ para vos</span>
+  </div>
+</footer>
+
+<!-- FLOAT WSP -->
+<a href="https://wa.me/5491157935007" class="wsp-float" target="_blank" title="Contactar por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.99.58 3.841 1.58 5.397L2 22l4.747-1.548A9.952 9.952 0 0011.999 22c5.522 0 10-4.477 10-10S17.521 2 11.999 2zm0 18c-1.72 0-3.318-.49-4.666-1.34l-.334-.2-3.476 1.133 1.164-3.392-.218-.35A7.96 7.96 0 014 12c0-4.418 3.581-8 7.999-8 4.419 0 8 3.582 8 8s-3.581 8-8 8z"/></svg>
+</a>
+
+<script>
+const WSP = '5491157935007';
+
+// ── DATA ──
+const servicios = [
+  { icon:'💆', nombre:'Masaje Relajante', desc:'Técnica sueca con aceites esenciales premium. Libera tensiones, mejora la circulación y recupera tu energía.', precio:'$8.000', desde:true, wsp:'Hola! Me gustaría consultar por el masaje relajante 💆' },
+  { icon:'💪', nombre:'Masaje Descontracturante', desc:'Trabajo focalizado en puntos de tensión muscular. Ideal para dolores de cuello, espalda y contracturas.', precio:'$10.000', desde:true, wsp:'Hola! Quiero info sobre el masaje descontracturante 💪' },
+  { icon:'🪨', nombre:'Masaje con Piedras', desc:'Piedras volcánicas calientes combinadas con técnicas manuales para una experiencia de relajación profunda.', precio:'$12.000', desde:true, wsp:'Hola! Me interesa el masaje con piedras calientes 🪨' },
+  { icon:'💅', nombre:'Manicuría Semipermanente', desc:'Esmalte de larga duración, diseños únicos y cuidado completo de tus manos. Que dure hasta 3 semanas.', precio:'$5.000', desde:true, wsp:'Hola! Quiero saber del servicio de manicuría semipermanente 💅' },
+  { icon:'✨', nombre:'Lifting de Pestañas', desc:'Ondulación natural permanente con efecto espectacular. Sin extensiones, sin pegamento. Tus pestañas reales, perfectas.', precio:'$7.000', desde:true, wsp:'Hola! Me gustaría saber más sobre el lifting de pestañas ✨' },
+  { icon:'🌿', nombre:'Diseño de Cejas', desc:'Hilo, cera, pinzas y coloración. Definimos la forma perfecta para tu rostro y le damos vida a tu mirada.', precio:'$4.000', desde:true, wsp:'Hola! Quiero consultar por el servicio de diseño de cejas 🌿' },
+];
+
+const resenas = [
+  { texto:'Fue la primera vez que me hago un masaje y quedé re enganchada. Excelente profesional, el lugar hermoso y me sentí súper cómoda todo el tiempo.', nombre:'Valentina R.', fecha:'Marzo 2024', inicial:'V' },
+  { texto:'Las pestañas me las hizo hace 3 semanas y todavía se ven perfectas! El lifting duró muchísimo más de lo que esperaba. Ya saqué turno para las cejas.', nombre:'Lucía M.', fecha:'Febrero 2024', inicial:'L' },
+  { texto:'La manicuría semipermanente me duró 3 semanas sin ningún chip. El diseño que me hizo fue exactamente lo que quería. Muy recomendable!', nombre:'Camila S.', fecha:'Abril 2024', inicial:'C' },
+  { texto:'Vine con una contractura horrible en el cuello y salí caminando como nueva. Super profesional, con mucho conocimiento y manos mágicas.', nombre:'Florencia G.', fecha:'Enero 2024', inicial:'F' },
+  { texto:'Organicé un spa day para mi cumpleaños con amigas y fue todo un éxito! Súper cómoda para grupos, buena onda total y un trabajo impecable.', nombre:'Julieta P.', fecha:'Marzo 2024', inicial:'J' },
+  { texto:'El diseño de cejas me cambió la cara! Nunca pensé que algo así podía hacer tanta diferencia. Ahora no me imagino sin mi rutina mensual con ella.', nombre:'Rocío B.', fecha:'Abril 2024', inicial:'R' },
+];
+
+// ── SERVICIOS ──
+const grid = document.getElementById('serviciosGrid');
+servicios.forEach(s => {
+  grid.innerHTML += `
+    <div class="servicio-card">
+      <div class="servicio-icon">${s.icon}</div>
+      <div class="servicio-name">${s.nombre}</div>
+      <div class="servicio-desc">${s.desc}</div>
+      <div class="servicio-precio">${s.precio} <small>${s.desde ? '(desde)' : ''}</small></div>
+      <a href="https://wa.me/${WSP}?text=${encodeURIComponent(s.wsp)}" target="_blank" class="servicio-wsp">
+        Consultar precio →
+      </a>
+    </div>`;
+});
+
+// ── RESEÑAS ──
+const rg = document.getElementById('resenasGrid');
+resenas.forEach(r => {
+  rg.innerHTML += `
+    <div class="resena-card">
+      <div class="stars">★★★★★</div>
+      <div class="resena-texto">"${r.texto}"</div>
+      <div class="resena-autor">
+        <div class="resena-avatar">${r.inicial}</div>
+        <div>
+          <div class="resena-nombre">${r.nombre}</div>
+          <div class="resena-fecha">${r.fecha}</div>
+        </div>
+      </div>
+    </div>`;
+});
+
+// ── CALENDARIO ──
+let calDate = new Date();
+let selectedDate = null;
+const available = [1,2,3,5,6,8,9,10,12,13,15,16,17,19,20,22,23,24,26,27,29,30];
+
+function renderCal() {
+  const year = calDate.getFullYear();
+  const month = calDate.getMonth();
+  const months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  document.getElementById('calMonthYear').textContent = `${months[month]} ${year}`;
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const today = new Date();
+
+  let html = '';
+  for (let i = 0; i < firstDay; i++) html += '<div class="cal-day empty"></div>';
+  for (let d = 1; d <= daysInMonth; d++) {
+    const isToday = d === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+    const isSelected = selectedDate && d === selectedDate.getDate() && month === selectedDate.getMonth() && year === selectedDate.getFullYear();
+    const isPast = new Date(year, month, d) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const isAvail = available.includes(d) && !isPast;
+    let cls = 'cal-day';
+    if (isPast) cls += ' past';
+    if (isToday) cls += ' today';
+    if (isSelected) cls += ' selected';
+    if (isAvail && !isPast) cls += ' available';
+    html += `<div class="${cls}" onclick="selectDay(${d}, ${month}, ${year})">${d}</div>`;
+  }
+  document.getElementById('calDays').innerHTML = html;
+}
+
+function selectDay(d, m, y) {
+  const date = new Date(y, m, d);
+  const today = new Date(); today.setHours(0,0,0,0);
+  if (date < today) return;
+  selectedDate = date;
+  const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const days = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  const str = `${days[date.getDay()]} ${d} de ${months[m]} de ${y}`;
+  document.getElementById('selectedDateText').textContent = str;
+  document.getElementById('selectedDateDisplay').style.display = 'block';
+  renderCal();
+}
+
+function changeMonth(dir) {
+  calDate.setMonth(calDate.getMonth() + dir);
+  renderCal();
+}
+
+renderCal();
+
+// ── WSP HELPERS ──
+function openWsp(msg) {
+  window.open(`https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function reservarTurno() {
+  const nombre = document.getElementById('tn-nombre').value.trim();
+  const tel = document.getElementById('tn-tel').value.trim();
+  const servicio = document.getElementById('tn-servicio').value;
+  const horario = document.getElementById('tn-horario').value;
+  const fechaEl = document.getElementById('selectedDateText').textContent;
+
+  if (!nombre) { alert('Por favor ingresá tu nombre'); return; }
+  if (!servicio) { alert('Por favor seleccioná un servicio'); return; }
+
+  let msg = `Hola! 🌸 Me gustaría reservar un turno:\n\n`;
+  msg += `👤 Nombre: ${nombre}\n`;
+  if (tel) msg += `📱 Tel: ${tel}\n`;
+  if (fechaEl) msg += `📅 Fecha: ${fechaEl}\n`;
+  if (horario) msg += `🕐 Horario: ${horario}\n`;
+  msg += `✨ Servicio: ${servicio}\n\n¿Tenés disponibilidad?`;
+
+  window.open(`https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function enviarCotizacion() {
+  const nombre = document.getElementById('cot-nombre').value.trim();
+  const fecha = document.getElementById('cot-fecha').value.trim();
+  const mensaje = document.getElementById('cot-mensaje').value.trim();
+  const checks = [...document.querySelectorAll('.checkbox-group input:checked')].map(c => c.value);
+
+  if (!nombre) { alert('Por favor ingresá tu nombre'); return; }
+
+  let msg = `Hola! 🌸 Quisiera una cotización:\n\n`;
+  msg += `👤 Nombre: ${nombre}\n`;
+  if (checks.length) msg += `✨ Servicios: ${checks.join(', ')}\n`;
+  if (fecha) msg += `📅 Para cuándo: ${fecha}\n`;
+  if (mensaje) msg += `💬 Detalles: ${mensaje}\n`;
+  msg += `\n¿Me podés dar más información?`;
+
+  window.open(`https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// ── NAV SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── MOBILE MENU ──
+let menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  const links = document.querySelector('.nav-links');
+  if (menuOpen) {
+    links.style.cssText = `display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--white);padding:24px 8%;gap:20px;border-bottom:1px solid rgba(180,122,110,0.2);z-index:998;`;
+  } else {
+    links.style.display = 'none';
+  }
+}
+</script>
+</body>
+</html>
