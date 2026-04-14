@@ -197,67 +197,145 @@ footer{background:var(--bark);padding:70px 8% 40px;color:rgba(249,244,238,.7);}
 .login-cancel:hover{color:var(--rose);}
 
 /* ──── DASHBOARD ──── */
-#dashboard{position:fixed;inset:0;background:var(--cream);z-index:10001;display:none;flex-direction:column;overflow:hidden;}
+#dashboard{position:fixed;inset:0;background:#F4F0EB;z-index:10001;display:none;flex-direction:column;overflow:hidden;}
 #dashboard.open{display:flex;}
-.dn{background:var(--bark);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;flex-shrink:0;}
-.dn-brand{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--cream);letter-spacing:2px;}
+.dn{background:var(--bark);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,.06);}
+.dn-brand{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--cream);letter-spacing:3px;}
 .dn-brand span{color:var(--blush);font-style:italic;}
-.dn-right{display:flex;align-items:center;gap:16px;font-size:13px;color:rgba(249,244,238,.6);}
-.dn-logout{background:rgba(255,255,255,.1);border:none;color:var(--cream);padding:7px 16px;border-radius:2px;font-size:12px;cursor:pointer;letter-spacing:1px;transition:background .2s;}
-.dn-logout:hover{background:var(--rose);}
+.dn-right{display:flex;align-items:center;gap:16px;font-size:13px;color:rgba(249,244,238,.55);}
+.dn-time{font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(249,244,238,.5);letter-spacing:2px;}
+.dn-logout{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:var(--cream);padding:7px 16px;border-radius:2px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;font-family:'Jost',sans-serif;}
+.dn-logout:hover{background:var(--rose);border-color:var(--rose);}
 .db-body{display:flex;flex:1;overflow:hidden;}
-.db-sidebar{width:210px;background:var(--white);border-right:1px solid rgba(180,122,110,.15);padding:24px 0;flex-shrink:0;}
-.db-menu{display:flex;align-items:center;gap:12px;padding:12px 22px;font-size:13px;color:var(--muted);cursor:pointer;transition:all .2s;border-left:3px solid transparent;}
-.db-menu:hover{background:var(--cream);color:var(--deep);}
-.db-menu.active{background:var(--cream);color:var(--deep);border-left-color:var(--rose);}
-.db-content{flex:1;overflow-y:auto;padding:28px;}
-.db-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-bottom:28px;}
-.db-stat{background:var(--white);border-radius:4px;padding:18px 20px;border:1px solid rgba(180,122,110,.12);}
-.db-stat-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--deep);}
-.db-stat-l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;}
-.db-h{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--bark);margin-bottom:16px;}
-.tc{background:var(--white);border-radius:4px;border:1px solid rgba(180,122,110,.12);padding:16px 18px;margin-bottom:8px;display:flex;align-items:center;gap:14px;transition:box-shadow .2s;}
-.tc:hover{box-shadow:0 4px 16px rgba(107,61,53,.08);}
-.tc-av{width:40px;height:40px;border-radius:50%;background:var(--warm);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--deep);flex-shrink:0;}
-.tc-body{flex:1;}
-.tc-name{font-size:14px;font-weight:500;color:var(--bark);}
-.tc-det{font-size:12px;color:var(--muted);margin-top:2px;}
-.tc-dt{font-size:12px;color:var(--deep);font-weight:500;margin-top:3px;}
-.badge{padding:3px 10px;border-radius:20px;font-size:10px;letter-spacing:1px;text-transform:uppercase;}
-.badge.p{background:rgba(196,151,90,.15);color:#7a5a10;}
-.badge.c{background:rgba(37,211,102,.12);color:#186a36;}
-.badge.x{background:rgba(192,57,43,.1);color:#a32d2d;}
-.tc-acts{display:flex;gap:7px;flex-shrink:0;}
-.tb{padding:6px 12px;border:none;border-radius:2px;font-size:10px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s;}
-.tb.ok{background:var(--deep);color:var(--cream);}
-.tb.ok:hover{background:var(--rose);}
-.tb.no{background:rgba(192,57,43,.1);color:#c0392b;}
-.tb.no:hover{background:rgba(192,57,43,.2);}
-.tb.del{background:rgba(0,0,0,.06);color:var(--muted);}
-.tb.del:hover{background:rgba(0,0,0,.14);}
 
-/* WEEK CALENDAR */
+/* Sidebar */
+.db-sidebar{width:220px;background:var(--white);border-right:1px solid rgba(180,122,110,.12);padding:20px 0;flex-shrink:0;display:flex;flex-direction:column;}
+.db-sidebar-section{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(122,92,84,.45);padding:16px 22px 8px;margin-top:8px;}
+.db-menu{display:flex;align-items:center;gap:12px;padding:11px 22px;font-size:13px;color:var(--muted);cursor:pointer;transition:all .2s;border-left:3px solid transparent;border-right:3px solid transparent;}
+.db-menu:hover{background:var(--cream);color:var(--deep);}
+.db-menu.active{background:var(--cream);color:var(--deep);border-left-color:var(--rose);font-weight:500;}
+.db-menu .mi{font-size:15px;width:20px;text-align:center;flex-shrink:0;}
+.db-sidebar-footer{margin-top:auto;padding:16px 22px;border-top:1px solid rgba(180,122,110,.1);}
+.db-sidebar-footer p{font-size:11px;color:var(--muted);line-height:1.6;}
+
+/* Content */
+.db-content{flex:1;overflow-y:auto;padding:28px 32px;}
+.db-page-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--bark);margin-bottom:6px;}
+.db-page-sub{font-size:13px;color:var(--muted);margin-bottom:28px;}
+
+/* Stats cards */
+.db-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-bottom:32px;}
+.db-stat{background:var(--white);border-radius:6px;padding:20px 22px;border:1px solid rgba(180,122,110,.1);position:relative;overflow:hidden;transition:box-shadow .2s;}
+.db-stat:hover{box-shadow:0 4px 20px rgba(107,61,53,.08);}
+.db-stat-accent{position:absolute;top:0;left:0;width:3px;height:100%;background:var(--blush);}
+.db-stat-accent.gold{background:var(--gold);}
+.db-stat-accent.green{background:#2ecc71;}
+.db-stat-accent.red{background:#e74c3c;}
+.db-stat-n{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:var(--deep);line-height:1;}
+.db-stat-l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px;}
+.db-stat-trend{font-size:11px;margin-top:8px;}
+
+/* Section title */
+.db-h{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--bark);margin-bottom:14px;margin-top:8px;display:flex;align-items:center;justify-content:space-between;}
+.db-h-count{font-family:'Jost',sans-serif;font-size:12px;background:var(--warm);color:var(--muted);padding:3px 10px;border-radius:20px;}
+
+/* Turno card */
+.tc{background:var(--white);border-radius:6px;border:1px solid rgba(180,122,110,.1);padding:16px 20px;margin-bottom:8px;display:flex;align-items:center;gap:16px;transition:all .25s;cursor:default;}
+.tc:hover{box-shadow:0 4px 20px rgba(107,61,53,.09);border-color:rgba(180,122,110,.25);}
+.tc.urgent{border-left:3px solid var(--gold);}
+.tc-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--warm),var(--blush));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--white);flex-shrink:0;font-weight:400;}
+.tc-body{flex:1;min-width:0;}
+.tc-name{font-size:14px;font-weight:500;color:var(--bark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tc-det{font-size:12px;color:var(--muted);margin-top:3px;display:flex;gap:12px;flex-wrap:wrap;}
+.tc-det span{display:flex;align-items:center;gap:4px;}
+.tc-dt{font-size:12px;color:var(--deep);font-weight:500;margin-top:4px;display:flex;align-items:center;gap:6px;}
+.tc-nota{font-size:11px;color:var(--muted);font-style:italic;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.badge{padding:3px 10px;border-radius:20px;font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:500;}
+.badge.p{background:rgba(196,151,90,.18);color:#7a5a10;}
+.badge.c{background:rgba(46,204,113,.15);color:#1a6e3a;}
+.badge.x{background:rgba(231,76,60,.12);color:#a32d2d;}
+.tc-acts{display:flex;gap:7px;flex-shrink:0;align-items:center;}
+.tb{padding:7px 13px;border:none;border-radius:3px;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s;display:flex;align-items:center;gap:5px;}
+.tb.ok{background:var(--deep);color:var(--cream);}
+.tb.ok:hover{background:#25a040;}
+.tb.no{background:rgba(231,76,60,.1);color:#c0392b;}
+.tb.no:hover{background:rgba(231,76,60,.2);}
+.tb.wsp{background:rgba(37,211,102,.12);color:#186a36;}
+.tb.wsp:hover{background:rgba(37,211,102,.22);}
+.tb.del{background:transparent;color:rgba(122,92,84,.5);border:1px solid rgba(122,92,84,.2);}
+.tb.del:hover{background:rgba(231,76,60,.08);color:#c0392b;border-color:rgba(231,76,60,.2);}
+.tb.edit{background:rgba(107,61,53,.08);color:var(--deep);}
+.tb.edit:hover{background:rgba(107,61,53,.15);}
+
+/* Filtros de tabla */
+.db-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center;}
+.df{padding:6px 14px;border:1px solid rgba(180,122,110,.25);background:transparent;color:var(--muted);font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;border-radius:20px;cursor:pointer;transition:all .2s;}
+.df.active,.df:hover{background:var(--deep);color:var(--cream);border-color:var(--deep);}
+.db-search{padding:8px 14px;border:1px solid rgba(180,122,110,.25);background:var(--white);color:var(--text);font-family:'Jost',sans-serif;font-size:13px;border-radius:3px;outline:none;transition:border-color .2s;width:220px;}
+.db-search:focus{border-color:var(--rose);}
+
+/* Semana */
 .wk-nav{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
-.wk-nav button{background:var(--white);border:1px solid rgba(180,122,110,.2);color:var(--deep);width:30px;height:30px;border-radius:2px;cursor:pointer;font-size:14px;transition:background .2s;}
+.wk-nav button{background:var(--white);border:1px solid rgba(180,122,110,.2);color:var(--deep);width:32px;height:32px;border-radius:3px;cursor:pointer;font-size:14px;transition:background .2s;}
 .wk-nav button:hover{background:var(--warm);}
-.wk-lbl{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--bark);}
-.wk-grid{display:grid;grid-template-columns:56px repeat(7,1fr);border:1px solid rgba(180,122,110,.15);border-radius:4px;overflow:hidden;background:var(--white);font-size:11px;}
-.wkh{background:var(--deep);color:var(--cream);padding:9px 4px;text-align:center;letter-spacing:1.5px;text-transform:uppercase;}
+.wk-nav .wk-today{padding:0 14px;height:32px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;width:auto;}
+.wk-lbl{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;color:var(--bark);}
+.wk-grid-wrap{overflow-x:auto;}
+.wk-grid{display:grid;grid-template-columns:54px repeat(7,1fr);border:1px solid rgba(180,122,110,.15);border-radius:6px;overflow:hidden;background:var(--white);min-width:600px;}
+.wkh{background:var(--deep);color:var(--cream);padding:10px 4px;text-align:center;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;}
 .wkh.corner{background:var(--bark);}
-.wkt{background:var(--warm);padding:9px 6px;text-align:right;color:var(--muted);border-bottom:1px solid rgba(180,122,110,.08);}
-.wkc{border-left:1px solid rgba(180,122,110,.08);border-bottom:1px solid rgba(180,122,110,.06);min-height:42px;padding:2px;transition:background .2s;}
-.wkc:hover{background:rgba(237,227,214,.35);}
-.wke{background:var(--blush);border-radius:2px;padding:3px 5px;font-size:10px;color:#fff;cursor:pointer;margin:1px;line-height:1.3;}
+.wkh.today-col{background:var(--rose)!important;}
+.wkt{background:var(--warm);padding:10px 7px;text-align:right;font-size:11px;color:var(--muted);border-bottom:1px solid rgba(180,122,110,.08);}
+.wkc{border-left:1px solid rgba(180,122,110,.07);border-bottom:1px solid rgba(180,122,110,.06);min-height:48px;padding:3px;transition:background .15s;position:relative;}
+.wkc:hover{background:rgba(237,227,214,.4);}
+.wkc.today-col{background:rgba(184,122,110,.04);}
+.wke{border-radius:3px;padding:4px 7px;font-size:10px;color:#fff;cursor:pointer;margin:2px 0;line-height:1.4;transition:opacity .2s;display:block;}
+.wke:hover{opacity:.82;}
 .wke.conf{background:var(--deep);}
 .wke.pend{background:var(--gold);}
+.wke.cancelado{background:rgba(192,57,43,.5);text-decoration:line-through;}
+.wk-legend{display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--muted);}
+.wk-legend span{display:flex;align-items:center;gap:6px;}
+.wk-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;}
 
-/* NUEVO TURNO */
-.nt-form{background:var(--white);border-radius:4px;border:1px solid rgba(180,122,110,.12);padding:28px;max-width:560px;}
-.nt-form .lf-label{margin-top:0;}
-.nt-form input,.nt-form select{width:100%;padding:11px 14px;border:1px solid rgba(180,122,110,.25);background:var(--cream);color:var(--text);font-family:'Jost',sans-serif;font-size:14px;border-radius:2px;outline:none;transition:border-color .3s;margin-bottom:4px;}
-.nt-form input:focus,.nt-form select:focus{border-color:var(--rose);}
-.btn-dp{padding:12px 26px;background:var(--deep);color:var(--cream);border:none;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:background .2s;margin-top:8px;}
+/* Nuevo turno / Editar */
+.nt-form{background:var(--white);border-radius:6px;border:1px solid rgba(180,122,110,.12);padding:32px;max-width:620px;}
+.nt-form-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--bark);margin-bottom:24px;}
+.nt-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.nt-row.full{grid-template-columns:1fr;}
+.nt-fg label{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+.nt-fg input,.nt-fg select,.nt-fg textarea{width:100%;padding:11px 14px;border:1px solid rgba(180,122,110,.25);background:var(--cream);color:var(--text);font-family:'Jost',sans-serif;font-size:13px;border-radius:3px;outline:none;transition:border-color .25s;}
+.nt-fg input:focus,.nt-fg select:focus,.nt-fg textarea:focus{border-color:var(--rose);}
+.nt-estado{display:flex;gap:8px;flex-wrap:wrap;}
+.nt-estado label{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text);cursor:pointer;padding:7px 14px;border:1px solid rgba(180,122,110,.25);border-radius:3px;transition:all .2s;}
+.nt-estado label:has(input:checked){background:var(--deep);color:var(--cream);border-color:var(--deep);}
+.nt-estado input{display:none;}
+.nt-btns{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;}
+.btn-dp{padding:12px 26px;background:var(--deep);color:var(--cream);border:none;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;border-radius:3px;cursor:pointer;transition:background .2s;}
 .btn-dp:hover{background:var(--rose);}
+.btn-dp.secondary{background:transparent;color:var(--deep);border:1px solid rgba(107,61,53,.3);}
+.btn-dp.secondary:hover{background:var(--warm);}
+
+/* Modal editar */
+.edit-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:10002;display:none;align-items:center;justify-content:center;padding:20px;}
+.edit-modal-overlay.open{display:flex;}
+.edit-modal{background:var(--white);border-radius:6px;max-width:560px;width:100%;padding:32px;max-height:90vh;overflow-y:auto;}
+.edit-modal-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--bark);margin-bottom:24px;}
+
+/* Empty states */
+.db-empty{text-align:center;padding:48px 20px;color:var(--muted);}
+.db-empty .db-empty-icon{font-size:48px;margin-bottom:16px;}
+.db-empty p{font-size:14px;line-height:1.6;}
+
+/* Resumen rápido */
+.quick-list{display:flex;flex-direction:column;gap:8px;}
+.quick-item{background:var(--white);border-radius:4px;border:1px solid rgba(180,122,110,.1);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;font-size:13px;}
+.quick-item-left{display:flex;align-items:center;gap:10px;}
+.quick-item-av{width:32px;height:32px;border-radius:50%;background:var(--warm);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--deep);}
+.quick-item-name{font-weight:500;color:var(--bark);}
+.quick-item-serv{font-size:11px;color:var(--muted);margin-top:1px;}
+.quick-item-time{font-size:12px;color:var(--deep);font-weight:500;text-align:right;}
+.quick-item-time small{display:block;font-size:10px;color:var(--muted);font-weight:400;}
 
 /* TOAST */
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--bark);color:var(--cream);padding:12px 22px;border-radius:4px;font-size:14px;z-index:99999;opacity:0;transition:all .3s;pointer-events:none;}
@@ -524,20 +602,63 @@ footer{background:var(--bark);padding:70px 8% 40px;color:rgba(249,244,238,.7);}
 <!-- DASHBOARD -->
 <div id="dashboard">
   <div class="dn">
-    <span class="dn-brand">Panel <span>Admin</span></span>
+    <span class="dn-brand">Estética <span>&</span> Bienestar</span>
     <div class="dn-right">
-      <span>Hola, <strong style="color:var(--blush)">Maru</strong> 🌸</span>
-      <button class="dn-logout" onclick="logout()">Cerrar sesión</button>
+      <span class="dn-time" id="dnTime"></span>
+      <span style="font-size:13px">Hola, <strong style="color:var(--blush)">Maru</strong> 🌸</span>
+      <button class="dn-logout" onclick="logout()">Salir</button>
     </div>
   </div>
   <div class="db-body">
     <div class="db-sidebar">
-      <div class="db-menu active" onclick="dbTab('pendientes',this)"><span style="font-size:15px">📋</span> Pendientes</div>
-      <div class="db-menu" onclick="dbTab('semana',this)"><span style="font-size:15px">📅</span> Semana</div>
-      <div class="db-menu" onclick="dbTab('todos',this)"><span style="font-size:15px">👥</span> Todos</div>
-      <div class="db-menu" onclick="dbTab('nuevo',this)"><span style="font-size:15px">➕</span> Nuevo turno</div>
+      <div class="db-sidebar-section">Principal</div>
+      <div class="db-menu active" onclick="dbTab('resumen',this)"><span class="mi">🏠</span> Resumen</div>
+      <div class="db-menu" onclick="dbTab('pendientes',this)"><span class="mi">📋</span> Pendientes <span id="pendBadge" style="margin-left:auto;background:var(--gold);color:#fff;font-size:10px;padding:2px 7px;border-radius:20px;display:none"></span></div>
+      <div class="db-menu" onclick="dbTab('semana',this)"><span class="mi">📅</span> Vista semanal</div>
+      <div class="db-sidebar-section">Gestión</div>
+      <div class="db-menu" onclick="dbTab('todos',this)"><span class="mi">👥</span> Todos los turnos</div>
+      <div class="db-menu" onclick="dbTab('nuevo',this)"><span class="mi">➕</span> Nuevo turno</div>
+      <div class="db-sidebar-footer">
+        <p>Los datos se guardan localmente en este dispositivo.</p>
+      </div>
     </div>
     <div class="db-content" id="dbContent"></div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="edit-modal-overlay" id="editModal">
+  <div class="edit-modal">
+    <div class="edit-modal-title">Editar turno</div>
+    <div class="nt-row">
+      <div class="nt-fg"><label>Nombre</label><input id="em-n" type="text"></div>
+      <div class="nt-fg"><label>Teléfono</label><input id="em-t" type="tel"></div>
+    </div>
+    <div class="nt-row full" style="margin-bottom:16px">
+      <div class="nt-fg"><label>Servicio</label>
+        <select id="em-s"><option>Masaje relajante</option><option>Masaje descontracturante</option><option>Masaje con piedras calientes</option><option>Manicuría clásica</option><option>Manicuría semipermanente</option><option>Nail art</option><option>Lifting de pestañas</option><option>Extensiones de pestañas</option><option>Diseño de cejas</option><option>Laminado de cejas</option><option>Combo de servicios</option></select>
+      </div>
+    </div>
+    <div class="nt-row">
+      <div class="nt-fg"><label>Fecha (dd/mm/aaaa)</label><input id="em-f" type="text" placeholder="15/05/2025"></div>
+      <div class="nt-fg"><label>Horario</label>
+        <select id="em-h"><option>09:00 – 10:00</option><option>10:00 – 11:00</option><option>11:00 – 12:00</option><option>14:00 – 15:00</option><option>15:00 – 16:00</option><option>16:00 – 17:00</option><option>17:00 – 18:00</option><option>18:00 – 19:00</option></select>
+      </div>
+    </div>
+    <div class="nt-row full" style="margin-bottom:16px">
+      <div class="nt-fg"><label>Nota (opcional)</label><textarea id="em-nota" rows="2" style="width:100%;padding:10px 14px;border:1px solid rgba(180,122,110,.25);background:var(--cream);color:var(--text);font-family:'Jost',sans-serif;font-size:13px;border-radius:3px;outline:none;resize:none;transition:border-color .25s" onfocus="this.style.borderColor='var(--rose)'" onblur="this.style.borderColor='rgba(180,122,110,.25)'"></textarea></div>
+    </div>
+    <div class="nt-fg" style="margin-bottom:20px"><label>Estado</label>
+      <div class="nt-estado">
+        <label><input type="radio" name="em-e" value="pendiente"> ⏳ Pendiente</label>
+        <label><input type="radio" name="em-e" value="confirmado"> ✓ Confirmado</label>
+        <label><input type="radio" name="em-e" value="cancelado"> ✕ Cancelado</label>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button class="btn-dp" onclick="saveEdit()">Guardar cambios</button>
+      <button class="btn-dp secondary" onclick="closeEdit()">Cancelar</button>
+    </div>
   </div>
 </div>
 
@@ -725,41 +846,200 @@ function doLogin(){
 /* ── DASHBOARD ── */
 function getTurnos(){try{return JSON.parse(localStorage.getItem('maru_t')||'[]');}catch{return[];}}
 function saveTurnos(t){localStorage.setItem('maru_t',JSON.stringify(t));}
+
 function initDemo(){
   if(getTurnos().length)return;
   const hoy=new Date(),fmt=d=>`${d.getDate().toString().padStart(2,'0')}/${(d.getMonth()+1).toString().padStart(2,'0')}/${d.getFullYear()}`;
   const d=i=>{const x=new Date(hoy);x.setDate(hoy.getDate()+i);return x;};
   saveTurnos([
-    {id:1,n:'Valentina Rodríguez',t:'1145678901',s:'Masaje relajante',f:fmt(d(0)),h:'10:00 – 11:00',e:'pendiente'},
-    {id:2,n:'Lucía Martínez',t:'1156789012',s:'Lifting de pestañas',f:fmt(d(1)),h:'14:00 – 15:00',e:'confirmado'},
-    {id:3,n:'Camila Sánchez',t:'1167890123',s:'Manicuría semipermanente',f:fmt(d(2)),h:'11:00 – 12:00',e:'pendiente'},
-    {id:4,n:'Florencia García',t:'1178901234',s:'Masaje descontracturante',f:fmt(d(3)),h:'15:00 – 16:00',e:'confirmado'},
-    {id:5,n:'Julieta Pérez',t:'1189012345',s:'Diseño de cejas',f:fmt(d(4)),h:'09:00 – 10:00',e:'pendiente'},
-    {id:6,n:'Rocío Benítez',t:'1190123456',s:'Manicuría clásica',f:fmt(d(0)),h:'16:00 – 17:00',e:'cancelado'},
+    {id:1,n:'Valentina Rodríguez',t:'1145678901',s:'Masaje relajante',f:fmt(d(0)),h:'10:00 – 11:00',e:'pendiente',nota:'Prefiere aceite de lavanda'},
+    {id:2,n:'Lucía Martínez',t:'1156789012',s:'Lifting de pestañas',f:fmt(d(1)),h:'14:00 – 15:00',e:'confirmado',nota:''},
+    {id:3,n:'Camila Sánchez',t:'1167890123',s:'Manicuría semipermanente',f:fmt(d(2)),h:'11:00 – 12:00',e:'pendiente',nota:'Quiere diseño floral'},
+    {id:4,n:'Florencia García',t:'1178901234',s:'Masaje descontracturante',f:fmt(d(3)),h:'15:00 – 16:00',e:'confirmado',nota:'Dolor zona lumbar'},
+    {id:5,n:'Julieta Pérez',t:'1189012345',s:'Diseño de cejas',f:fmt(d(4)),h:'09:00 – 10:00',e:'pendiente',nota:''},
+    {id:6,n:'Rocío Benítez',t:'1190123456',s:'Manicuría clásica',f:fmt(d(0)),h:'16:00 – 17:00',e:'cancelado',nota:'Reprogramó para la semana que viene'},
+    {id:7,n:'Sofía Torres',t:'1134567890',s:'Combo de servicios',f:fmt(d(5)),h:'10:00 – 11:00',e:'confirmado',nota:'Manicuría + cejas'},
+    {id:8,n:'Martina López',t:'1123456789',s:'Extensiones de pestañas',f:fmt(d(6)),h:'14:00 – 15:00',e:'pendiente',nota:''},
   ]);
 }
-function openDash(){initDemo();document.getElementById('dashboard').classList.add('open');document.body.style.overflow='hidden';dbTab('pendientes',document.querySelector('.db-menu'));}
-function logout(){document.getElementById('dashboard').classList.remove('open');document.body.style.overflow='';}
 
-let activeTab='pendientes';
-function dbTab(tab,el){document.querySelectorAll('.db-menu').forEach(i=>i.classList.remove('active'));el.classList.add('active');activeTab=tab;renderTab(tab);}
-function renderTab(tab){const c=document.getElementById('dbContent');if(tab==='pendientes')c.innerHTML=renderPend();else if(tab==='semana')c.innerHTML=renderSem(0);else if(tab==='todos')c.innerHTML=renderTodos();else c.innerHTML=renderNT();}
+function openDash(){
+  initDemo();
+  document.getElementById('dashboard').classList.add('open');
+  document.body.style.overflow='hidden';
+  startClock();
+  updatePendBadge();
+  dbTab('resumen',document.querySelector('.db-menu'));
+}
+function logout(){document.getElementById('dashboard').classList.remove('open');document.body.style.overflow='';clearInterval(clockInt);}
 
+let clockInt;
+function startClock(){
+  const update=()=>{
+    const now=new Date();
+    document.getElementById('dnTime').textContent=now.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
+  };
+  update();clearInterval(clockInt);clockInt=setInterval(update,1000);
+}
+
+function updatePendBadge(){
+  const p=getTurnos().filter(t=>t.e==='pendiente').length;
+  const b=document.getElementById('pendBadge');
+  if(b){b.textContent=p;b.style.display=p?'inline':'none';}
+}
+
+let activeTab='resumen';
+let editingId=null;
+let todosFilter='todos';
+let todosSearch='';
+
+function dbTab(tab,el){
+  document.querySelectorAll('.db-menu').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');activeTab=tab;renderTab(tab);
+}
+function renderTab(tab){
+  const c=document.getElementById('dbContent');
+  if(tab==='resumen')c.innerHTML=renderResumen();
+  else if(tab==='pendientes')c.innerHTML=renderPend();
+  else if(tab==='semana')c.innerHTML=renderSem(0);
+  else if(tab==='todos')c.innerHTML=renderTodos();
+  else c.innerHTML=renderNT();
+  updatePendBadge();
+}
+
+/* ── RESUMEN ── */
+function renderResumen(){
+  const ts=getTurnos();
+  const hoy=new Date(),fmtHoy=`${hoy.getDate().toString().padStart(2,'0')}/${(hoy.getMonth()+1).toString().padStart(2,'0')}/${hoy.getFullYear()}`;
+  const turnosHoy=ts.filter(t=>t.f===fmtHoy&&t.e!=='cancelado').sort((a,b)=>a.h.localeCompare(b.h));
+  const manana=new Date(hoy);manana.setDate(hoy.getDate()+1);
+  const fmtMan=`${manana.getDate().toString().padStart(2,'0')}/${(manana.getMonth()+1).toString().padStart(2,'0')}/${manana.getFullYear()}`;
+  const turnosMan=ts.filter(t=>t.f===fmtMan&&t.e!=='cancelado').sort((a,b)=>a.h.localeCompare(b.h));
+  const pend=ts.filter(t=>t.e==='pendiente').length;
+  const conf=ts.filter(t=>t.e==='confirmado').length;
+
+  const semana7=()=>{
+    const dias={};
+    for(let i=0;i<7;i++){const d=new Date(hoy);d.setDate(hoy.getDate()+i);const k=`${d.getDate().toString().padStart(2,'0')}/${(d.getMonth()+1).toString().padStart(2,'0')}/${d.getFullYear()}`;dias[k]=0;}
+    ts.filter(t=>t.e==='confirmado').forEach(t=>{if(dias[t.f]!==undefined)dias[t.f]++;});
+    return Object.entries(dias);
+  };
+
+  const maxBar=Math.max(...semana7().map(([,v])=>v),1);
+  const barHTML=semana7().map(([f,v],i)=>{
+    const d=new Date(hoy);d.setDate(hoy.getDate()+i);
+    const lbl=['Hoy','Mañ','Mar','Mié','Jue','Vie','Sáb','Dom'][i]||d.getDate();
+    const pct=Math.round((v/maxBar)*100);
+    return `<div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:1">
+      <div style="font-size:12px;font-weight:500;color:var(--deep)">${v||''}</div>
+      <div style="width:100%;height:80px;background:var(--warm);border-radius:4px;display:flex;align-items:flex-end;overflow:hidden">
+        <div style="width:100%;height:${pct}%;background:${i===0?'var(--rose)':'var(--blush)'};border-radius:3px;transition:height .4s ${i*.05}s;min-height:${v?'4px':'0'}"></div>
+      </div>
+      <div style="font-size:10px;color:var(--muted);letter-spacing:.5px">${lbl}</div>
+    </div>`;
+  }).join('');
+
+  return `
+  <div class="db-page-title">Buen día, Maru ✨</div>
+  <div class="db-page-sub">${hoy.toLocaleDateString('es-AR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</div>
+
+  <div class="db-stats">
+    <div class="db-stat"><div class="db-stat-accent"></div><div class="db-stat-n">${turnosHoy.length}</div><div class="db-stat-l">Turnos hoy</div></div>
+    <div class="db-stat"><div class="db-stat-accent gold"></div><div class="db-stat-n">${pend}</div><div class="db-stat-l">Pendientes</div>${pend?`<div class="db-stat-trend" style="color:#7a5a10">⚠ Requieren confirmación</div>`:''}</div>
+    <div class="db-stat"><div class="db-stat-accent green"></div><div class="db-stat-n">${conf}</div><div class="db-stat-l">Confirmados</div></div>
+    <div class="db-stat"><div class="db-stat-accent"></div><div class="db-stat-n">${ts.length}</div><div class="db-stat-l">Total registrados</div></div>
+  </div>
+
+  ${pend?`<div style="background:rgba(196,151,90,.1);border:1px solid rgba(196,151,90,.3);border-radius:6px;padding:14px 18px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#7a5a10">
+      <span style="font-size:18px">⏳</span>
+      <span>Tenés <strong>${pend} turno${pend>1?'s':''} pendiente${pend>1?'s':''}</strong> sin confirmar.</span>
+    </div>
+    <button class="tb ok" style="white-space:nowrap" onclick="dbTab('pendientes',document.querySelectorAll('.db-menu')[1])">Ver ahora →</button>
+  </div>`:''}
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px">
+    <div>
+      <div class="db-h">Turnos de hoy <span class="db-h-count">${turnosHoy.length}</span></div>
+      ${turnosHoy.length?`<div class="quick-list">${turnosHoy.map(t=>`<div class="quick-item">
+        <div class="quick-item-left"><div class="quick-item-av">${t.n.charAt(0)}</div><div><div class="quick-item-name">${t.n.split(' ')[0]}</div><div class="quick-item-serv">${t.s}</div></div></div>
+        <div class="quick-item-time">${t.h.split(' ')[0]}<small>${badge(t.e)}</small></div>
+      </div>`).join('')}</div>`:`<div class="db-empty"><div class="db-empty-icon">🗓</div><p>Sin turnos para hoy</p></div>`}
+    </div>
+    <div>
+      <div class="db-h">Mañana <span class="db-h-count">${turnosMan.length}</span></div>
+      ${turnosMan.length?`<div class="quick-list">${turnosMan.map(t=>`<div class="quick-item">
+        <div class="quick-item-left"><div class="quick-item-av">${t.n.charAt(0)}</div><div><div class="quick-item-name">${t.n.split(' ')[0]}</div><div class="quick-item-serv">${t.s}</div></div></div>
+        <div class="quick-item-time">${t.h.split(' ')[0]}<small>${badge(t.e)}</small></div>
+      </div>`).join('')}</div>`:`<div class="db-empty"><div class="db-empty-icon">😴</div><p>Sin turnos para mañana</p></div>`}
+    </div>
+  </div>
+
+  <div class="db-h">Próximos 7 días</div>
+  <div style="background:var(--white);border-radius:6px;border:1px solid rgba(180,122,110,.1);padding:20px 24px">
+    <div style="display:flex;gap:8px;align-items:flex-end;height:120px">${barHTML}</div>
+  </div>`;
+}
+
+/* ── PENDIENTES ── */
 const badge=e=>({pendiente:'<span class="badge p">Pendiente</span>',confirmado:'<span class="badge c">Confirmado</span>',cancelado:'<span class="badge x">Cancelado</span>'}[e]||'');
-const tcActs=t=>{let b='';
-  if(t.e==='pendiente')b+=`<button class="tb ok" onclick="cnf(${t.id})">✓ OK</button><button class="tb no" onclick="cnl(${t.id})">✕</button>`;
-  if(t.e==='confirmado')b+=`<button class="tb no" onclick="cnl(${t.id})">✕ Cancelar</button>`;
-  return b+`<button class="tb del" onclick="del(${t.id})">🗑</button>`;};
-const tcHtml=t=>`<div class="tc" id="tc${t.id}"><div class="tc-av">${t.n.charAt(0)}</div><div class="tc-body"><div class="tc-name">${t.n}</div><div class="tc-det">📱 ${t.t} · ✨ ${t.s}</div><div class="tc-dt">📅 ${t.f} · 🕐 ${t.h}</div></div>${badge(t.e)}<div class="tc-acts">${tcActs(t)}</div></div>`;
+
+const tcHtml=(t,compact=false)=>`<div class="tc${t.e==='pendiente'?' urgent':''}" id="tc${t.id}">
+  <div class="tc-av">${t.n.charAt(0)}</div>
+  <div class="tc-body">
+    <div class="tc-name">${t.n}</div>
+    <div class="tc-det"><span>📱 ${t.t||'—'}</span><span>✨ ${t.s}</span></div>
+    <div class="tc-dt"><span>📅 ${t.f}</span><span>🕐 ${t.h}</span></div>
+    ${t.nota?`<div class="tc-nota">💬 ${t.nota}</div>`:''}
+  </div>
+  ${badge(t.e)}
+  <div class="tc-acts">
+    ${t.e==='pendiente'?`<button class="tb ok" onclick="cnf(${t.id})">✓ Confirmar</button><button class="tb no" onclick="cnl(${t.id})">✕</button>`:''}
+    ${t.e==='confirmado'?`<button class="tb wsp" onclick="wspConfirmar(${t.id})">📲 WSP</button><button class="tb no" onclick="cnl(${t.id})">✕ Cancelar</button>`:''}
+    <button class="tb edit" onclick="openEdit(${t.id})">✏</button>
+    <button class="tb del" onclick="del(${t.id})">🗑</button>
+  </div>
+</div>`;
 
 function renderPend(){
   const ts=getTurnos(),p=ts.filter(x=>x.e==='pendiente'),c=ts.filter(x=>x.e==='confirmado'),x=ts.filter(x=>x.e==='cancelado');
-  return `<div class="db-stats"><div class="db-stat"><div class="db-stat-n">${p.length}</div><div class="db-stat-l">Pendientes</div></div><div class="db-stat"><div class="db-stat-n">${c.length}</div><div class="db-stat-l">Confirmados</div></div><div class="db-stat"><div class="db-stat-n">${ts.length}</div><div class="db-stat-l">Total</div></div><div class="db-stat"><div class="db-stat-n">${x.length}</div><div class="db-stat-l">Cancelados</div></div></div>
-  <div class="db-h">Pendientes de confirmación</div>${p.length?p.map(tcHtml).join(''):'<p style="color:var(--muted);font-size:14px">Sin pendientes 🎉</p>'}
-  ${c.length?`<div class="db-h" style="margin-top:28px">Próximos confirmados</div>${c.map(tcHtml).join('')}`:''}`;
+  return `
+  <div class="db-page-title">Gestión de turnos</div>
+  <div class="db-page-sub">Confirmá o cancelá los turnos que llegan por WhatsApp</div>
+  <div class="db-stats">
+    <div class="db-stat"><div class="db-stat-accent gold"></div><div class="db-stat-n">${p.length}</div><div class="db-stat-l">Pendientes</div></div>
+    <div class="db-stat"><div class="db-stat-accent green"></div><div class="db-stat-n">${c.length}</div><div class="db-stat-l">Confirmados</div></div>
+    <div class="db-stat"><div class="db-stat-accent red"></div><div class="db-stat-n">${x.length}</div><div class="db-stat-l">Cancelados</div></div>
+    <div class="db-stat"><div class="db-stat-accent"></div><div class="db-stat-n">${ts.length}</div><div class="db-stat-l">Total</div></div>
+  </div>
+  <div class="db-h">⏳ Requieren confirmación <span class="db-h-count">${p.length}</span></div>
+  ${p.length?p.map(t=>tcHtml(t)).join(''):`<div class="db-empty"><div class="db-empty-icon">🎉</div><p>¡Sin pendientes! Todos los turnos están gestionados.</p></div>`}
+  ${c.length?`<div class="db-h" style="margin-top:28px">✅ Confirmados próximamente <span class="db-h-count">${c.length}</span></div>${c.map(t=>tcHtml(t)).join('')}`:''}
+  ${x.length?`<div class="db-h" style="margin-top:28px">❌ Cancelados <span class="db-h-count">${x.length}</span></div>${x.map(t=>tcHtml(t)).join('')}`:''}`;
 }
-function renderTodos(){const ts=getTurnos();return `<div class="db-h">Todos los turnos (${ts.length})</div>${ts.map(tcHtml).join('')||'<p style="color:var(--muted);font-size:14px">Sin turnos registrados.</p>'}`;}
 
+/* ── TODOS ── */
+function renderTodos(){
+  const ts=getTurnos();
+  let filtered=ts;
+  if(todosFilter!=='todos')filtered=filtered.filter(t=>t.e===todosFilter);
+  if(todosSearch)filtered=filtered.filter(t=>t.n.toLowerCase().includes(todosSearch.toLowerCase())||t.s.toLowerCase().includes(todosSearch.toLowerCase())||t.f.includes(todosSearch));
+
+  return `
+  <div class="db-page-title">Todos los turnos</div>
+  <div class="db-page-sub">Historial completo — ${ts.length} turnos registrados</div>
+  <div class="db-filters">
+    <input class="db-search" type="text" placeholder="🔍 Buscar por nombre, servicio, fecha…" value="${todosSearch}" oninput="todosSearch=this.value;document.getElementById('dbContent').innerHTML=renderTodos()" />
+    <button class="df ${todosFilter==='todos'?'active':''}" onclick="todosFilter='todos';renderTab('todos')">Todos</button>
+    <button class="df ${todosFilter==='pendiente'?'active':''}" onclick="todosFilter='pendiente';renderTab('todos')">Pendientes</button>
+    <button class="df ${todosFilter==='confirmado'?'active':''}" onclick="todosFilter='confirmado';renderTab('todos')">Confirmados</button>
+    <button class="df ${todosFilter==='cancelado'?'active':''}" onclick="todosFilter='cancelado';renderTab('todos')">Cancelados</button>
+  </div>
+  <div class="db-h">${filtered.length} resultado${filtered.length!==1?'s':''}</div>
+  ${filtered.length?filtered.map(t=>tcHtml(t)).join(''):`<div class="db-empty"><div class="db-empty-icon">🔍</div><p>No encontramos turnos con ese filtro.</p></div>`}`;
+}
+
+/* ── SEMANA ── */
 let wkOff=0;
 function renderSem(off){
   wkOff=off;
@@ -772,53 +1052,179 @@ function renderSem(off){
   const getH=h=>h.split(' ')[0];
   const fmtD=d=>`${d.getDate().toString().padStart(2,'0')}/${(d.getMonth()+1).toString().padStart(2,'0')}/${d.getFullYear()}`;
   const semL=`${lun.getDate()} ${MONTHS[lun.getMonth()].slice(0,3)} – ${dias[6].getDate()} ${MONTHS[dias[6].getMonth()].slice(0,3)} ${dias[6].getFullYear()}`;
-  let h=`<div class="wk-nav"><button onclick="renderTabSem(-1)">‹</button><span class="wk-lbl">${semL}</span><button onclick="renderTabSem(1)">›</button></div>
-  <div class="wk-grid"><div class="wkh corner"></div>`;
-  dias.forEach((d,i)=>{h+=`<div class="wkh" style="${d.toDateString()===hoy.toDateString()?'background:var(--rose)':''}">${dn[i]}<br><span style="font-size:15px;font-family:'Cormorant Garamond',serif;font-weight:300">${d.getDate()}</span></div>`;});
+  const isThisWeek=off===0;
+
+  let totalSem=ts.filter(t=>dias.some(d=>fmtD(d)===t.f)&&t.e!=='cancelado').length;
+
+  let h=`
+  <div class="db-page-title">Vista semanal</div>
+  <div class="db-page-sub">${isThisWeek?'Semana actual':'Semana seleccionada'} · ${totalSem} turno${totalSem!==1?'s':''} activos</div>
+  <div class="wk-nav">
+    <button onclick="document.getElementById('dbContent').innerHTML=renderSem(wkOff-1)">‹</button>
+    <button class="wk-today" onclick="document.getElementById('dbContent').innerHTML=renderSem(0)" style="border-radius:3px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase">Hoy</button>
+    <span class="wk-lbl">${semL}</span>
+    <button onclick="document.getElementById('dbContent').innerHTML=renderSem(wkOff+1)">›</button>
+  </div>
+  <div class="wk-grid-wrap"><div class="wk-grid">
+    <div class="wkh corner"></div>`;
+
+  dias.forEach((d,i)=>{
+    const isToday=d.toDateString()===hoy.toDateString();
+    const cnt=ts.filter(t=>t.f===fmtD(d)&&t.e!=='cancelado').length;
+    h+=`<div class="wkh${isToday?' today-col':''}">${dn[i]}<br>
+      <span style="font-size:16px;font-family:'Cormorant Garamond',serif;font-weight:300">${d.getDate()}</span>
+      ${cnt?`<br><span style="font-size:10px;opacity:.7">${cnt}t</span>`:''}
+    </div>`;
+  });
+
   hrs.forEach(hr=>{
     h+=`<div class="wkt">${hr}</div>`;
     dias.forEach(d=>{
-      const ev=ts.filter(t=>t.f===fmtD(d)&&getH(t.h)===hr&&t.e!=='cancelado');
-      h+=`<div class="wkc">${ev.map(ev=>`<div class="wke ${ev.e}" title="${ev.n} · ${ev.s}">${ev.n.split(' ')[0]}</div>`).join('')}</div>`;
+      const isToday=d.toDateString()===hoy.toDateString();
+      const ev=ts.filter(t=>t.f===fmtD(d)&&getH(t.h)===hr);
+      h+=`<div class="wkc${isToday?' today-col':''}">`;
+      ev.forEach(ev=>{
+        h+=`<div class="wke ${ev.e}" title="${ev.n} · ${ev.s} · ${ev.h}" onclick="openEdit(${ev.id})">${ev.n.split(' ')[0]}<br><span style="font-size:9px;opacity:.8">${ev.s.split(' ')[0]}</span></div>`;
+      });
+      h+='</div>';
     });
   });
-  h+='</div>';return h;
+
+  h+='</div></div>';
+  h+=`<div class="wk-legend">
+    <span><i style="background:var(--deep)"></i> Confirmado</span>
+    <span><i style="background:var(--gold)"></i> Pendiente</span>
+    <span><i style="background:rgba(192,57,43,.5)"></i> Cancelado</span>
+    <span style="font-size:11px;color:var(--muted);margin-left:auto">Hacé click en un turno para editarlo</span>
+  </div>`;
+  return h;
 }
 function renderTabSem(d){document.getElementById('dbContent').innerHTML=renderSem(wkOff+d);}
 
+/* ── NUEVO TURNO ── */
 function renderNT(){
-  return `<div class="db-h">Nuevo turno manual</div>
+  return `
+  <div class="db-page-title">Nuevo turno</div>
+  <div class="db-page-sub">Cargá manualmente los turnos que llegan por WhatsApp</div>
   <div class="nt-form">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
-      <div><label class="lf-label" style="margin-top:0">Nombre</label><input id="nt-n" placeholder="Nombre y apellido"></div>
-      <div><label class="lf-label" style="margin-top:0">Teléfono</label><input id="nt-t" type="tel" placeholder="11 xxxx-xxxx"></div>
+    <div class="nt-form-title">Datos del turno</div>
+    <div class="nt-row">
+      <div class="nt-fg"><label>Nombre completo</label><input id="nt-n" type="text" placeholder="Nombre y apellido"></div>
+      <div class="nt-fg"><label>Teléfono</label><input id="nt-t" type="tel" placeholder="11 xxxx-xxxx"></div>
     </div>
-    <div style="margin-bottom:14px"><label class="lf-label" style="margin-top:0">Servicio</label>
-      <select id="nt-s"><option value="">Seleccioná</option><option>Masaje relajante</option><option>Masaje descontracturante</option><option>Masaje con piedras calientes</option><option>Manicuría clásica</option><option>Manicuría semipermanente</option><option>Nail art</option><option>Lifting de pestañas</option><option>Extensiones de pestañas</option><option>Diseño de cejas</option><option>Laminado de cejas</option><option>Combo de servicios</option></select>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
-      <div><label class="lf-label" style="margin-top:0">Fecha (dd/mm/aaaa)</label><input id="nt-f" placeholder="15/05/2025"></div>
-      <div><label class="lf-label" style="margin-top:0">Horario</label>
-        <select id="nt-h"><option>09:00 – 10:00</option><option>10:00 – 11:00</option><option>11:00 – 12:00</option><option>14:00 – 15:00</option><option>15:00 – 16:00</option><option>16:00 – 17:00</option><option>17:00 – 18:00</option><option>18:00 – 19:00</option></select>
+    <div class="nt-row full" style="margin-bottom:16px">
+      <div class="nt-fg"><label>Servicio</label>
+        <select id="nt-s"><option value="">Seleccioná un servicio</option>
+          <option>Masaje relajante</option><option>Masaje descontracturante</option><option>Masaje con piedras calientes</option>
+          <option>Manicuría clásica</option><option>Manicuría semipermanente</option><option>Nail art</option>
+          <option>Lifting de pestañas</option><option>Extensiones de pestañas</option>
+          <option>Diseño de cejas</option><option>Laminado de cejas</option><option>Combo de servicios</option>
+        </select>
       </div>
     </div>
-    <button class="btn-dp" onclick="addManual()">➕ Agregar turno confirmado</button>
+    <div class="nt-row">
+      <div class="nt-fg"><label>Fecha (dd/mm/aaaa)</label><input id="nt-f" type="text" placeholder="15/05/2025"></div>
+      <div class="nt-fg"><label>Horario</label>
+        <select id="nt-h">
+          <option>09:00 – 10:00</option><option>10:00 – 11:00</option><option>11:00 – 12:00</option>
+          <option>14:00 – 15:00</option><option>15:00 – 16:00</option><option>16:00 – 17:00</option>
+          <option>17:00 – 18:00</option><option>18:00 – 19:00</option>
+        </select>
+      </div>
+    </div>
+    <div class="nt-row full" style="margin-bottom:16px">
+      <div class="nt-fg"><label>Nota (opcional)</label>
+        <textarea id="nt-nota" rows="2" style="width:100%;padding:10px 14px;border:1px solid rgba(180,122,110,.25);background:var(--cream);color:var(--text);font-family:'Jost',sans-serif;font-size:13px;border-radius:3px;outline:none;resize:none;transition:border-color .25s" placeholder="Preferencias, indicaciones especiales…"></textarea>
+      </div>
+    </div>
+    <div class="nt-fg" style="margin-bottom:22px"><label>Estado inicial</label>
+      <div class="nt-estado">
+        <label><input type="radio" name="nt-e" value="confirmado" checked> ✓ Confirmado</label>
+        <label><input type="radio" name="nt-e" value="pendiente"> ⏳ Pendiente</label>
+      </div>
+    </div>
+    <div class="nt-btns">
+      <button class="btn-dp" onclick="addManual()">➕ Agregar turno</button>
+      <button class="btn-dp secondary" onclick="clearNT()">Limpiar</button>
+    </div>
   </div>`;
 }
 
-function cnf(id){const ts=getTurnos(),t=ts.find(x=>x.id===id);if(t){t.e='confirmado';saveTurnos(ts);renderTab(activeTab);showToast(`✓ Turno de ${t.n.split(' ')[0]} confirmado`);}}
-function cnl(id){const ts=getTurnos(),t=ts.find(x=>x.id===id);if(t&&confirm(`¿Cancelar turno de ${t.n}?`)){t.e='cancelado';saveTurnos(ts);renderTab(activeTab);showToast(`Turno de ${t.n.split(' ')[0]} cancelado`);}}
-function del(id){const ts=getTurnos(),t=ts.find(x=>x.id===id);if(t&&confirm(`¿Eliminar turno de ${t.n}?`)){saveTurnos(ts.filter(x=>x.id!==id));renderTab(activeTab);showToast('Turno eliminado');}}
-function addManual(){
-  const n=document.getElementById('nt-n').value.trim(),t=document.getElementById('nt-t').value.trim(),s=document.getElementById('nt-s').value,f=document.getElementById('nt-f').value.trim(),h=document.getElementById('nt-h').value;
-  if(!n||!s||!f){showToast('Completá nombre, servicio y fecha');return;}
-  const ts=getTurnos(),id=ts.length?Math.max(...ts.map(x=>x.id))+1:1;
-  ts.push({id,n,t,s,f,h,e:'confirmado'});saveTurnos(ts);
-  showToast(`✓ Turno de ${n.split(' ')[0]} agregado`);
-  dbTab('pendientes',document.querySelector('.db-menu'));
+/* ── ACCIONES ── */
+function cnf(id){
+  const ts=getTurnos(),t=ts.find(x=>x.id===id);
+  if(t){t.e='confirmado';saveTurnos(ts);renderTab(activeTab);showToast(`✓ Turno de ${t.n.split(' ')[0]} confirmado`);}
+}
+function cnl(id){
+  const ts=getTurnos(),t=ts.find(x=>x.id===id);
+  if(t&&confirm(`¿Cancelar turno de ${t.n}?`)){t.e='cancelado';saveTurnos(ts);renderTab(activeTab);showToast(`Turno de ${t.n.split(' ')[0]} cancelado`);}
+}
+function del(id){
+  const ts=getTurnos(),t=ts.find(x=>x.id===id);
+  if(t&&confirm(`¿Eliminar el turno de ${t.n}? No se puede deshacer.`)){saveTurnos(ts.filter(x=>x.id!==id));renderTab(activeTab);showToast('Turno eliminado');}
+}
+function wspConfirmar(id){
+  const ts=getTurnos(),t=ts.find(x=>x.id===id);
+  if(!t)return;
+  const msg=`Hola ${t.n.split(' ')[0]}! 🌸 Te confirmo tu turno:\n✨ Servicio: ${t.s}\n📅 Fecha: ${t.f}\n🕐 Horario: ${t.h}\n\n¡Te espero! Cualquier consulta escribime.`;
+  window.open(`https://wa.me/549${t.t}?text=${encodeURIComponent(msg)}`,'_blank');
 }
 
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+/* ── EDITAR ── */
+function openEdit(id){
+  const ts=getTurnos(),t=ts.find(x=>x.id===id);
+  if(!t)return;
+  editingId=id;
+  document.getElementById('em-n').value=t.n;
+  document.getElementById('em-t').value=t.t||'';
+  document.getElementById('em-s').value=t.s;
+  document.getElementById('em-f').value=t.f;
+  document.getElementById('em-h').value=t.h;
+  document.getElementById('em-nota').value=t.nota||'';
+  document.querySelectorAll('[name="em-e"]').forEach(r=>r.checked=r.value===t.e);
+  document.getElementById('editModal').classList.add('open');
+}
+function closeEdit(){document.getElementById('editModal').classList.remove('open');editingId=null;}
+function saveEdit(){
+  if(!editingId)return;
+  const ts=getTurnos(),t=ts.find(x=>x.id===editingId);
+  if(!t)return;
+  t.n=document.getElementById('em-n').value.trim()||t.n;
+  t.t=document.getElementById('em-t').value.trim();
+  t.s=document.getElementById('em-s').value;
+  t.f=document.getElementById('em-f').value.trim();
+  t.h=document.getElementById('em-h').value;
+  t.nota=document.getElementById('em-nota').value.trim();
+  const sel=document.querySelector('[name="em-e"]:checked');
+  if(sel)t.e=sel.value;
+  saveTurnos(ts);closeEdit();renderTab(activeTab);showToast(`✓ Turno de ${t.n.split(' ')[0]} actualizado`);
+}
+
+/* ── AGREGAR MANUAL ── */
+function addManual(){
+  const n=document.getElementById('nt-n').value.trim();
+  const t=document.getElementById('nt-t').value.trim();
+  const s=document.getElementById('nt-s').value;
+  const f=document.getElementById('nt-f').value.trim();
+  const h=document.getElementById('nt-h').value;
+  const nota=document.getElementById('nt-nota').value.trim();
+  const esel=document.querySelector('[name="nt-e"]:checked');
+  const e=esel?esel.value:'confirmado';
+  if(!n){showToast('⚠ Ingresá el nombre del cliente');return;}
+  if(!s){showToast('⚠ Seleccioná un servicio');return;}
+  if(!f){showToast('⚠ Ingresá la fecha');return;}
+  const ts=getTurnos(),id=ts.length?Math.max(...ts.map(x=>x.id))+1:1;
+  ts.push({id,n,t,s,f,h,e,nota});
+  saveTurnos(ts);
+  showToast(`✓ Turno de ${n.split(' ')[0]} agregado como ${e}`);
+  dbTab('pendientes',document.querySelectorAll('.db-menu')[1]);
+}
+function clearNT(){renderTab('nuevo');}
+
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
 
 renderGaleria();
 </script>
