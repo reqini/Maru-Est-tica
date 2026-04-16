@@ -9,14 +9,6 @@
 :root{--cream:#F9F4EE;--warm:#EDE3D6;--blush:#D4A79A;--rose:#B87A6E;--deep:#6B3D35;--bark:#2E1A15;--gold:#C4975A;--text:#2E1A15;--muted:#7A5C54;--white:#FFFAF7;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-.foto-maru {
-  background-image: url('./assets/portada-sex-2.jpeg')!important;
-  background-size: cover!important;
-}
-.foto-juli {
-  background-image: url('./assets/portada-juli.jpeg')!important;
-  background-size: cover!important;
-}
 body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
 nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:18px 5%;background:rgba(249,244,238,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(180,122,110,.15);transition:all .3s;}
 nav.scrolled{padding:12px 5%;box-shadow:0 2px 20px rgba(107,61,53,.08);}
@@ -133,14 +125,14 @@ section{padding:100px 8%;}
 .cal-nav button:hover{background:rgba(255,255,255,.25);}
 .cal-days-header{display:grid;grid-template-columns:repeat(7,1fr);padding:12px 12px 4px;background:var(--warm);}
 .cal-day-name{text-align:center;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:4px;}
-.cal-days{display:grid;grid-template-columns:repeat(7,1fr);padding:8px 12px 20px;gap:2px;}
-.cal-day{min-height:36px;display:flex;align-items:center;justify-content:center;font-size:13px;border-radius:3px;cursor:pointer;transition:all .2s;color:var(--text);position:relative;}
-.cal-day:hover:not(.empty):not(.past){background:var(--warm);}
-.cal-day.empty{cursor:default;pointer-events:none;}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);padding:8px 12px 20px;gap:4px;}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:14px;border-radius:2px;cursor:pointer;transition:all .2s;color:var(--text);position:relative;}
+.cal-day:hover{background:var(--warm);}
+.cal-day.empty{cursor:default;}
 .cal-day.today{background:var(--blush);color:#fff;font-weight:500;}
 .cal-day.selected{background:var(--deep);color:var(--cream);}
-.cal-day.available::after{content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--gold);}
-.cal-day.past{color:rgba(107,61,53,.25);cursor:default;pointer-events:none;}
+.cal-day.available::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--gold);}
+.cal-day.past{color:rgba(107,61,53,.25);cursor:default;}
 .turnos-form{padding:24px;border-top:1px solid rgba(180,122,110,.1);}
 .form-group{margin-bottom:18px;}
 .form-group label{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
@@ -345,23 +337,8 @@ footer{background:var(--bark);padding:70px 8% 40px;color:rgba(249,244,238,.7);}
 .quick-item-time{font-size:12px;color:var(--deep);font-weight:500;text-align:right;}
 .quick-item-time small{display:block;font-size:10px;color:var(--muted);font-weight:400;}
 
-/* ── PROFESIONALES ── */
-#profesionales{background:var(--cream);padding:100px 8%;}
-.prof-header{text-align:center;margin-bottom:60px;}
-.prof-header .section-tag{justify-content:center;}
-.prof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;max-width:860px;margin:0 auto;}
-.prof-card{background:var(--white);border-radius:8px;overflow:hidden;border:1px solid rgba(180,122,110,.12);transition:transform .3s,box-shadow .3s;}
-.prof-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(107,61,53,.12);}
-.prof-foto{width:100%;height:320px;object-fit:cover;display:block;background:linear-gradient(135deg,#D4A79A,#B87A6E);}
-.prof-foto-placeholder{width:100%;height:415px;background:linear-gradient(135deg,#D4A79A,#B87A6E);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-family:'Cormorant Garamond',serif;color:rgba(255,255,255,.8);}
-.prof-body{padding:28px 32px;}
-.prof-nombre{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--bark);margin-bottom:4px;}
-.prof-rol{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
-.prof-bio{font-size:14px;line-height:1.8;color:var(--muted);font-weight:300;margin-bottom:20px;}
-.prof-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
-.prof-tag{padding:5px 14px;background:var(--warm);border-radius:20px;font-size:11px;color:var(--deep);letter-spacing:.5px;}
-.prof-wsp{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:10px 22px;border-radius:3px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background .3s;}
-.prof-wsp:hover{background:#1fbd5c;}
+/* TOAST */
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--bark);color:var(--cream);padding:12px 22px;border-radius:4px;font-size:14px;z-index:99999;opacity:0;transition:all .3s;pointer-events:none;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
@@ -394,7 +371,6 @@ footer{background:var(--bark);padding:70px 8% 40px;color:rgba(249,244,238,.7);}
   <a href="#hero" class="nav-logo">Estética <span>&</span> Bienestar</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#profesionales">Equipo</a></li>
     <li><a href="#galeria">Galería</a></li>
     <li><a href="#resenas">Clientes</a></li>
     <li><a href="#turnos">Turnos</a></li>
@@ -440,82 +416,19 @@ footer{background:var(--bark);padding:70px 8% 40px;color:rgba(249,244,238,.7);}
 </section>
 
 <!-- GALERÍA PINTEREST -->
-<section id="galeria" style="display: none;">
+<section id="galeria">
   <div class="section-tag">Galería</div>
   <h2 class="section-title" style="color:var(--cream)">Mirá mis <em>trabajos</em></h2>
   <p class="section-sub">Resultados reales, clientes reales. Cada trabajo es una muestra de dedicación y detalle.</p>
   <div class="galeria-filters">
     <button class="gal-filter active" onclick="filterGal('todos',this)">Todos</button>
     <button class="gal-filter" onclick="filterGal('masajes',this)">Masajes</button>
-    <button class="gal-filter" onclick="filterGal('facial',this)">Facial</button>
-    <button class="gal-filter" onclick="filterGal('unas',this)">Uñas</button>
+    <button class="gal-filter" onclick="filterGal('manicuria',this)">Manicuría</button>
     <button class="gal-filter" onclick="filterGal('pestanas',this)">Pestañas</button>
     <button class="gal-filter" onclick="filterGal('cejas',this)">Cejas</button>
     <button class="gal-filter" onclick="filterGal('video',this)">🎬 Videos</button>
   </div>
   <div class="masonry-grid" id="masonryGrid"></div>
-</section>
-
-<!-- PROFESIONALES -->
-<section id="profesionales">
-  <div class="prof-header">
-    <div class="section-tag">Nuestro equipo</div>
-    <h2 class="section-title">Las profesionales del <em>espacio</em></h2>
-    <p class="section-sub" style="margin:0 auto">Dos especialistas comprometidas con tu bienestar y belleza, cada una experta en su área.</p>
-  </div>
-  <div class="prof-grid">
-
-    <!-- MARU -->
-    <div class="prof-card">
-      <div class="foto-maru prof-foto-placeholder" style="background:linear-gradient(145deg,#B87A6E,#8B5A52)">
-        <!-- <div style="font-size:56px">💆</div>
-        <div style="font-size:14px;letter-spacing:2px">Foto de Maru</div> -->
-      </div>
-      <div class="prof-body">
-        <div class="prof-nombre">Maru</div>
-        <div class="prof-rol">Masajes · Estética Facial</div>
-        <p class="prof-bio">Especialista en masajes terapéuticos y tratamientos faciales. Con más de 8 años de experiencia, combina técnicas de relajación profunda con protocolos de cuidado facial avanzados para un bienestar integral.</p>
-        <div class="prof-tags">
-          <span class="prof-tag">Masaje relajante</span>
-          <span class="prof-tag">Masaje descontracturante</span>
-          <span class="prof-tag">Limpieza facial</span>
-          <span class="prof-tag">Peeling</span>
-          <span class="prof-tag">Tratamiento acné</span>
-          <span class="prof-tag">Alta frecuencia</span>
-        </div>
-        <a href="https://wa.me/5491168973678?text=Hola%20Maru%21%20%F0%9F%8C%B8%20Quer%C3%ADa%20consultarte%20por%20tus%20servicios" target="_blank" class="prof-wsp">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.99.58 3.841 1.58 5.397L2 22l4.748-1.548A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-          Consultar con Maru
-        </a>
-      </div>
-    </div>
-
-    <!-- JULIETA -->
-    <div class="prof-card">
-      <div class="foto-juli prof-foto-placeholder" style="background:linear-gradient(145deg,#D4A79A,#B87A6E)">
-        <!-- <div style="font-size:56px">💅</div>
-        <div style="font-size:14px;letter-spacing:2px">Foto de Julieta</div> -->
-      </div>
-      <div class="prof-body">
-        <div class="prof-nombre">Julieta</div>
-        <div class="prof-rol">Uñas · Pestañas · Cejas</div>
-        <p class="prof-bio">Experta en nail art y tratamientos de belleza para ojos y cejas. Domina las técnicas más actuales en semipermanente, soft gel, lifting de pestañas y laminado de cejas, logrando resultados precisos y duraderos.</p>
-        <div class="prof-tags">
-          <span class="prof-tag">Semipermanente $16.800</span>
-          <span class="prof-tag">Soft gel $25.200</span>
-          <span class="prof-tag">Lifting $23.800</span>
-          <span class="prof-tag">Laminado $11.900</span>
-          <span class="prof-tag">Henna $13.300</span>
-          <span class="prof-tag">Cejas</span>
-        </div>
-        <a href="https://wa.me/5491131360200?text=Hola%20Julieta%21%20%F0%9F%8C%B8%20Quer%C3%ADa%20consultarte%20por%20tus%20servicios" target="_blank" class="prof-wsp">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.99.58 3.841 1.58 5.397L2 22l4.748-1.548A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-          Consultar con Julieta
-        </a>
-      </div>
-    </div>
-
-  </div>
 </section>
 
 <!-- RESEÑAS -->
@@ -567,20 +480,7 @@ footer{background:var(--bark);padding:70px 8% 40px;color:rgba(249,244,238,.7);}
         </div>
         <div class="form-group">
           <label>Servicio</label>
-          <select id="tn-s"><option value="">Seleccioná un servicio</option>
-            <optgroup label="— Masajes &amp; Facial (Maru) —">
-              <option>Limpieza facial simple</option><option>Limpieza facial profunda</option><option>Limpieza doble profunda</option>
-              <option>Tratamiento para acné</option><option>Peeling manual</option><option>Peeling mecánico</option><option>Peeling enzimático</option>
-              <option>Alta frecuencia</option><option>Masaje facial</option>
-              <option>Masaje relajante</option><option>Masaje descontracturante</option><option>Masaje con piedras calientes</option><option>Masaje de cuello</option><option>Drenaje linfático</option>
-            </optgroup>
-            <optgroup label="— Uñas / Pestañas / Cejas (Julieta) —">
-              <option>Manicuría semipermanente</option><option>Pies semipermanente</option><option>Soft gel</option><option>Capping</option>
-              <option>Extras (French, baby boomer, ojo de gatto, cromo)</option><option>Full diseño</option><option>Retiro de semi</option><option>Retiro Soft / Capping</option>
-              <option>Lifting de pestañas</option><option>Perfilado de pestañas</option><option>Laminado de pestañas</option><option>Henna de pestañas</option>
-              <option>Diseño de cejas</option><option>Laminado de cejas</option>
-            </optgroup>
-          </select>
+          <select id="tn-s"><option value="">Seleccioná un servicio</option><option>Masaje relajante</option><option>Masaje descontracturante</option><option>Masaje con piedras calientes</option><option>Manicuría clásica</option><option>Manicuría semipermanente</option><option>Nail art</option><option>Lifting de pestañas</option><option>Extensiones de pestañas</option><option>Diseño de cejas</option><option>Laminado de cejas</option><option>Combo de servicios</option></select>
         </div>
         <div class="form-group">
           <label>Horario preferido</label>
@@ -615,12 +515,12 @@ footer{background:var(--bark);padding:70px 8% 40px;color:rgba(249,244,238,.7);}
       <div class="form-group">
         <label>Servicios de interés</label>
         <div class="checkbox-group">
-          <label class="checkbox-item"><input type="checkbox" value="Masajes / Facial"> 💆 Masajes &amp; Facial (Maru)</label>
-          <label class="checkbox-item"><input type="checkbox" value="Manicuría semipermanente"> 💅 Uñas semi (Julieta)</label>
-          <label class="checkbox-item"><input type="checkbox" value="Soft gel / Capping"> 💎 Soft gel / Capping (Julieta)</label>
-          <label class="checkbox-item"><input type="checkbox" value="Lifting de pestañas"> ✨ Pestañas (Julieta)</label>
-          <label class="checkbox-item"><input type="checkbox" value="Diseño de cejas"> 🌿 Cejas (Julieta)</label>
-          <label class="checkbox-item"><input type="checkbox" value="Combo de servicios"> 🎀 Combo / Varios</label>
+          <label class="checkbox-item"><input type="checkbox" value="Masajes"> Masajes</label>
+          <label class="checkbox-item"><input type="checkbox" value="Manicuría"> Manicuría</label>
+          <label class="checkbox-item"><input type="checkbox" value="Pestañas"> Pestañas</label>
+          <label class="checkbox-item"><input type="checkbox" value="Cejas"> Cejas</label>
+          <label class="checkbox-item"><input type="checkbox" value="Combo"> Combo</label>
+          <label class="checkbox-item"><input type="checkbox" value="Evento grupal"> Evento grupal</label>
         </div>
       </div>
       <div class="form-group"><label>¿Para cuándo?</label><input type="text" id="cot-f" placeholder="Ej: próximo sábado..."></div>
@@ -651,8 +551,8 @@ footer{background:var(--bark);padding:70px 8% 40px;color:rgba(249,244,238,.7);}
     <div class="footer-col"><h4>Contacto</h4><ul class="footer-links"><li><a href="https://wa.me/5491168973678" target="_blank">📱 11 6897-3678</a></li><li><a href="#">📍 CABA / GBA</a></li><li><a href="#">🕐 Lun–Sáb 9–19hs</a></li></ul></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Estética &amp; Bienestar. Todos los derechos reservados.</span>
-    <span>Hecho con ♥ para vos <button id="adminBtn" style="background:none;border:none;cursor:default;color:transparent;font-size:8px;padding:0 4px;user-select:none" title="">·</button></span>
+    <span>© 2024 Estética &amp; Bienestar. Todos los derechos reservados.</span>
+    <span>Hecho con ♥ para vos</span>
   </div>
 </footer>
 
@@ -762,92 +662,47 @@ footer{background:var(--bark);padding:70px 8% 40px;color:rgba(249,244,238,.7);}
 <div class="toast" id="toast"></div>
 
 <script>
-const WSP_MARU='5491168973678';   // Maru — masajes + facial
-const WSP_JULI='5491131360200';   // Juli — uñas + pestañas + cejas
-const WSP=WSP_MARU;               // default (float button)
+const WSP='5491168973678';
 const EMAIL_CC='reqini@gmail.com';
-
-// Usuarios del dashboard
-const USERS=[
-  {u:'maru', p:'123456789', nombre:'Maru',  wsp:WSP_MARU, storage:'maru_t',  color:'var(--rose)'},
-  {u:'julieta',p:'123456789',nombre:'Julieta',wsp:WSP_JULI,storage:'juli_t',  color:'var(--blush)'},
-];
-let activeUser=null; // se setea al hacer login
-
-// Qué servicios atiende cada una
-const SERVICIOS_MARU=[
-  'Limpieza facial simple','Limpieza facial profunda','Limpieza doble profunda',
-  'Tratamiento para acné','Peeling manual','Peeling mecánico','Peeling enzimático',
-  'Alta frecuencia','Masaje facial',
-  'Masaje relajante','Masaje descontracturante','Masaje con piedras calientes','Masaje de cuello','Drenaje linfático'
-];
-const SERVICIOS_JULI=[
-  'Manicuría semipermanente','Pies semipermanente','Soft gel','Capping',
-  'Extras (French, baby boomer, ojo de gatto, cromo)',
-  'Full diseño','Retiro de semi','Retiro Soft / Capping',
-  'Lifting de pestañas','Perfilado de pestañas','Laminado de pestañas','Henna de pestañas',
-  'Diseño de cejas','Laminado de cejas'
-];
-const TODOS_SERVICIOS=[...SERVICIOS_MARU,...SERVICIOS_JULI];
-
-// Devuelve el WSP correcto según el servicio elegido
-function wspParaServicio(serv){
-  if(!serv)return WSP_MARU;
-  const sL=serv.toLowerCase();
-  const esJuli=SERVICIOS_JULI.some(s=>sL.includes(s.toLowerCase().split(' ')[0]));
-  return esJuli?WSP_JULI:WSP_MARU;
-}
-function nombreParaServicio(serv){
-  const esJuli=SERVICIOS_JULI.some(s=>serv&&serv.toLowerCase().includes(s.toLowerCase().split(' ')[0]));
-  return esJuli?'Julieta':'Maru';
-}
-
+const CREDS={u:'maru',p:'123456789'};
 const MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 const MONTHS_S=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const WDAYS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
 
-/* ── GALERÍA con /assets/ ── */
-// Cada item: t=tipo, c=categoría, src=ruta real, l=label, s=subtítulo, w=ancho original, h=alto original
-// Para videos: src apunta a .mp4; para fotos: .jpg/.png
-// Reemplazá los nombres de archivo por los reales en tu carpeta /assets/
+/* ── GALERÍA ── */
 const GI=[
-  {t:'foto',c:'masajes',src:'assets/masaje-relajante.jpg',l:'Masaje relajante',s:'Técnica sueca con aceites'},
-  {t:'video',c:'masajes',src:'assets/masaje-descontracturante.mp4',l:'Masaje descontracturante',s:'Tejido profundo · 60 min'},
-  {t:'foto',c:'facial',src:'assets/limpieza-facial.jpg',l:'Limpieza facial',s:'Piel renovada y luminosa'},
-  {t:'foto',c:'facial',src:'assets/tratamiento-acne.jpg',l:'Tratamiento para acné',s:'Protocolo completo'},
-  {t:'video',c:'facial',src:'assets/peeling.mp4',l:'Peeling enzimático',s:'Renovación celular'},
-  {t:'foto',c:'unas',src:'assets/semipermanente.jpg',l:'Semipermanente',s:'Hasta 3 semanas sin chips'},
-  {t:'foto',c:'unas',src:'assets/soft-gel.jpg',l:'Soft gel',s:'Largo y resistencia'},
-  {t:'video',c:'unas',src:'assets/nail-art.mp4',l:'Nail art full diseño',s:'Arte detallado a mano'},
-  {t:'foto',c:'unas',src:'assets/capping.jpg',l:'Capping',s:'Cobertura perfecta'},
-  {t:'foto',c:'pestanas',src:'assets/lifting-pestanas.jpg',l:'Lifting de pestañas',s:'Resultado natural · Antes/Después'},
-  {t:'video',c:'pestanas',src:'assets/laminado-pestanas.mp4',l:'Laminado de pestañas',s:'Efecto espectacular'},
-  {t:'foto',c:'pestanas',src:'assets/henna-pestanas.jpg',l:'Henna de pestañas',s:'Color natural duradero'},
-  {t:'foto',c:'cejas',src:'assets/diseno-cejas.jpg',l:'Diseño de cejas',s:'Forma perfecta para tu rostro'},
-  {t:'foto',c:'cejas',src:'assets/laminado-cejas.jpg',l:'Laminado de cejas',s:'Tendencia europea'},
-  {t:'video',c:'cejas',src:'assets/henna-cejas.mp4',l:'Henna de cejas',s:'Color y definición'},
-  {t:'foto',c:'masajes',src:'assets/masaje-piedras.jpg',l:'Masaje con piedras',s:'Piedras volcánicas calientes'},
-  {t:'foto',c:'masajes',src:'assets/masaje-facial.jpg',l:'Masaje facial',s:'Tonificación y relajación'},
-  {t:'foto',c:'unas',src:'assets/pies-semi.jpg',l:'Pies semipermanente',s:'Terminación perfecta'},
+  {t:'foto',c:'masajes',e:'💅',l:'Masaje relajante',s:'Técnica sueca con aceites'},
+  {t:'video',c:'masajes',e:'🎬',l:'Masaje descontracturante',s:'Tejido profundo · 60 min'},
+  {t:'foto',c:'manicuria',e:'💅',l:'Nail art floral',s:'Diseño primaveral'},
+  {t:'foto',c:'pestanas',e:'✨',l:'Lifting de pestañas',s:'Resultado natural'},
+  {t:'video',c:'manicuria',e:'🎬',l:'Semipermanente paso a paso',s:'Proceso completo'},
+  {t:'foto',c:'cejas',e:'🌿',l:'Diseño de cejas',s:'Forma perfecta para tu rostro'},
+  {t:'foto',c:'masajes',e:'🪨',l:'Masaje con piedras',s:'Piedras volcánicas calientes'},
+  {t:'foto',c:'manicuria',e:'💎',l:'Manicuría francesa',s:'Clásico atemporal'},
+  {t:'video',c:'pestanas',e:'🎬',l:'Extensión de pestañas',s:'Técnica pelo a pelo'},
+  {t:'foto',c:'cejas',e:'🌙',l:'Laminado de cejas',s:'Tendencia europea'},
+  {t:'foto',c:'manicuria',e:'🌸',l:'Diseño ombré',s:'Degradado suave'},
+  {t:'foto',c:'masajes',e:'🌊',l:'Drenaje linfático',s:'Técnica Vodder'},
+  {t:'video',c:'cejas',e:'🎬',l:'Henna de cejas',s:'Color natural duradero'},
+  {t:'foto',c:'pestanas',e:'⭐',l:'Lifting + tinte',s:'Combo especial'},
+  {t:'foto',c:'manicuria',e:'🦋',l:'Nail art mariposas',s:'Arte detallado a mano'},
+  {t:'foto',c:'masajes',e:'💜',l:'Masaje de cuello',s:'Alivio contracturas'},
+  {t:'video',c:'manicuria',e:'🎬',l:'Gel UV paso a paso',s:'Tutorial completo'},
+  {t:'foto',c:'cejas',e:'🎨',l:'Microblading style',s:'Efecto pelo a pelo'},
 ];
-
-// Paleta fallback por si no carga la imagen
+const HH=['150px','220px','175px','255px','140px','200px','240px','165px','210px','185px','145px','230px','180px','250px','160px','215px','195px','235px'];
 const BG=['linear-gradient(145deg,#D4A79A,#B87A6E)','linear-gradient(145deg,#6B3D35,#B87A6E)','linear-gradient(145deg,#C4975A,#D4A79A)','linear-gradient(145deg,#8B5A52,#6B3D35)','linear-gradient(145deg,#EDE3D6,#D4A79A)','linear-gradient(145deg,#B87A6E,#8B5A52)','linear-gradient(145deg,#2E1A15,#6B3D35)','linear-gradient(145deg,#D4A79A,#C4975A)','linear-gradient(145deg,#7A5C54,#B87A6E)','linear-gradient(145deg,#C4975A,#8B5A52)','linear-gradient(145deg,#EDE3D6,#B87A6E)','linear-gradient(145deg,#6B3D35,#C4975A)','linear-gradient(145deg,#D4A79A,#6B3D35)','linear-gradient(145deg,#8B5A52,#C4975A)','linear-gradient(145deg,#B87A6E,#D4A79A)','linear-gradient(145deg,#4A2520,#B87A6E)','linear-gradient(145deg,#C4975A,#6B3D35)','linear-gradient(145deg,#D4A79A,#8B5A52)'];
 
 let galFilter='todos',filteredGI=[],mIdx=0,mAuto=false,mTimer=null;
 
 function renderGaleria(){
   filteredGI=galFilter==='todos'?[...GI]:galFilter==='video'?GI.filter(i=>i.t==='video'):GI.filter(i=>i.c===galFilter);
-  document.getElementById('masonryGrid').innerHTML=filteredGI.map((item,i)=>{
-    const fb=BG[i%BG.length];
-    const isImg=item.t==='foto';
-    const thumbContent=isImg
-      ?`<img src="${item.src}" alt="${item.l}" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:6px" onerror="this.style.display='none';this.parentNode.style.background='${fb}'">`
-      :`<video src="${item.src}" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:6px" onerror="this.style.display='none';this.parentNode.style.background='${fb}'"></video>`;
-    return `<div class="masonry-item" onclick="openModal(${i})" style="animation:fadeUp .35s ${i*.04}s both">
-      <div class="gal-thumb" style="background:${fb};overflow:hidden;position:relative">
-        ${thumbContent}
-        ${item.t==='video'?`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><div style="width:40px;height:40px;background:rgba(255,255,255,.88);border-radius:50%;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#2E1A15"/></svg></div></div>`:''}
+  document.getElementById('masonryGrid').innerHTML=filteredGI.map((item,i)=>`
+    <div class="masonry-item" onclick="openModal(${i})" style="animation:fadeUp .35s ${i*.04}s both; background-image: u
+    rl('${item.e}')">
+      <div class="gal-thumb" style="height:${HH[i%HH.length]};background:${BG[i%BG.length]}; background-image:${item.e}">
+        <div style="font-size:clamp(28px,4vw,44px)">${item.e}</div>
+        ${item.t==='video'?`<div style="width:36px;height:36px;background:rgba(255,255,255,.85);border-radius:50%;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#2E1A15"/></svg></div>`:''}
       </div>
       <div class="gal-overlay">
         <div class="gal-play-btn"><svg width="16" height="16" viewBox="0 0 24 24"><path d="${item.t==='video'?'M8 5v14l11-7z':'M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z'}" fill="#2E1A15"/></svg></div>
@@ -855,8 +710,7 @@ function renderGaleria(){
         <span style="font-size:11px;color:rgba(255,255,255,.55)">${item.s}</span>
       </div>
       <span class="gal-type-pill ${item.t==='video'?'video':''}">${item.t==='video'?'▶ video':'foto'}</span>
-    </div>`;
-  }).join('');
+    </div>`).join('');
 }
 function filterGal(f,btn){
   galFilter=f;
@@ -865,7 +719,7 @@ function filterGal(f,btn){
   renderGaleria();
 }
 
-/* MODAL — muestra imagen/video en tamaño original con scroll */
+/* MODAL */
 function openModal(i){mIdx=i;renderModal();document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';}
 function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';stopAuto();}
 function closeModalOut(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
@@ -874,23 +728,13 @@ function renderModal(){
   document.getElementById('mTitle').textContent=item.l;
   document.getElementById('mSub').textContent=item.s+' · '+item.c;
   document.getElementById('mCounter').textContent=`${mIdx+1}/${filteredGI.length}`;
-  const fb=BG[mIdx%BG.length];
-  if(item.t==='foto'){
-    document.getElementById('modalMedia').innerHTML=`
-      <div class="m-inner" style="background:${fb};overflow:auto;align-items:flex-start;justify-content:center;padding:0">
-        <img src="${item.src}" alt="${item.l}"
-          style="max-width:100%;display:block;margin:auto"
-          onerror="this.style.display='none';this.parentNode.style.background='${fb}'">
-      </div>`;
-  }else{
-    document.getElementById('modalMedia').innerHTML=`
-      <div class="m-inner" style="background:#000;padding:0">
-        <video src="${item.src}" controls autoplay muted playsinline
-          style="max-width:100%;max-height:68vh;display:block;margin:auto"
-          onerror="this.outerHTML='<div style=padding:40px;color:rgba(255,255,255,.5);font-size:13px>Video no disponible. Agregá el archivo a /assets/</div>'">
-        </video>
-      </div>`;
-  }
+  document.getElementById('modalMedia').innerHTML=`<div class="m-inner" style="background:${BG[mIdx%BG.length]};flex-direction:column;gap:16px">
+    <div style="font-size:clamp(60px,10vw,100px)">${item.e}</div>
+    ${item.t==='video'?`<div style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.7);font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:2px">
+      <div style="width:44px;height:44px;background:rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#2E1A15"/></svg></div>
+      Reproduciendo video</div>`:'<div style="font-size:13px;letter-spacing:3px;color:rgba(255,255,255,.4)">FOTO</div>'}
+    <div style="font-size:11px;color:rgba(255,255,255,.3);letter-spacing:2px">Reemplazá con tu media real</div>
+  </div>`;
 }
 function mNav(d){mIdx=(mIdx+d+filteredGI.length)%filteredGI.length;renderModal();if(mAuto)resetProg();}
 function mTogglePlay(){mAuto=!mAuto;document.getElementById('mPlayBtn').textContent=mAuto?'⏸':'▶';mAuto?startAuto():stopAuto();}
@@ -905,53 +749,15 @@ document.addEventListener('keydown',e=>{
 });
 
 /* ── SERVICIOS ── */
-// Servicios de MARU (masajes + facial)
-const SVCS_MARU = [
-  {icon:'🌸',n:'Masaje Integral – Mujer',d:'Limpieza, hidratación y cuidado completo de la piel. Resultados visibles desde la primera sesión.',p:'$30.000',w:'masaje integral mujer 🌸'},
-  {icon:'✨',n:'Masaje Integral – Hombre',d:'Extracción de impurezas, vapor y mascarilla reparadora. Piel renovada y luminosa.',p:'$35.000',w:'masaje integral hombre ✨'},
-  {icon:'🫧',n:'Masaje de Espalda',d:'Doble protocolo de limpieza para piel muy congestionada. Máxima eficacia.',p:'$15.000',w:'masaje de espalda'},
-  {icon:'💎',n:'Masaje de Piernas',d:'Protocolo específico con alta frecuencia y productos antibacterianos. Piel libre de brotes.',p:'$15.000',w:'masaje de piernas 💎'},
-  {icon:'🌊',n:'Reflexología (manos, pies y facial)',d:'Exfoliación manual que renueva y tonifica la piel de forma suave y efectiva.',p:'$19.900',w:'reflexologia 🌊'},
-  {icon:'⚙️',n:'Drenaje Linfático en Piernas',d:'Renovación celular mecánica con dermabrasión. Textura uniforme y piel luminosa.',p:'$14.900',w:'drenaje linfatico piernas'},
-  {icon:'🧪',n:'Drenaje Linfático en Abdomen (modelador/reductor)',d:'Exfoliación enzimática suave ideal para pieles sensibles. Sin irritaciones.',p:'$14.900',w:'drenaje linfatico abdomen'},
-  {icon:'⚡',n:'Drenaje Linfático Corporal Completo',d:'Tecnología que estimula la circulación, reduce marcas y mejora la textura de la piel.',p:'$25.000',w:'drenaje linfatico corporal ⚡'}
-];
-// Servicios de JULI (uñas + pestañas + cejas)
-const SVCS_JULI=[
-  {icon:'💅',n:'Semipermanente — Manos',d:'Hasta 3 semanas sin chips. Incluye preparación de cutícula y esmaltado duradero.',p:'$16.800',w:'semipermanente manos 💅'},
-  {icon:'🦶',n:'Semipermanente — Pies',d:'Terminación perfecta y duradera para tus pies. Mismo protocolo que manos.',p:'$21.000',w:'semipermanente pies 🦶'},
-  {icon:'💎',n:'Soft Gel',d:'Extensión con soft gel para mayor largo y resistencia. Resultado natural e impecable.',p:'$25.200',w:'soft gel 💎'},
-  {icon:'🔮',n:'Capping',d:'Refuerzo y cobertura sobre uña natural. Protección máxima con acabado elegante.',p:'$23.800',w:'capping 🔮'},
-  {icon:'🎨',n:'Extras de Diseño',d:'French, baby boomer, ojo de gatto, cromo y más. Se agregan a cualquier servicio.',p:'$5.600',w:'extras French baby boomer ojo de gatto cromo 🎨'},
-  {icon:'🖼️',n:'Full Diseño',d:'Diseño artístico completo a mano libre. Motivos únicos personalizados para vos.',p:'$9.800',w:'full diseño de uñas 🖼️'},
-  {icon:'🗑️',n:'Retiro de Semi',d:'Retiro seguro y cuidado del semipermanente sin dañar la uña natural.',p:'$4.200',w:'retiro de semipermanente 🗑️'},
-  {icon:'🔧',n:'Retiro Soft Gel / Capping',d:'Retiro profesional de soft gel o capping. Proceso completo con hidratación posterior.',p:'$7.000',w:'retiro soft gel capping 🔧'},
-  {icon:'✨',n:'Lifting de Pestañas',d:'Ondulación natural permanente sin extensiones. Tus propias pestañas, espectaculares.',p:'$23.800',w:'lifting de pestañas ✨'},
-  {icon:'✂️',n:'Perfilado de Pestañas',d:'Definición y forma perfecta. Resultado natural que potencia tu mirada al instante.',p:'$8.400',w:'perfilado de pestañas ✂️'},
-  {icon:'🌿',n:'Laminado de Pestañas',d:'Alisa y fija las pestañas en posición perfecta. Duración hasta 6 semanas.',p:'$11.900',w:'laminado de pestañas 🌿'},
-  {icon:'🌙',n:'Henna de Pestañas',d:'Color y definición natural con henna. Intensifica la mirada de forma orgánica.',p:'$13.300',w:'henna de pestañas 🌙'},
-  {icon:'👁️',n:'Diseño & Laminado de Cejas',d:'Hilo, cera y coloración para la forma perfecta. Laminado efecto tendencia europea.',p:'Consultá precio',w:'diseño y laminado de cejas 👁️'},
-];
-
-function buildServiciosGrid(){
-  const grid=document.getElementById('serviciosGrid');
-  grid.innerHTML='';
-  // Encabezado Maru
-  grid.innerHTML+=`<div style="grid-column:1/-1;padding:16px 0 4px;border-bottom:1px solid rgba(180,122,110,.2);margin-bottom:8px">
-    <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)">✦ Masajes & Facial · Maru</div>
-  </div>`;
-  SVCS_MARU.forEach(s=>{
-    grid.innerHTML+=`<div class="servicio-card"><div class="servicio-icon">${s.icon}</div><div class="servicio-name">${s.n}</div><div class="servicio-desc">${s.d}</div><div class="servicio-precio">${s.p}</div><a href="https://wa.me/${WSP_MARU}?text=${encodeURIComponent('Hola Maru! 🌸 Me gustaría consultar por el servicio de '+s.w)}" target="_blank" class="servicio-wsp">Consultar con Maru →</a></div>`;
-  });
-  // Encabezado Juli
-  grid.innerHTML+=`<div style="grid-column:1/-1;padding:28px 0 4px;border-bottom:1px solid rgba(180,122,110,.2);margin-bottom:8px">
-    <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)">✦ Uñas · Pestañas · Cejas · Julieta</div>
-  </div>`;
-  SVCS_JULI.forEach(s=>{
-    grid.innerHTML+=`<div class="servicio-card"><div class="servicio-icon">${s.icon}</div><div class="servicio-name">${s.n}</div><div class="servicio-desc">${s.d}</div><div class="servicio-precio">${s.p}</div><a href="https://wa.me/${WSP_JULI}?text=${encodeURIComponent('Hola Julieta! 🌸 Me gustaría consultar por el servicio de '+s.w)}" target="_blank" class="servicio-wsp">Consultar con Julieta →</a></div>`;
-  });
-}
-buildServiciosGrid();
+[{icon:'💆',n:'Masaje Relajante',d:'Técnica sueca con aceites esenciales premium. Libera tensiones y recupera tu energía.',p:'$8.000',w:'masaje relajante 💆'},
+ {icon:'💪',n:'Masaje Descontracturante',d:'Trabajo focalizado en puntos de tensión. Ideal para contracturas de cuello y espalda.',p:'$10.000',w:'masaje descontracturante 💪'},
+ {icon:'🪨',n:'Masaje con Piedras',d:'Piedras volcánicas calientes para una experiencia de relajación profunda.',p:'$12.000',w:'masaje con piedras calientes 🪨'},
+ {icon:'💅',n:'Manicuría Semipermanente',d:'Diseños únicos, esmalte de larga duración. Hasta 3 semanas sin chips.',p:'$5.000',w:'manicuría semipermanente 💅'},
+ {icon:'✨',n:'Lifting de Pestañas',d:'Ondulación natural permanente sin extensiones. Tus pestañas reales, perfectas.',p:'$7.000',w:'lifting de pestañas ✨'},
+ {icon:'🌿',n:'Diseño de Cejas',d:'Hilo, cera y coloración. La forma perfecta para realzar tu mirada.',p:'$4.000',w:'diseño de cejas 🌿'},
+].forEach(s=>{
+  document.getElementById('serviciosGrid').innerHTML+=`<div class="servicio-card"><div class="servicio-icon">${s.icon}</div><div class="servicio-name">${s.n}</div><div class="servicio-desc">${s.d}</div><div class="servicio-precio">${s.p} <small>(desde)</small></div><a href="https://wa.me/${WSP}?text=${encodeURIComponent(`Hola! Me gustaría consultar por el servicio de ${s.w}`)}" target="_blank" class="servicio-wsp">Consultar precio →</a></div>`;
+});
 
 /* ── RESEÑAS ── */
 [{t:'Fue la primera vez que me hago un masaje y quedé re enganchada. Excelente profesional, me sentí súper cómoda todo el tiempo.',n:'Valentina R.',f:'Marzo 2024',i:'V'},
@@ -995,19 +801,6 @@ renderCal();
 
 /* ── WSP + DASHBOARD INTEGRATION ── */
 
-// Envía copia al email via mailto (requiere cliente de correo configurado en el dispositivo)
-// Para producción real, reemplazar por una llamada a un backend o EmailJS
-function notificarEmail(asunto, cuerpo){
-  try{
-    const a=document.createElement('a');
-    a.href=`mailto:${EMAIL_CC}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
-    a.style.display='none';
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(()=>a.remove(),800);
-  }catch(e){console.warn('Email CC no disponible:',e);}
-}
-
 // Guarda un turno desde el formulario público y abre WhatsApp
 function reservarTurno(){
   const n=document.getElementById('tn-n').value.trim();
@@ -1018,34 +811,27 @@ function reservarTurno(){
   if(!n){alert('Por favor ingresá tu nombre');return;}
   if(!s){alert('Por favor seleccioná un servicio');return;}
 
-  // Determinar a quién va el turno
-  const dest=wspParaServicio(s);
-  const prof=nombreParaServicio(s);
-
-  // 1. Guardar en el dashboard
-  const ts=getTurnosUser(dest===WSP_MARU?'maru':'julieta');
+  // 1. Guardar en el dashboard como "pendiente"
+  const ts=getTurnos();
   const id=ts.length?Math.max(...ts.map(x=>x.id))+1:1;
-  let fechaFmt=f;
+  const fechaDash=f||'—';
+  // convertir "viernes 16 de mayo de 2025" → dd/mm/yyyy si viene formateado
+  let fechaFmt=fechaDash;
   if(selDate){fechaFmt=`${selDate.getDate().toString().padStart(2,'0')}/${(selDate.getMonth()+1).toString().padStart(2,'0')}/${selDate.getFullYear()}`;}
-  ts.push({id,n,t:tel.replace(/\D/g,''),s,f:fechaFmt,h:h||'—',e:'pendiente',nota:`Llegó desde formulario web · Para ${prof}`,origen:'web'});
-  saveTurnosUser(dest===WSP_MARU?'maru':'julieta',ts);
+  ts.push({id,n,t:tel.replace(/\D/g,''),s,f:fechaFmt,h:h||'—',e:'pendiente',nota:'Llegó desde formulario web',origen:'web'});
+  saveTurnos(ts);
 
-  // 2. WhatsApp al número correcto
-  let msg=`Hola ${prof}! 🌸 Nueva solicitud de turno:\n\n👤 Nombre: ${n}\n`;
+  // 2. Abrir WhatsApp con mensaje
+  let msg=`Hola! 🌸 Me gustaría reservar un turno:\n\n👤 Nombre: ${n}\n`;
   if(tel)msg+=`📱 Tel: ${tel}\n`;
-  if(fechaFmt&&fechaFmt!=='—')msg+=`📅 Fecha: ${fechaFmt}\n`;
+  if(f)msg+=`📅 Fecha: ${f}\n`;
   if(h)msg+=`🕐 Horario: ${h}\n`;
   msg+=`✨ Servicio: ${s}\n\n¿Confirmás disponibilidad?`;
-  window.open(`https://wa.me/${dest}?text=${encodeURIComponent(msg)}`,'_blank');
+  window.open(`https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`,'_blank');
 
-  // 3. Notificar email CC
-  notificarEmail(
-    `Nuevo turno web — ${n} → ${prof}`,
-    `Servicio: ${s}\nFecha: ${fechaFmt}\nHorario: ${h}\nTeléfono: ${tel}\nPara: ${prof}`
-  );
-
-  // 4. Feedback y limpiar
-  showPublicToast(`✅ Solicitud enviada a ${prof}! Te respondemos pronto.`);
+  // 3. Feedback visual
+  showPublicToast('✅ Solicitud enviada! Te respondemos a la brevedad.');
+  // Limpiar form
   ['tn-n','tn-t'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('tn-s').selectedIndex=0;
   document.getElementById('tn-h').selectedIndex=0;
@@ -1053,6 +839,7 @@ function reservarTurno(){
   selDate=null;renderCal();
 }
 
+// Guarda cotización en el dashboard como "pendiente" Y abre WhatsApp
 function enviarCotizacion(){
   const n=document.getElementById('cot-n').value.trim();
   const f=document.getElementById('cot-f').value.trim();
@@ -1060,45 +847,45 @@ function enviarCotizacion(){
   const ch=[...document.querySelectorAll('.checkbox-group input:checked')].map(c=>c.value);
   if(!n){alert('Por favor ingresá tu nombre');return;}
 
+  // 1. Guardar en el dashboard como cotización pendiente
+  const ts=getTurnos();
+  const id=ts.length?Math.max(...ts.map(x=>x.id))+1:1;
   const serviciosStr=ch.length?ch.join(' + '):'Consulta general';
-  // Determinar destino por servicios seleccionados
-  // Julieta: uñas, pestañas, cejas | Maru: masajes, facial
-  const tieneJuli=ch.some(s=>/(semi|gel|capping|pestaña|ceja|lifting|laminado|henna|perfilado|uña|juli)/i.test(s));
-  const tieneMaru=ch.some(s=>/(masaje|facial|peeling|acn|limpieza|frecuencia|maru)/i.test(s));
-  // Si solo Juli → Juli; de lo contrario → Maru (o si tiene ambos manda a Maru primero)
-  const dest=(tieneJuli&&!tieneMaru)?WSP_JULI:WSP_MARU;
-  const prof=(tieneJuli&&!tieneMaru)?'Julieta':'Maru';
-
-  // 1. Guardar en el dashboard del usuario correspondiente
   const hoy=new Date();
   const fechaHoy=`${hoy.getDate().toString().padStart(2,'0')}/${(hoy.getMonth()+1).toString().padStart(2,'0')}/${hoy.getFullYear()}`;
-  const ts=getTurnosUser(dest===WSP_MARU?'maru':'julieta');
-  const id=ts.length?Math.max(...ts.map(x=>x.id))+1:1;
-  ts.push({id,n,t:'',s:serviciosStr,f:f||fechaHoy,h:'A confirmar',e:'pendiente',nota:`COTIZACIÓN · Para: ${f||'no especificado'} · ${m||''}`,origen:'cotizacion'});
-  saveTurnosUser(dest===WSP_MARU?'maru':'julieta',ts);
+  const notaFull=`COTIZACIÓN · Servicios: ${serviciosStr}${f?' · Para: '+f:''}${m?' · '+m:''}`;
+  ts.push({id,n,t:'',s:serviciosStr,f:f?f:fechaHoy,h:'A confirmar',e:'pendiente',nota:notaFull,origen:'cotizacion'});
+  saveTurnos(ts);
 
-  // 2. WhatsApp
-  let msg=`Hola ${prof}! 🌸 Solicitud de cotización:\n\n👤 ${n}\n`;
+  // 2. Abrir WhatsApp
+  let msg=`Hola! 🌸 Quisiera una cotización:\n\n👤 ${n}\n`;
   if(ch.length)msg+=`✨ Servicios: ${ch.join(', ')}\n`;
   if(f)msg+=`📅 Para: ${f}\n`;
   if(m)msg+=`💬 ${m}\n`;
-  msg+=`\n¿Me podés dar precio e información?`;
-  window.open(`https://wa.me/${dest}?text=${encodeURIComponent(msg)}`,'_blank');
+  msg+=`\n¿Me podés dar más información y precio?`;
+  window.open(`https://wa.me/${WSP}?text=${encodeURIComponent(msg)}`,'_blank');
 
-  // 3. Email CC
-  notificarEmail(
-    `Nueva cotización web — ${n} → ${prof}`,
-    `Nombre: ${n}\nServicios: ${serviciosStr}\nPara cuándo: ${f||'no especificado'}\nMensaje: ${m||'—'}\nDerivado a: ${prof}`
-  );
+  // 3. Email CC (mailto oculto para registro)
+  const emailSubj=`Nueva cotización web — ${n}`;
+  const emailBody=`Nueva solicitud de cotización:\n\nNombre: ${n}\nServicios: ${serviciosStr}\nPara cuándo: ${f||'No especificado'}\nMensaje: ${m||'—'}`;
+  // Abrir mailto silencioso en iframe oculto
+  const frm=document.createElement('a');
+  frm.href=`mailto:${EMAIL_CC}?subject=${encodeURIComponent(emailSubj)}&body=${encodeURIComponent(emailBody)}`;
+  frm.style.display='none';
+  document.body.appendChild(frm);
+  // Solo intenta el mailto si tiene cliente de correo configurado (no bloquea flujo)
+  try{frm.click();}catch(e){}
+  setTimeout(()=>frm.remove(),500);
 
-  showPublicToast(`✅ Consulta enviada a ${prof}! Te respondemos pronto.`);
+  showPublicToast('✅ Consulta enviada! Te respondemos pronto.');
+  // Limpiar
   document.getElementById('cot-n').value='';
   document.getElementById('cot-f').value='';
   document.getElementById('cot-m').value='';
   document.querySelectorAll('.checkbox-group input').forEach(c=>c.checked=false);
 }
 
-// Toast público
+// Toast público (fuera del dashboard)
 function showPublicToast(msg){
   let t=document.getElementById('publicToast');
   if(!t){t=document.createElement('div');t.id='publicToast';t.style.cssText='position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--bark);color:var(--cream);padding:14px 28px;border-radius:4px;font-size:14px;z-index:9998;opacity:0;transition:all .35s;pointer-events:none;white-space:nowrap;';document.body.appendChild(t);}
@@ -1116,85 +903,49 @@ function toggleMenu(){
   else{l.removeAttribute('style');}
 }
 
-/* ── LOGIN — acceso oculto ── */
+/* ── LOGIN (triple click en footer logo) ── */
 let logClicks=0,logTimer;
-
-// Método 1: triple click rápido en el footer logo
-document.getElementById('footerLogo').addEventListener('click',function(e){
-  logClicks++;
-  clearTimeout(logTimer);
-  logTimer=setTimeout(()=>{logClicks=0;},600);
+document.getElementById('footerLogo').addEventListener('click',()=>{
+  logClicks++;clearTimeout(logTimer);logTimer=setTimeout(()=>logClicks=0,700);
   if(logClicks>=3){logClicks=0;openLogin();}
-});
-
-// Método 2: botón oculto en footer (invisible para usuarios)
-document.getElementById('adminBtn').addEventListener('click',openLogin);
-
-// Método 3: secuencia de teclas Shift+A+D+M mientras se está en la página
-let keySeq='',keyTimer;
-document.addEventListener('keydown',function(e){
-  if(document.getElementById('loginOverlay').classList.contains('open'))return;
-  if(document.getElementById('dashboard').classList.contains('open'))return;
-  keySeq+=(e.key||'').toLowerCase();
-  clearTimeout(keyTimer);
-  keyTimer=setTimeout(()=>{keySeq='';},1200);
-  if(keySeq.includes('adm')){keySeq='';openLogin();}
 });
 function openLogin(){document.getElementById('loginOverlay').classList.add('open');}
 function closeLogin(){document.getElementById('loginOverlay').classList.remove('open');document.getElementById('loginErr').style.display='none';}
 function doLogin(){
-  const u=document.getElementById('lu').value.trim().toLowerCase();
-  const p=document.getElementById('lp').value;
-  const user=USERS.find(x=>x.u===u&&x.p===p);
-  if(user){activeUser=user;closeLogin();openDash();}
+  const u=document.getElementById('lu').value.trim(),p=document.getElementById('lp').value;
+  if(u===CREDS.u&&p===CREDS.p){closeLogin();openDash();}
   else{document.getElementById('loginErr').style.display='block';}
 }
 
 /* ── DASHBOARD ── */
-// Storage per-user
-function getTurnosUser(uKey){try{return JSON.parse(localStorage.getItem(uKey+'_t')||'[]');}catch{return[];}}
-function saveTurnosUser(uKey,t){localStorage.setItem(uKey+'_t',JSON.stringify(t));}
-// Helpers usando activeUser
-function getTurnos(){return getTurnosUser(activeUser.u);}
-function saveTurnos(t){saveTurnosUser(activeUser.u,t);}
+function getTurnos(){try{return JSON.parse(localStorage.getItem('maru_t')||'[]');}catch{return[];}}
+function saveTurnos(t){localStorage.setItem('maru_t',JSON.stringify(t));}
 
 function initDemo(){
-  // Demo para maru
-  if(!getTurnosUser('maru').length){
-    const hoy=new Date(),fmt=d=>`${d.getDate().toString().padStart(2,'0')}/${(d.getMonth()+1).toString().padStart(2,'0')}/${d.getFullYear()}`;
-    const d=i=>{const x=new Date(hoy);x.setDate(hoy.getDate()+i);return x;};
-    saveTurnosUser('maru',[
-      {id:1,n:'Valentina Rodríguez',t:'1145678901',s:'Masaje relajante',f:fmt(d(0)),h:'10:00 – 11:00',e:'pendiente',nota:'Prefiere aceite de lavanda',origen:'web'},
-      {id:2,n:'Florencia García',t:'1178901234',s:'Masaje descontracturante',f:fmt(d(1)),h:'15:00 – 16:00',e:'confirmado',nota:'Dolor zona lumbar',origen:'manual'},
-      {id:3,n:'Ana González',t:'1145678902',s:'Limpieza facial profunda',f:fmt(d(2)),h:'11:00 – 12:00',e:'pendiente',nota:'Primera vez',origen:'web'},
-      {id:4,n:'Mónica Pérez',t:'1156789013',s:'Tratamiento para acné',f:fmt(d(3)),h:'14:00 – 15:00',e:'confirmado',nota:'',origen:'manual'},
-    ]);
-  }
-  // Demo para julieta
-  if(!getTurnosUser('julieta').length){
-    const hoy=new Date(),fmt=d=>`${d.getDate().toString().padStart(2,'0')}/${(d.getMonth()+1).toString().padStart(2,'0')}/${d.getFullYear()}`;
-    const d=i=>{const x=new Date(hoy);x.setDate(hoy.getDate()+i);return x;};
-    saveTurnosUser('julieta',[
-      {id:1,n:'Camila Sánchez',t:'1167890123',s:'Manicuría semipermanente',f:fmt(d(0)),h:'11:00 – 12:00',e:'pendiente',nota:'Quiere diseño floral',origen:'web'},
-      {id:2,n:'Lucía Martínez',t:'1156789012',s:'Lifting de pestañas',f:fmt(d(1)),h:'14:00 – 15:00',e:'confirmado',nota:'',origen:'manual'},
-      {id:3,n:'Sofía Torres',t:'1134567890',s:'Soft gel',f:fmt(d(2)),h:'10:00 – 11:00',e:'confirmado',nota:'',origen:'manual'},
-      {id:4,n:'Martina López',t:'1123456789',s:'Diseño de cejas',f:fmt(d(3)),h:'16:00 – 17:00',e:'pendiente',nota:'',origen:'cotizacion'},
-    ]);
-  }
+  if(getTurnos().length)return;
+  const hoy=new Date(),fmt=d=>`${d.getDate().toString().padStart(2,'0')}/${(d.getMonth()+1).toString().padStart(2,'0')}/${d.getFullYear()}`;
+  const d=i=>{const x=new Date(hoy);x.setDate(hoy.getDate()+i);return x;};
+  saveTurnos([
+    {id:1,n:'Valentina Rodríguez',t:'1145678901',s:'Masaje relajante',f:fmt(d(0)),h:'10:00 – 11:00',e:'pendiente',nota:'Prefiere aceite de lavanda',origen:'web'},
+    {id:2,n:'Lucía Martínez',t:'1156789012',s:'Lifting de pestañas',f:fmt(d(1)),h:'14:00 – 15:00',e:'confirmado',nota:'',origen:'manual'},
+    {id:3,n:'Camila Sánchez',t:'1167890123',s:'Manicuría semipermanente',f:fmt(d(2)),h:'11:00 – 12:00',e:'pendiente',nota:'Quiere diseño floral',origen:'web'},
+    {id:4,n:'Florencia García',t:'1178901234',s:'Masaje descontracturante',f:fmt(d(3)),h:'15:00 – 16:00',e:'confirmado',nota:'Dolor zona lumbar',origen:'manual'},
+    {id:5,n:'Julieta Pérez',t:'1189012345',s:'Diseño de cejas',f:fmt(d(4)),h:'09:00 – 10:00',e:'pendiente',nota:'',origen:'web'},
+    {id:6,n:'Rocío Benítez',t:'1190123456',s:'Manicuría clásica',f:fmt(d(0)),h:'16:00 – 17:00',e:'cancelado',nota:'Reprogramó para la semana que viene',origen:'manual'},
+    {id:7,n:'Sofía Torres',t:'1134567890',s:'Combo de servicios',f:fmt(d(5)),h:'10:00 – 11:00',e:'confirmado',nota:'Manicuría + cejas',origen:'manual'},
+    {id:8,n:'Martina López',t:'1123456789',s:'Extensiones de pestañas',f:fmt(d(6)),h:'14:00 – 15:00',e:'pendiente',nota:'Llegó desde formulario web',origen:'cotizacion'},
+  ]);
 }
 
 function openDash(){
   initDemo();
   document.getElementById('dashboard').classList.add('open');
   document.body.style.overflow='hidden';
-  // Actualizar nombre en navbar del dashboard
-  const nameEl=document.querySelector('#dashboard .dn-right strong');
-  if(nameEl&&activeUser)nameEl.textContent=activeUser.nombre;
   startClock();
   updatePendBadge();
   dbTab('resumen',document.querySelector('.db-menu'));
 }
-function logout(){activeUser=null;document.getElementById('dashboard').classList.remove('open');document.body.style.overflow='';clearInterval(clockInt);}
+function logout(){document.getElementById('dashboard').classList.remove('open');document.body.style.overflow='';clearInterval(clockInt);}
 
 let clockInt;
 function startClock(){
@@ -1264,7 +1015,7 @@ function renderResumen(){
   }).join('');
 
   return `
-  <div class="db-page-title">Buen día, ${activeUser?activeUser.nombre:'Maru'} ✨</div>
+  <div class="db-page-title">Buen día, Maru ✨</div>
   <div class="db-page-sub">${hoy.toLocaleDateString('es-AR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</div>
 
   <div class="db-stats">
@@ -1381,7 +1132,7 @@ function renderSem(off){
   const dias=Array.from({length:7},(_,i)=>{const d=new Date(lun);d.setDate(lun.getDate()+i);return d;});
   const dn=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
   const hrs=['09:00','10:00','11:00','12:00','14:00','15:00','16:00','17:00','18:00'];
-  const getH=h=>(h&&h!=='—')?h.split(' ')[0]:'09:00';
+  const getH=h=>h.split(' ')[0];
   const fmtD=d=>`${d.getDate().toString().padStart(2,'0')}/${(d.getMonth()+1).toString().padStart(2,'0')}/${d.getFullYear()}`;
   const semL=`${lun.getDate()} ${MONTHS[lun.getMonth()].slice(0,3)} – ${dias[6].getDate()} ${MONTHS[dias[6].getMonth()].slice(0,3)} ${dias[6].getFullYear()}`;
   const isThisWeek=off===0;
@@ -1390,7 +1141,7 @@ function renderSem(off){
 
   let h=`
   <div class="db-page-title">Vista semanal</div>
-  <div class="db-page-sub">${isThisWeek?'Semana actual':'Semana seleccionada'} · ${totalSem} turno${totalSem!==1?'s':''} activos · <strong>${activeUser?activeUser.nombre:''}</strong></div>
+  <div class="db-page-sub">${isThisWeek?'Semana actual':'Semana seleccionada'} · ${totalSem} turno${totalSem!==1?'s':''} activos</div>
   <div class="wk-nav">
     <button onclick="document.getElementById('dbContent').innerHTML=renderSem(wkOff-1)">‹</button>
     <button class="wk-today" onclick="document.getElementById('dbContent').innerHTML=renderSem(0)" style="border-radius:3px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase">Hoy</button>
@@ -1416,7 +1167,7 @@ function renderSem(off){
       const ev=ts.filter(t=>t.f===fmtD(d)&&getH(t.h)===hr);
       h+=`<div class="wkc${isToday?' today-col':''}">`;
       ev.forEach(ev=>{
-        const cls=ev.e==="confirmado"?"conf":ev.e==="pendiente"?"pend":"cancelado"; h+=`<div class="wke ${cls}" title="${ev.n} · ${ev.s} · ${ev.h}" onclick="openEdit(${ev.id})">${ev.n.split(' ')[0]}<br><span style="font-size:9px;opacity:.8">${ev.s.split(' ')[0]}</span></div>`;
+        h+=`<div class="wke ${ev.e}" title="${ev.n} · ${ev.s} · ${ev.h}" onclick="openEdit(${ev.id})">${ev.n.split(' ')[0]}<br><span style="font-size:9px;opacity:.8">${ev.s.split(' ')[0]}</span></div>`;
       });
       h+='</div>';
     });
@@ -1435,11 +1186,9 @@ function renderTabSem(d){document.getElementById('dbContent').innerHTML=renderSe
 
 /* ── NUEVO TURNO ── */
 function renderNT(){
-  const svcs=activeUser&&activeUser.u==='julieta'?SERVICIOS_JULI:SERVICIOS_MARU;
-  const allSvcs=[...SERVICIOS_MARU,...SERVICIOS_JULI];
   return `
   <div class="db-page-title">Nuevo turno</div>
-  <div class="db-page-sub">Cargá manualmente los turnos que llegan por WhatsApp · <strong>${activeUser?activeUser.nombre:''}</strong></div>
+  <div class="db-page-sub">Cargá manualmente los turnos que llegan por WhatsApp</div>
   <div class="nt-form">
     <div class="nt-form-title">Datos del turno</div>
     <div class="nt-row">
@@ -1449,12 +1198,15 @@ function renderNT(){
     <div class="nt-row full" style="margin-bottom:16px">
       <div class="nt-fg"><label>Servicio</label>
         <select id="nt-s"><option value="">Seleccioná un servicio</option>
-          ${svcs.map(s=>`<option>${s}</option>`).join('')}
+          <option>Masaje relajante</option><option>Masaje descontracturante</option><option>Masaje con piedras calientes</option>
+          <option>Manicuría clásica</option><option>Manicuría semipermanente</option><option>Nail art</option>
+          <option>Lifting de pestañas</option><option>Extensiones de pestañas</option>
+          <option>Diseño de cejas</option><option>Laminado de cejas</option><option>Combo de servicios</option>
         </select>
       </div>
     </div>
     <div class="nt-row">
-      <div class="nt-fg"><label>Fecha (dd/mm/aaaa)</label><input id="nt-f" type="text" placeholder="${new Date().getDate().toString().padStart(2,'0')}/${(new Date().getMonth()+1).toString().padStart(2,'0')}/${new Date().getFullYear()}"></div>
+      <div class="nt-fg"><label>Fecha (dd/mm/aaaa)</label><input id="nt-f" type="text" placeholder="15/05/2025"></div>
       <div class="nt-fg"><label>Horario</label>
         <select id="nt-h">
           <option>09:00 – 10:00</option><option>10:00 – 11:00</option><option>11:00 – 12:00</option>
@@ -1498,7 +1250,8 @@ function wspConfirmar(id){
   const ts=getTurnos(),t=ts.find(x=>x.id===id);
   if(!t)return;
   const msg=`Hola ${t.n.split(' ')[0]}! 🌸 Te confirmo tu turno:\n✨ Servicio: ${t.s}\n📅 Fecha: ${t.f}\n🕐 Horario: ${t.h}\n\n¡Te espero! Cualquier consulta escribime por acá.`;
-  const dest=t.t&&t.t.length>6?`549${t.t}`:(activeUser?activeUser.wsp:WSP_MARU);
+  // Si tiene teléfono registrado abre chat directo, sino abre número propio
+  const dest=t.t&&t.t.length>6?`549${t.t}`:WSP;
   window.open(`https://wa.me/${dest}?text=${encodeURIComponent(msg)}`,'_blank');
 }
 
