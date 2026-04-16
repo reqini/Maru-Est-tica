@@ -1,0 +1,619 @@
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  SECCIÓN GALERÍA — reemplazar en index.html                  ║
+  ║                                                              ║
+  ║  CSS:  bloque <style id="galeria-styles">                    ║
+  ║  HTML: bloque <!-- GALERÍA -->                               ║
+  ║  HTML: bloque <!-- MODAL GALERÍA -->                         ║
+  ║  JS:   bloque /* ── GALERÍA ── */                            ║
+  ║                                                              ║
+  ║  Assets esperados en /assets/                                ║
+  ║    Fotos:  imagen-001.jpeg … imagen-009.jpeg                 ║
+  ║    Videos: video-1.mp4 … video-7.mp4                         ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería — Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- ═══════════════════════════════════════════════════════════
+     CSS DE LA SECCIÓN GALERÍA
+     Pegar dentro del <style> principal del index.html,
+     reemplazando todo el bloque existente de galería + modal
+     ═══════════════════════════════════════════════════════════ -->
+<style id="galeria-styles">
+
+/* ── variables (ya existen en index.html, no duplicar) ── */
+:root {
+  --cream:#F9F4EE; --warm:#EDE3D6; --blush:#D4A79A; --rose:#B87A6E;
+  --deep:#6B3D35;  --bark:#2E1A15; --gold:#C4975A;  --text:#2E1A15;
+  --muted:#7A5C54; --white:#FFFAF7;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Jost',sans-serif; background:var(--bark); }
+
+/* ── sección ── */
+#galeria {
+  background: var(--bark);
+  padding: 100px 8%;
+}
+#galeria .section-tag {
+  font-size:11px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--blush); display:flex; align-items:center; gap:16px; margin-bottom:20px;
+}
+#galeria .section-tag::before { content:''; width:28px; height:1px; background:var(--blush); }
+#galeria .section-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size: clamp(36px,4vw,52px); font-weight:300; color:var(--cream);
+  line-height:1.15; margin-bottom:20px;
+}
+#galeria .section-title em { color:var(--rose); font-style:italic; }
+#galeria .section-sub { font-size:15px; line-height:1.8; color:rgba(249,244,238,.6); max-width:520px; font-weight:300; }
+
+/* ── filtros ── */
+.galeria-filters {
+  display:flex; gap:10px; flex-wrap:wrap;
+  margin: 32px 0 40px;
+}
+.gal-filter {
+  padding: 8px 20px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: transparent;
+  color: rgba(255,255,255,.6);
+  font-family:'Jost',sans-serif; font-size:12px; letter-spacing:2px; text-transform:uppercase;
+  border-radius:2px; cursor:pointer; transition: all .3s;
+}
+.gal-filter.active,
+.gal-filter:hover { background:var(--blush); border-color:var(--blush); color:#fff; }
+
+/* ── masonry grid ── */
+.masonry-grid {
+  columns: 4 180px;
+  column-gap: 10px;
+}
+@media(max-width:1200px){ .masonry-grid{ columns: 3 160px; } }
+@media(max-width:780px) { .masonry-grid{ columns: 2 140px; } }
+@media(max-width:480px) { .masonry-grid{ columns: 2 120px; } }
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 10px;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  /* alto = natural del medio */
+  display: block;
+}
+
+/* thumbnail: respeta proporciones originales */
+.gal-thumb-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--deep); /* fallback mientras carga */
+  display: block;
+}
+.gal-thumb-wrap img,
+.gal-thumb-wrap video {
+  width: 100%;
+  height: auto;       /* ← clave: alto natural */
+  display: block;
+  border-radius: 6px;
+  transition: transform .4s ease;
+  object-fit: cover;  /* por si acaso en algún nav */
+}
+.masonry-item:hover .gal-thumb-wrap img,
+.masonry-item:hover .gal-thumb-wrap video {
+  transform: scale(1.04);
+}
+
+/* overlay hover */
+.gal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(46,26,21,.62);
+  opacity: 0;
+  transition: opacity .3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 6px;
+  padding: 16px;
+}
+.masonry-item:hover .gal-overlay { opacity:1; }
+
+.gal-play-circle {
+  width: 52px; height: 52px;
+  background: rgba(255,255,255,.9);
+  border-radius: 50%;
+  display: flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.gal-play-circle svg { fill:var(--deep); margin-left:4px; }
+
+.gal-overlay-label {
+  color: #fff;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+  line-height: 1.4;
+}
+.gal-overlay-sub {
+  color: rgba(255,255,255,.55);
+  font-size: 11px;
+  letter-spacing:.5px;
+  text-align:center;
+}
+
+/* pill tipo */
+.gal-pill {
+  position: absolute;
+  top: 8px; right: 8px;
+  background: rgba(212,167,154,.88);
+  color: #fff;
+  font-size: 9px; letter-spacing:2px; text-transform:uppercase;
+  padding: 3px 9px; border-radius:20px;
+  pointer-events:none;
+}
+.gal-pill.video { background: rgba(46,26,21,.78); }
+
+/* loading skeleton */
+.gal-skeleton {
+  background: linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.1));
+  border-radius:6px;
+  animation: skelPulse 1.4s ease-in-out infinite;
+}
+@keyframes skelPulse {
+  0%,100% { opacity:.5; }
+  50%      { opacity:1; }
+}
+
+/* fade-in al cargar */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(14px); }
+  to   { opacity:1; transform:none; }
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset:0;
+  background: rgba(0,0,0,.92);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+.modal-overlay.open { display:flex; }
+
+.modal-box {
+  background: #130b08;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 94vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 80px rgba(0,0,0,.7);
+}
+
+/* barra de autoplay progreso */
+.modal-prog {
+  height: 3px;
+  background: var(--blush);
+  width: 0%;
+  transition: none;
+  flex-shrink:0;
+}
+
+/* área del media — scroll vertical si la imagen es muy alta */
+.modal-media-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  align-items: flex-start; /* no centrar para fotos largas */
+  justify-content: center;
+  background: #000;
+  min-height: 200px;
+  max-height: calc(94vh - 72px);
+}
+
+/* imagen a tamaño original (sin max-width forzado) */
+.modal-media-area img {
+  display: block;
+  width: 100%;       /* ocupa el ancho del modal */
+  height: auto;      /* alto NATURAL — se puede scrollear */
+  object-fit: contain;
+}
+
+/* video ocupa ancho completo */
+.modal-media-area video {
+  display: block;
+  width: 100%;
+  max-height: calc(94vh - 72px);
+  background: #000;
+}
+
+/* footer del modal */
+.modal-footer {
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,.07);
+  flex-shrink: 0;
+  gap: 12px;
+  background: #130b08;
+}
+.modal-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px; color:var(--cream); font-weight:300;
+}
+.modal-sub {
+  font-size:12px; color:rgba(255,255,255,.4); margin-top:2px;
+}
+.modal-controls {
+  display:flex; gap:8px; align-items:center; flex-shrink:0;
+}
+.modal-controls button {
+  background:rgba(255,255,255,.1); border:none; color:#fff;
+  width:34px; height:34px; border-radius:2px; cursor:pointer;
+  font-size:15px; transition:background .2s;
+  display:flex; align-items:center; justify-content:center;
+}
+.modal-controls button:hover { background:var(--blush); }
+.modal-counter { font-size:12px; color:rgba(255,255,255,.4); min-width:36px; text-align:center; }
+.modal-close {
+  position:absolute; top:10px; right:10px;
+  width:34px; height:34px;
+  background:rgba(255,255,255,.12); border:none; color:#fff;
+  font-size:18px; border-radius:50%; cursor:pointer; z-index:10;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .2s;
+}
+.modal-close:hover { background:rgba(255,255,255,.25); }
+
+/* ── responsive ── */
+@media(max-width:600px){
+  .modal-footer { padding:10px 14px; }
+  .modal-title  { font-size:15px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HTML: SECCIÓN GALERÍA
+     Reemplazar la section#galeria existente en index.html
+     ═══════════════════════════════════════════════════════════ -->
+
+<section id="galeria">
+  <div class="section-tag">Galería</div>
+  <h2 class="section-title">Mirá mis <em>trabajos</em></h2>
+  <p class="section-sub">Resultados reales, clientes reales. Cada trabajo es una muestra de dedicación y detalle.</p>
+
+  <div class="galeria-filters">
+    <button class="gal-filter active" onclick="filterGal('todos',this)">Todos</button>
+    <button class="gal-filter" onclick="filterGal('foto',this)">Fotos</button>
+    <button class="gal-filter" onclick="filterGal('video',this)">🎬 Videos</button>
+  </div>
+
+  <div class="masonry-grid" id="masonryGrid"></div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     HTML: MODAL GALERÍA
+     Pegar justo antes del </body>, reemplazando el modal anterior
+     ═══════════════════════════════════════════════════════════ -->
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-prog" id="modalProg"></div>
+    <div class="modal-media-area" id="modalMediaArea"></div>
+    <div class="modal-footer">
+      <div>
+        <div class="modal-title"  id="modalTitle"></div>
+        <div class="modal-sub"   id="modalSub"></div>
+      </div>
+      <div class="modal-controls">
+        <button onclick="mNav(-1)" title="Anterior">‹</button>
+        <span class="modal-counter" id="modalCounter"></span>
+        <button onclick="mTogglePlay()" id="mPlayBtn" title="Autoplay">▶</button>
+        <button onclick="mNav(1)" title="Siguiente">›</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     JS: BLOQUE GALERÍA
+     Reemplazar todo el bloque /* ── GALERÍA ── */ en el <script>
+     del index.html (desde "const GI=[" hasta "renderGaleria();")
+     ═══════════════════════════════════════════════════════════ -->
+
+<script>
+/* ── GALERÍA ── */
+
+/*
+  CATÁLOGO DE ASSETS
+  ──────────────────
+  Fotos:  assets/imagen-001.jpeg … assets/imagen-009.jpeg
+  Videos: assets/video-1.mp4    … assets/video-7.mp4
+
+  Campos:
+    tipo  : 'foto' | 'video'
+    src   : ruta relativa desde index.html
+    label : título que se ve en el overlay y modal
+    sub   : subtítulo / técnica
+    cat   : categoría para filtros futuros (opcional)
+*/
+const GI = [
+  // ── FOTOS ──────────────────────────────────────────────────
+  { tipo:'foto',  src:'assets/imagen-001.jpeg', label:'Limpieza facial',          sub:'Resultado visible desde la primera sesión',  cat:'facial'   },
+  { tipo:'foto',  src:'assets/imagen-002.jpeg', label:'Masaje relajante',         sub:'Técnica sueca con aceites esenciales',        cat:'masajes'  },
+  { tipo:'foto',  src:'assets/imagen-003.jpeg', label:'Semipermanente',           sub:'3 semanas sin chips',                         cat:'unas'     },
+  { tipo:'foto',  src:'assets/imagen-004.jpeg', label:'Lifting de pestañas',      sub:'Antes y después — resultado natural',         cat:'pestanas' },
+  { tipo:'foto',  src:'assets/imagen-005.jpeg', label:'Diseño de cejas',          sub:'Forma perfecta para tu rostro',               cat:'cejas'    },
+  { tipo:'foto',  src:'assets/imagen-006.jpeg', label:'Soft gel',                 sub:'Largo y resistencia natural',                 cat:'unas'     },
+  { tipo:'foto',  src:'assets/imagen-007.jpeg', label:'Tratamiento acné',         sub:'Protocolo con alta frecuencia',               cat:'facial'   },
+  { tipo:'foto',  src:'assets/imagen-008.jpeg', label:'Laminado de pestañas',     sub:'Efecto espectacular, duración 6 semanas',     cat:'pestanas' },
+  { tipo:'foto',  src:'assets/imagen-009.jpeg', label:'Masaje descontracturante', sub:'Alivio de contracturas profundas',            cat:'masajes'  },
+
+  // ── VIDEOS ─────────────────────────────────────────────────
+  { tipo:'video', src:'assets/video-1.mp4',     label:'Masaje paso a paso',       sub:'Técnica relajante completa',                  cat:'masajes'  },
+  { tipo:'video', src:'assets/video-2.mp4',     label:'Semipermanente proceso',   sub:'De la preparación al resultado final',        cat:'unas'     },
+  { tipo:'video', src:'assets/video-3.mp4',     label:'Lifting de pestañas',      sub:'Proceso completo en tiempo real',             cat:'pestanas' },
+  { tipo:'video', src:'assets/video-4.mp4',     label:'Peeling enzimático',       sub:'Protocolo de renovación celular',             cat:'facial'   },
+  { tipo:'video', src:'assets/video-5.mp4',     label:'Nail art full diseño',     sub:'Arte detallado a mano libre',                 cat:'unas'     },
+  { tipo:'video', src:'assets/video-6.mp4',     label:'Henna de cejas',           sub:'Color y definición natural',                  cat:'cejas'    },
+  { tipo:'video', src:'assets/video-7.mp4',     label:'Masaje facial',            sub:'Tonificación y drenaje linfático',             cat:'masajes'  },
+];
+
+/* estado */
+let galFilter   = 'todos';
+let filteredGI  = [];
+let mIdx        = 0;
+let mAuto       = false;
+let mTimer      = null;
+let mAutoSpeed  = 4500; // ms entre slides en autoplay
+
+/* ─── render galería ─────────────────────────────────────── */
+function renderGaleria() {
+  if (galFilter === 'todos') {
+    filteredGI = [...GI];
+  } else {
+    filteredGI = GI.filter(item => item.tipo === galFilter || item.cat === galFilter);
+  }
+
+  const grid = document.getElementById('masonryGrid');
+  if (!grid) return;
+
+  // Vaciar con fade
+  grid.style.opacity = '0';
+  grid.style.transition = 'opacity .2s';
+
+  setTimeout(() => {
+    grid.innerHTML = filteredGI.map((item, i) => buildCard(item, i)).join('');
+    grid.style.opacity = '1';
+
+    // Lazy-load: IntersectionObserver para animar al entrar en viewport
+    grid.querySelectorAll('.masonry-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = `opacity .35s ${(parseInt(el.dataset.i)||0) * 40}ms, transform .35s ${(parseInt(el.dataset.i)||0) * 40}ms`;
+    });
+
+    // Pequeño delay para trigger reflow
+    requestAnimationFrame(() => {
+      grid.querySelectorAll('.masonry-item').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    });
+  }, 200);
+}
+
+function buildCard(item, i) {
+  const isVideo = item.tipo === 'video';
+  const pillClass = isVideo ? 'gal-pill video' : 'gal-pill';
+  const pillLabel = isVideo ? '▶ video' : 'foto';
+
+  // Para videos usamos <video> con preload="metadata" para que el thumb se cargue
+  const media = isVideo
+    ? `<video
+          src="${item.src}"
+          preload="metadata"
+          muted
+          playsinline
+          tabindex="-1"
+          style="pointer-events:none"
+          onerror="this.closest('.gal-thumb-wrap').classList.add('gal-skeleton')"
+       ></video>`
+    : `<img
+          src="${item.src}"
+          alt="${item.label}"
+          loading="lazy"
+          decoding="async"
+          onerror="this.closest('.gal-thumb-wrap').classList.add('gal-skeleton');this.style.display='none'"
+       >`;
+
+  const playIcon = isVideo
+    ? `<div class="gal-play-circle">
+         <svg width="14" height="14" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+       </div>`
+    : `<div class="gal-play-circle">
+         <svg width="13" height="13" viewBox="0 0 24 24"><path d="M15.5 2.1L21 12l-5.5 9.9H3L8.5 12 3 2.1h12.5z" fill="none" stroke="var(--deep)" stroke-width="1.5"/></svg>
+       </div>`;
+
+  return `
+    <div class="masonry-item" data-i="${i}" onclick="openModal(${i})">
+      <div class="gal-thumb-wrap">${media}</div>
+      <div class="gal-overlay">
+        ${playIcon}
+        <span class="gal-overlay-label">${item.label}</span>
+        <span class="gal-overlay-sub">${item.sub}</span>
+      </div>
+      <span class="${pillClass}">${pillLabel}</span>
+    </div>`;
+}
+
+function filterGal(f, btn) {
+  galFilter = f;
+  document.querySelectorAll('.gal-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGaleria();
+}
+
+/* ─── modal ─────────────────────────────────────────────── */
+function openModal(i) {
+  mIdx = i;
+  renderModal();
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  stopAutoplay();
+  // Pausar cualquier video que esté reproduciéndose
+  const vid = document.querySelector('#modalMediaArea video');
+  if (vid) { vid.pause(); vid.src = ''; }
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function renderModal() {
+  const item = filteredGI[mIdx];
+  if (!item) return;
+
+  document.getElementById('modalTitle').textContent   = item.label;
+  document.getElementById('modalSub').textContent     = item.sub + ' · ' + (item.cat || item.tipo);
+  document.getElementById('modalCounter').textContent = `${mIdx + 1} / ${filteredGI.length}`;
+
+  const area = document.getElementById('modalMediaArea');
+
+  if (item.tipo === 'video') {
+    area.innerHTML = `
+      <video
+        src="${item.src}"
+        controls
+        autoplay
+        muted
+        playsinline
+        style="width:100%;max-height:calc(94vh - 72px);display:block;background:#000"
+        onerror="this.outerHTML='<div style=color:rgba(255,255,255,.4);padding:48px 24px;text-align:center>Video no encontrado.<br>Verificá que el archivo esté en /assets/</div>'"
+      ></video>`;
+  } else {
+    area.innerHTML = `
+      <img
+        src="${item.src}"
+        alt="${item.label}"
+        style="width:100%;height:auto;display:block"
+        onerror="this.outerHTML='<div style=color:rgba(255,255,255,.4);padding:48px 24px;text-align:center>Imagen no encontrada.<br>Verificá que el archivo esté en /assets/</div>'"
+      >`;
+  }
+}
+
+function mNav(delta) {
+  // Si hay video, pausarlo antes de cambiar
+  const vid = document.querySelector('#modalMediaArea video');
+  if (vid) { vid.pause(); }
+
+  mIdx = (mIdx + delta + filteredGI.length) % filteredGI.length;
+  renderModal();
+  if (mAuto) resetProgBar();
+}
+
+/* ─── autoplay ───────────────────────────────────────────── */
+function mTogglePlay() {
+  mAuto = !mAuto;
+  const btn = document.getElementById('mPlayBtn');
+  if (mAuto) {
+    btn.textContent = '⏸';
+    startAutoplay();
+  } else {
+    btn.textContent = '▶';
+    stopAutoplay();
+  }
+}
+
+function startAutoplay() {
+  resetProgBar();
+  mTimer = setInterval(() => mNav(1), mAutoSpeed);
+}
+
+function stopAutoplay() {
+  clearInterval(mTimer);
+  mTimer  = null;
+  mAuto   = false;
+  document.getElementById('mPlayBtn').textContent = '▶';
+  const bar = document.getElementById('modalProg');
+  bar.style.transition = 'none';
+  bar.style.width      = '0%';
+}
+
+function resetProgBar() {
+  const bar = document.getElementById('modalProg');
+  bar.style.transition = 'none';
+  bar.style.width      = '0%';
+  // Forzar reflow antes de la transición
+  bar.getBoundingClientRect();
+  bar.style.transition = `width ${mAutoSpeed}ms linear`;
+  bar.style.width      = '100%';
+}
+
+/* ─── teclado ────────────────────────────────────────────── */
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('modalOverlay').classList.contains('open')) return;
+  if (e.key === 'ArrowRight' || e.key === 'l') mNav(1);
+  if (e.key === 'ArrowLeft'  || e.key === 'j') mNav(-1);
+  if (e.key === 'Escape')  closeModal();
+  if (e.key === ' ') { e.preventDefault(); mTogglePlay(); }
+});
+
+/* ─── init ───────────────────────────────────────────────── */
+// Usar DOMContentLoaded para asegurarse que el grid existe
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderGaleria);
+} else {
+  renderGaleria();
+}
+</script>
+
+<!-- ── preview wrapper (solo para este archivo standalone) ── -->
+<style>
+  body{background:var(--bark);min-height:100vh;}
+  .preview-note{
+    background:rgba(255,255,255,.06); color:rgba(255,255,255,.5);
+    padding:14px 8%; font-size:12px; letter-spacing:1px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    font-family:'Jost',sans-serif;
+  }
+</style>
+<div class="preview-note">
+  📋 PREVIEW — galeria-seccion.html &nbsp;·&nbsp;
+  Imágenes y videos se cargan desde <code>assets/</code> &nbsp;·&nbsp;
+  Si ves esqueletos grises = archivos no encontrados, es normal en preview sin servidor
+</div>
+
+</body>
+</html>
