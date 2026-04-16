@@ -69,363 +69,45 @@ section{padding:100px 8%;}
 .servicio-wsp{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--deep);text-decoration:none;transition:color .3s;}
 .servicio-wsp:hover{color:var(--rose);}
 
+/* ──────── GALERÍA PINTEREST ──────── */
+#galeria{background:var(--bark);padding:100px 8%;}
+#galeria .section-title{color:var(--cream);}
+#galeria .section-tag{color:var(--blush);}
+#galeria .section-tag::before{background:var(--blush);}
+#galeria .section-sub{color:rgba(249,244,238,.6);}
+.galeria-filters{display:flex;gap:10px;flex-wrap:wrap;margin:32px 0 40px;}
+.gal-filter{padding:8px 20px;border:1px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.6);font-family:'Jost',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:all .3s;}
+.gal-filter.active,.gal-filter:hover{background:var(--blush);border-color:var(--blush);color:#fff;}
+.masonry-grid{columns:4 180px;column-gap:10px;}
+@media(max-width:1100px){.masonry-grid{columns:3 160px;}}
+@media(max-width:700px){.masonry-grid{columns:2 140px;}}
+.masonry-item{break-inside:avoid;margin-bottom:10px;position:relative;border-radius:6px;overflow:hidden;cursor:pointer;}
+.gal-thumb{width:100%;display:block;border-radius:6px;transition:transform .4s;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;font-size:40px;}
+.masonry-item:hover .gal-thumb{transform:scale(1.04);}
+.gal-overlay{position:absolute;inset:0;background:rgba(46,26,21,.65);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:6px;}
+.masonry-item:hover .gal-overlay{opacity:1;}
+.gal-play-btn{width:50px;height:50px;background:rgba(255,255,255,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.gal-play-btn svg{fill:var(--deep);}
+.gal-item-label{color:#fff;font-size:13px;letter-spacing:1px;font-family:'Cormorant Garamond',serif;text-align:center;padding:0 12px;}
+.gal-type-pill{position:absolute;top:8px;right:8px;background:rgba(212,167,154,.9);color:#fff;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 9px;border-radius:20px;}
+.gal-type-pill.video{background:rgba(107,61,53,.85);}
 
-/* ════════════════════════════════════════
-   SECCIÓN
-════════════════════════════════════════ */
-#galeria {
-  background: var(--bark);
-  padding: 100px 8%;
-}
-#galeria .section-tag {
-  font-size:11px; letter-spacing:3px; text-transform:uppercase;
-  color:var(--blush); display:flex; align-items:center; gap:16px; margin-bottom:20px;
-}
-#galeria .section-tag::before { content:''; width:28px; height:1px; background:var(--blush); }
-#galeria .section-title {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(36px,4vw,52px); font-weight:300; color:var(--cream);
-  line-height:1.15; margin-bottom:20px;
-}
-#galeria .section-title em { color:var(--rose); font-style:italic; }
-#galeria .section-sub {
-  font-size:15px; line-height:1.8;
-  color:rgba(249,244,238,.6); max-width:520px; font-weight:300;
-}
-
-/* ════════════════════════════════════════
-   FILTROS
-════════════════════════════════════════ */
-.galeria-filters {
-  display:flex; gap:10px; flex-wrap:wrap;
-  margin: 32px 0 40px;
-}
-.gal-filter {
-  padding:8px 20px;
-  border:1px solid rgba(255,255,255,.22);
-  background:transparent;
-  color:rgba(255,255,255,.6);
-  font-family:'Jost',sans-serif; font-size:12px;
-  letter-spacing:2px; text-transform:uppercase;
-  border-radius:2px; cursor:pointer; transition:all .25s;
-  user-select:none;
-}
-.gal-filter.active,
-.gal-filter:hover { background:var(--blush); border-color:var(--blush); color:#fff; }
-
-/* ════════════════════════════════════════
-   MASONRY GRID — alto natural de cada item
-════════════════════════════════════════ */
-.masonry-grid {
-  columns: 4 170px;
-  column-gap: 10px;
-  transition: opacity .2s;
-}
-@media(max-width:1200px){ .masonry-grid{ columns:3 160px; } }
-@media(max-width:720px) { .masonry-grid{ columns:2 140px; } }
-@media(max-width:420px) { .masonry-grid{ columns:2 110px; } }
-
-/* cada tarjeta */
-.gal-card {
-  break-inside: avoid;
-  margin-bottom: 10px;
-  position: relative;
-  border-radius: 6px;
-  overflow: hidden;
-  cursor: pointer;
-  background: rgba(255,255,255,.04); /* placeholder mientras carga */
-  display: block;
-}
-
-/* el media ocupa 100% de ancho; el alto viene del propio archivo */
-.gal-card img,
-.gal-card video {
-  display: block;
-  width: 100%;
-  height: auto;          /* ← CLAVE: respeta proporciones reales */
-  border-radius: 6px;
-  transition: transform .4s ease;
-  vertical-align: bottom; /* evita gap debajo de inline */
-}
-.gal-card:hover img,
-.gal-card:hover video { transform: scale(1.05); }
-
-/* overlay hover */
-.gal-overlay {
-  position: absolute; inset:0;
-  background: rgba(22,10,7,.6);
-  opacity: 0; transition: opacity .28s;
-  display: flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  gap:10px; border-radius:6px; padding:14px;
-}
-.gal-card:hover .gal-overlay { opacity:1; }
-
-/* toque: tap en mobile también activa overlay antes del click */
-.gal-card.touched .gal-overlay { opacity:1; }
-
-.gal-play-ring {
-  width:50px; height:50px;
-  background:rgba(255,255,255,.9);
-  border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  flex-shrink:0;
-  box-shadow: 0 4px 16px rgba(0,0,0,.3);
-  transition: transform .2s;
-}
-.gal-card:hover .gal-play-ring { transform:scale(1.08); }
-.gal-play-ring svg { fill:var(--deep); }
-
-.gal-label {
-  color:#fff;
-  font-family:'Cormorant Garamond',serif;
-  font-size:13px; letter-spacing:.8px;
-  text-align:center; line-height:1.4;
-  text-shadow: 0 1px 6px rgba(0,0,0,.6);
-}
-.gal-sublabel {
-  color:rgba(255,255,255,.55);
-  font-size:10px; letter-spacing:.5px;
-  text-align:center;
-}
-
-/* pill foto/video */
-.gal-pill {
-  position:absolute; top:7px; right:7px;
-  background:rgba(180,90,80,.85);
-  color:#fff; font-size:9px; letter-spacing:1.5px; text-transform:uppercase;
-  padding:3px 9px; border-radius:20px;
-  pointer-events:none; backdrop-filter:blur(4px);
-}
-.gal-pill.v { background:rgba(22,10,7,.75); }
-
-/* skeleton cargando */
-.gal-card.loading {
-  background: rgba(255,255,255,.06);
-  animation: skelPulse 1.4s ease-in-out infinite;
-  min-height: 140px;
-}
-@keyframes skelPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
-@keyframes cardIn {
-  from { opacity:0; transform:translateY(12px); }
-  to   { opacity:1; transform:none; }
-}
-.gal-card { animation: cardIn .3s ease both; }
-
-/* ════════════════════════════════════════
-   MODAL — fit perfecto en cualquier pantalla
-════════════════════════════════════════ */
-
-/*
-  Estrategia:
-  ┌─ modal-overlay  (position:fixed, inset:0, flex center) ─────┐
-  │ ┌─ modal-shell (flex column, max 96vh, max 1000px wide) ───┐ │
-  │ │  [prog bar 3px]                                          │ │
-  │ │  [media-stage — flex:1, overflow hidden]                 │ │
-  │ │    img/video → object-fit:contain + max 100%             │ │
-  │ │  [footer 56-60px fijo]                                   │ │
-  │ └──────────────────────────────────────────────────────────┘ │
-  └──────────────────────────────────────────────────────────────┘
-
-  El media-stage ocupa TODO el espacio restante y hace contain
-  → la imagen/video nunca se recorta, nunca desborda, se centra.
-*/
-
-.gal-modal-overlay {
-  position: fixed; inset:0;
-  background: rgba(0,0,0,.93);
-  z-index: 9999;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: env(safe-area-inset-top,8px)
-           env(safe-area-inset-right,8px)
-           env(safe-area-inset-bottom,8px)
-           env(safe-area-inset-left,8px);
-  /* fallback sin env() */
-  padding: 8px;
-  touch-action: pan-y pinch-zoom;
-}
-.gal-modal-overlay.open { display:flex; }
-
-.gal-modal-shell {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  /* altura máxima = viewport menos padding */
-  height: min(96vh, 900px);
-  background: #0e0704;
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 28px 90px rgba(0,0,0,.8);
-}
-
-/* barra de progreso autoplay */
-.gal-prog {
-  height: 3px;
-  background: var(--blush);
-  width: 0%;
-  flex-shrink:0;
-  transition: none;
-}
-
-/* ── stage: ocupa todo el espacio libre ── */
-.gal-stage {
-  flex: 1;
-  min-height: 0; /* necesario para que flex-shrink funcione */
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-}
-
-/* imagen: escala para entrar en el stage sin cropping */
-.gal-stage img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  /* suaviza el render de imágenes escaladas */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-}
-
-/* video: mismo principio */
-.gal-stage video {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  background: #000;
-}
-
-/* flechas laterales — dentro del stage, absolutas */
-.gal-arrow {
-  position: absolute;
-  top: 50%; transform: translateY(-50%);
-  width: 44px; height: 44px;
-  background: rgba(255,255,255,.12);
-  border: 1px solid rgba(255,255,255,.15);
-  border-radius: 50%;
-  color: #fff; font-size:20px;
-  display: flex; align-items:center; justify-content:center;
-  cursor: pointer;
-  transition: background .2s, transform .2s;
-  z-index:2;
-  user-select:none;
-  backdrop-filter: blur(6px);
-}
-.gal-arrow:hover { background:rgba(255,255,255,.25); transform:translateY(-50%) scale(1.08); }
-.gal-arrow:active { background:var(--blush); }
-.gal-arrow.prev { left:12px; }
-.gal-arrow.next { right:12px; }
-
-/* botón cerrar */
-.gal-close {
-  position: absolute;
-  top: 10px; right: 10px;
-  width: 36px; height: 36px;
-  background: rgba(255,255,255,.12);
-  border: none; color:#fff;
-  font-size:18px; border-radius:50%; cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  transition: background .2s;
-  z-index:10;
-}
-.gal-close:hover { background:rgba(255,255,255,.25); }
-
-/* ── footer fijo ── */
-.gal-footer {
-  flex-shrink: 0;
-  height: 58px;
-  padding: 0 16px 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  border-top: 1px solid rgba(255,255,255,.07);
-  background: #0e0704;
-}
-
-.gal-footer-info { min-width:0; flex:1; }
-.gal-footer-title {
-  font-family:'Cormorant Garamond',serif;
-  font-size:17px; color:var(--cream); font-weight:300;
-  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-}
-.gal-footer-sub {
-  font-size:11px; color:rgba(255,255,255,.38); margin-top:1px;
-  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-}
-
-.gal-footer-controls {
-  display:flex; gap:6px; align-items:center; flex-shrink:0;
-}
-.gal-ctrl {
-  width:34px; height:34px;
-  background:rgba(255,255,255,.1); border:none; color:#fff;
-  border-radius:3px; cursor:pointer; font-size:14px;
-  display:flex; align-items:center; justify-content:center;
-  transition:background .2s;
-  user-select:none;
-}
-.gal-ctrl:hover { background:var(--blush); }
-.gal-counter {
-  font-size:12px; color:rgba(255,255,255,.4);
-  min-width:38px; text-align:center;
-  font-variant-numeric: tabular-nums;
-}
-
-/* ── swipe indicator on mobile ── */
-.gal-swipe-hint {
-  position:absolute; bottom:70px; left:50%;
-  transform:translateX(-50%);
-  font-size:11px; color:rgba(255,255,255,.3);
-  letter-spacing:1.5px; text-transform:uppercase;
-  pointer-events:none;
-  opacity:0; animation:hintFade 2.5s 1s ease forwards;
-  z-index:3;
-  white-space:nowrap;
-}
-@keyframes hintFade {
-  0%{opacity:0} 20%{opacity:1} 80%{opacity:1} 100%{opacity:0}
-}
-
-/* ── responsive modal ── */
-@media(max-width:600px){
-  .gal-modal-overlay { padding:4px; }
-  .gal-modal-shell   { border-radius:8px; height:min(98vh,700px); }
-  .gal-footer        { height:52px; padding:0 12px; }
-  .gal-footer-title  { font-size:15px; }
-  .gal-arrow         { width:36px; height:36px; font-size:17px; }
-  .gal-arrow.prev    { left:6px; }
-  .gal-arrow.next    { right:6px; }
-}
-@media(max-width:360px){
-  .gal-footer-sub  { display:none; }
-  .gal-footer      { height:48px; }
-  .gal-modal-shell { height:min(99vh,640px); }
-}
-
-/* ── transición de slide ── */
-.gal-stage .slide-enter-right { animation: slideInRight .22s ease both; }
-.gal-stage .slide-enter-left  { animation: slideInLeft  .22s ease both; }
-@keyframes slideInRight {
-  from { opacity:0; transform:translateX(40px); }
-  to   { opacity:1; transform:none; }
-}
-@keyframes slideInLeft {
-  from { opacity:0; transform:translateX(-40px); }
-  to   { opacity:1; transform:none; }
-}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;display:none;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:#1a0e0b;border-radius:8px;max-width:860px;width:100%;overflow:hidden;position:relative;display:flex;flex-direction:column;}
+.modal-close{position:absolute;top:12px;right:12px;width:34px;height:34px;background:rgba(255,255,255,.12);border:none;color:#fff;font-size:18px;border-radius:50%;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.modal-close:hover{background:rgba(255,255,255,.25);}
+.modal-prog{height:3px;background:var(--blush);width:0%;transition:none;}
+.modal-media-area{width:100%;min-height:320px;max-height:68vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.modal-media-area .m-inner{width:100%;height:100%;min-height:320px;max-height:68vh;display:flex;align-items:center;justify-content:center;}
+.modal-footer{padding:16px 22px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.07);}
+.m-title{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--cream);font-weight:300;}
+.m-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:2px;}
+.modal-controls{display:flex;gap:8px;align-items:center;}
+.modal-controls button{background:rgba(255,255,255,.1);border:none;color:#fff;width:34px;height:34px;border-radius:2px;cursor:pointer;font-size:15px;transition:background .2s;display:flex;align-items:center;justify-content:center;}
+.modal-controls button:hover{background:var(--blush);}
+.modal-counter{font-size:12px;color:rgba(255,255,255,.4);min-width:36px;text-align:center;}
 
 /* RESEÑAS */
 #resenas{background:var(--warm);}
@@ -1078,13 +760,11 @@ button, a{
   <div class="servicios-grid" id="serviciosGrid"></div>
 </section>
 
-
-
-<section id="galeria">
+<!-- GALERÍA PINTEREST -->
+<section id="galeria" style="display: none;">
   <div class="section-tag">Galería</div>
-  <h2 class="section-title">Mirá mis <em>trabajos</em></h2>
+  <h2 class="section-title" style="color:var(--cream)">Mirá mis <em>trabajos</em></h2>
   <p class="section-sub">Resultados reales, clientes reales. Cada trabajo es una muestra de dedicación y detalle.</p>
-
   <div class="galeria-filters">
     <button class="gal-filter active" onclick="filterGal('todos',this)">Todos</button>
     <button class="gal-filter" onclick="filterGal('masajes',this)">Masajes</button>
@@ -1094,11 +774,8 @@ button, a{
     <button class="gal-filter" onclick="filterGal('cejas',this)">Cejas</button>
     <button class="gal-filter" onclick="filterGal('video',this)">🎬 Videos</button>
   </div>
-
   <div class="masonry-grid" id="masonryGrid"></div>
 </section>
-
-
 
 <!-- PROFESIONALES -->
 <section id="profesionales">
@@ -1326,38 +1003,23 @@ button, a{
 </div>
 
 <!-- MODAL GALERÍA -->
-<div class="gal-modal-overlay" id="galModal" onclick="galModalTap(event)">
-  <div class="gal-modal-shell">
-
-    <!-- cerrar -->
-    <button class="gal-close" onclick="galClose()" aria-label="Cerrar">✕</button>
-
-    <!-- barra autoplay -->
-    <div class="gal-prog" id="galProg"></div>
-
-    <!-- stage: imagen o video -->
-    <div class="gal-stage" id="galStage">
-      <!-- flechas dentro del stage para no interferir con footer -->
-      <button class="gal-arrow prev" onclick="galNav(-1)" aria-label="Anterior">&#8249;</button>
-      <button class="gal-arrow next" onclick="galNav(1)"  aria-label="Siguiente">&#8250;</button>
-      <!-- hint swipe (solo aparece una vez) -->
-      <div class="gal-swipe-hint" id="galSwipeHint">deslizá para navegar</div>
-    </div>
-
-    <!-- footer -->
-    <div class="gal-footer">
-      <div class="gal-footer-info">
-        <div class="gal-footer-title" id="galTitle"></div>
-        <div class="gal-footer-sub"   id="galSub"></div>
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOut(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-prog" id="modalProg"></div>
+    <div class="modal-media-area" id="modalMedia"></div>
+    <div class="modal-footer">
+      <div>
+        <div class="m-title" id="mTitle"></div>
+        <div class="m-sub" id="mSub"></div>
       </div>
-      <div class="gal-footer-controls">
-        <button class="gal-ctrl" onclick="galNav(-1)" aria-label="Anterior">‹</button>
-        <span class="gal-counter" id="galCounter"></span>
-        <button class="gal-ctrl" id="galPlayBtn" onclick="galToggleAuto()" aria-label="Autoplay">▶</button>
-        <button class="gal-ctrl" onclick="galNav(1)"  aria-label="Siguiente">›</button>
+      <div class="modal-controls">
+        <button onclick="mNav(-1)">‹</button>
+        <span class="modal-counter" id="mCounter"></span>
+        <button onclick="mTogglePlay()" id="mPlayBtn">▶</button>
+        <button onclick="mNav(1)">›</button>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -1475,283 +1137,99 @@ const WDAYS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado
 // Cada item: t=tipo, c=categoría, src=ruta real, l=label, s=subtítulo, w=ancho original, h=alto original
 // Para videos: src apunta a .mp4; para fotos: .jpg/.png
 // Reemplazá los nombres de archivo por los reales en tu carpeta /assets/
-/* ── GALERÍA ── */
-
-/* catálogo de assets ─────────────────────────────────────
-   tipo : 'foto' | 'video'
-   src  : ruta desde index.html (ej. 'assets/imagen-001.jpeg')
-   label: título visible en overlay y modal
-   sub  : subtítulo / técnica
-   cat  : categoría para filtros
-──────────────────────────────────────────────────────── */
-const GI = [
-  { tipo:'foto',  src:'assets/imagen-001.jpeg', label:'Limpieza facial',           sub:'Resultado visible desde la primera sesión', cat:'facial'   },
-  { tipo:'foto',  src:'assets/imagen-002.jpeg', label:'Masaje relajante',          sub:'Técnica sueca con aceites esenciales',       cat:'masajes'  },
-  { tipo:'foto',  src:'assets/imagen-003.jpeg', label:'Semipermanente',            sub:'3 semanas sin chips',                        cat:'unas'     },
-  { tipo:'foto',  src:'assets/imagen-004.jpeg', label:'Lifting de pestañas',       sub:'Antes / Después — resultado natural',        cat:'pestanas' },
-  { tipo:'foto',  src:'assets/imagen-005.jpeg', label:'Diseño de cejas',           sub:'Forma perfecta para tu rostro',              cat:'cejas'    },
-  { tipo:'foto',  src:'assets/imagen-006.jpeg', label:'Soft gel',                  sub:'Largo y resistencia natural',                cat:'unas'     },
-  { tipo:'foto',  src:'assets/imagen-007.png', label:'Tratamiento acné',          sub:'Protocolo con alta frecuencia',              cat:'facial'   },
-  { tipo:'foto',  src:'assets/imagen-008.jpeg', label:'Laminado de pestañas',      sub:'Efecto espectacular, hasta 6 semanas',       cat:'unas' },
-  { tipo:'foto',  src:'assets/imagen-009.jpeg', label:'Masaje descontracturante',  sub:'Alivio de contracturas profundas',           cat:'unas'  },
-  { tipo:'foto',  src:'assets/imagen-010.jpeg', label:'Laminado de pestañas',      sub:'Efecto espectacular, hasta 6 semanas',       cat:'unas' },
-  { tipo:'foto',  src:'assets/imagen-011.jpeg', label:'Masaje descontracturante',  sub:'Alivio de contracturas profundas',           cat:'unas'  },
-  { tipo:'foto',  src:'assets/imagen-012.jpeg', label:'Laminado de pestañas',      sub:'Efecto espectacular, hasta 6 semanas',       cat:'unas' },
-  { tipo:'foto',  src:'assets/imagen-013.jpeg', label:'Masaje descontracturante',  sub:'Alivio de contracturas profundas',           cat:'unas'  },
-  { tipo:'foto',  src:'assets/imagen-014.jpeg', label:'Laminado de pestañas',      sub:'Efecto espectacular, hasta 6 semanas',       cat:'unas' },
-  { tipo:'foto',  src:'assets/imagen-015.jpeg', label:'Masaje descontracturante',  sub:'Alivio de contracturas profundas',           cat:'unas'  },
-  { tipo:'foto',  src:'assets/imagen-016.jpeg', label:'Laminado de pestañas',      sub:'Efecto espectacular, hasta 6 semanas',       cat:'unas' },
-  { tipo:'foto',  src:'assets/imagen-017.jpeg', label:'Masaje descontracturante',  sub:'Alivio de contracturas profundas',           cat:'unas'  },
-  { tipo:'foto',  src:'assets/imagen-018.jpeg', label:'Laminado de pestañas',      sub:'Efecto espectacular, hasta 6 semanas',       cat:'unas' },
-  { tipo:'foto',  src:'assets/imagen-019.jpeg', label:'Masaje descontracturante',  sub:'Alivio de contracturas profundas',           cat:'unas'  },
-  { tipo:'video', src:'assets/video-1.mp4',     label:'Masaje paso a paso',        sub:'Técnica relajante completa',                 cat:'masajes'  },
-  { tipo:'video', src:'assets/video-2.mp4',     label:'Semipermanente — proceso',  sub:'De la preparación al resultado final',       cat:'unas'     },
-  { tipo:'video', src:'assets/video-3.mp4',     label:'Lifting de pestañas',       sub:'Proceso completo en tiempo real',            cat:'pestanas' }
-/*   { tipo:'video', src:'assets/video-4.mp4',     label:'Peeling enzimático',        sub:'Protocolo de renovación celular',            cat:'facial'   },
-  { tipo:'video', src:'assets/video-5.mp4',     label:'Nail art full diseño',      sub:'Arte detallado a mano libre',                cat:'unas'     },
-  { tipo:'video', src:'assets/video-6.mp4',     label:'Henna de cejas',            sub:'Color y definición natural',                 cat:'cejas'    },
-  { tipo:'video', src:'assets/video-7.mp4',     label:'Masaje facial',             sub:'Tonificación y drenaje linfático',           cat:'masajes'  }, */
+const GI=[
+  {t:'foto',c:'masajes',src:'assets/masaje-relajante.jpg',l:'Masaje relajante',s:'Técnica sueca con aceites'},
+  {t:'video',c:'masajes',src:'assets/masaje-descontracturante.mp4',l:'Masaje descontracturante',s:'Tejido profundo · 60 min'},
+  {t:'foto',c:'facial',src:'assets/limpieza-facial.jpg',l:'Limpieza facial',s:'Piel renovada y luminosa'},
+  {t:'foto',c:'facial',src:'assets/tratamiento-acne.jpg',l:'Tratamiento para acné',s:'Protocolo completo'},
+  {t:'video',c:'facial',src:'assets/peeling.mp4',l:'Peeling enzimático',s:'Renovación celular'},
+  {t:'foto',c:'unas',src:'assets/semipermanente.jpg',l:'Semipermanente',s:'Hasta 3 semanas sin chips'},
+  {t:'foto',c:'unas',src:'assets/soft-gel.jpg',l:'Soft gel',s:'Largo y resistencia'},
+  {t:'video',c:'unas',src:'assets/nail-art.mp4',l:'Nail art full diseño',s:'Arte detallado a mano'},
+  {t:'foto',c:'unas',src:'assets/capping.jpg',l:'Capping',s:'Cobertura perfecta'},
+  {t:'foto',c:'pestanas',src:'assets/lifting-pestanas.jpg',l:'Lifting de pestañas',s:'Resultado natural · Antes/Después'},
+  {t:'video',c:'pestanas',src:'assets/laminado-pestanas.mp4',l:'Laminado de pestañas',s:'Efecto espectacular'},
+  {t:'foto',c:'pestanas',src:'assets/henna-pestanas.jpg',l:'Henna de pestañas',s:'Color natural duradero'},
+  {t:'foto',c:'cejas',src:'assets/diseno-cejas.jpg',l:'Diseño de cejas',s:'Forma perfecta para tu rostro'},
+  {t:'foto',c:'cejas',src:'assets/laminado-cejas.jpg',l:'Laminado de cejas',s:'Tendencia europea'},
+  {t:'video',c:'cejas',src:'assets/henna-cejas.mp4',l:'Henna de cejas',s:'Color y definición'},
+  {t:'foto',c:'masajes',src:'assets/masaje-piedras.jpg',l:'Masaje con piedras',s:'Piedras volcánicas calientes'},
+  {t:'foto',c:'masajes',src:'assets/masaje-facial.jpg',l:'Masaje facial',s:'Tonificación y relajación'},
+  {t:'foto',c:'unas',src:'assets/pies-semi.jpg',l:'Pies semipermanente',s:'Terminación perfecta'},
 ];
 
-/* estado galería */
-let galFilter  = 'todos';
-let galItems   = [];   // items del filtro activo
-let galCurrent = 0;    // índice en galItems
-let galAuto    = false;
-let galTimer   = null;
-const GAL_SPEED = 4500;
+// Paleta fallback por si no carga la imagen
+const BG=['linear-gradient(145deg,#D4A79A,#B87A6E)','linear-gradient(145deg,#6B3D35,#B87A6E)','linear-gradient(145deg,#C4975A,#D4A79A)','linear-gradient(145deg,#8B5A52,#6B3D35)','linear-gradient(145deg,#EDE3D6,#D4A79A)','linear-gradient(145deg,#B87A6E,#8B5A52)','linear-gradient(145deg,#2E1A15,#6B3D35)','linear-gradient(145deg,#D4A79A,#C4975A)','linear-gradient(145deg,#7A5C54,#B87A6E)','linear-gradient(145deg,#C4975A,#8B5A52)','linear-gradient(145deg,#EDE3D6,#B87A6E)','linear-gradient(145deg,#6B3D35,#C4975A)','linear-gradient(145deg,#D4A79A,#6B3D35)','linear-gradient(145deg,#8B5A52,#C4975A)','linear-gradient(145deg,#B87A6E,#D4A79A)','linear-gradient(145deg,#4A2520,#B87A6E)','linear-gradient(145deg,#C4975A,#6B3D35)','linear-gradient(145deg,#D4A79A,#8B5A52)'];
 
-/* ── GRID ─────────────────────────────────────────────── */
-function renderGaleria() {
-  galItems = galFilter === 'todos' ? [...GI]
-           : galFilter === 'video' ? GI.filter(x => x.tipo === 'video')
-           : GI.filter(x => x.cat === galFilter);
+let galFilter='todos',filteredGI=[],mIdx=0,mAuto=false,mTimer=null;
 
-  const grid = document.getElementById('masonryGrid');
-  if (!grid) return;
-
-  grid.style.opacity = '0';
-  setTimeout(() => {
-    grid.innerHTML = galItems.map((item, i) => cardHTML(item, i)).join('');
-    grid.style.transition = 'opacity .22s';
-    grid.style.opacity = '1';
-
-    // tap en mobile: primer toque muestra overlay, segundo abre modal
-    grid.querySelectorAll('.gal-card').forEach(card => {
-      card.addEventListener('touchstart', e => {
-        if (!card.classList.contains('touched')) {
-          e.preventDefault();
-          document.querySelectorAll('.gal-card.touched').forEach(c => c.classList.remove('touched'));
-          card.classList.add('touched');
-        }
-      }, { passive:false });
-    });
-
-    // Quitar touch al tocar fuera
-    document.addEventListener('touchstart', e => {
-      if (!e.target.closest('.gal-card')) {
-        document.querySelectorAll('.gal-card.touched').forEach(c => c.classList.remove('touched'));
-      }
-    }, { passive:true });
-
-  }, 180);
+function renderGaleria(){
+  filteredGI=galFilter==='todos'?[...GI]:galFilter==='video'?GI.filter(i=>i.t==='video'):GI.filter(i=>i.c===galFilter);
+  document.getElementById('masonryGrid').innerHTML=filteredGI.map((item,i)=>{
+    const fb=BG[i%BG.length];
+    const isImg=item.t==='foto';
+    const thumbContent=isImg
+      ?`<img src="${item.src}" alt="${item.l}" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:6px" onerror="this.style.display='none';this.parentNode.style.background='${fb}'">`
+      :`<video src="${item.src}" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:6px" onerror="this.style.display='none';this.parentNode.style.background='${fb}'"></video>`;
+    return `<div class="masonry-item" onclick="openModal(${i})" style="animation:fadeUp .35s ${i*.04}s both">
+      <div class="gal-thumb" style="background:${fb};overflow:hidden;position:relative">
+        ${thumbContent}
+        ${item.t==='video'?`<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><div style="width:40px;height:40px;background:rgba(255,255,255,.88);border-radius:50%;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#2E1A15"/></svg></div></div>`:''}
+      </div>
+      <div class="gal-overlay">
+        <div class="gal-play-btn"><svg width="16" height="16" viewBox="0 0 24 24"><path d="${item.t==='video'?'M8 5v14l11-7z':'M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z'}" fill="#2E1A15"/></svg></div>
+        <span class="gal-item-label">${item.l}</span>
+        <span style="font-size:11px;color:rgba(255,255,255,.55)">${item.s}</span>
+      </div>
+      <span class="gal-type-pill ${item.t==='video'?'video':''}">${item.t==='video'?'▶ video':'foto'}</span>
+    </div>`;
+  }).join('');
 }
-
-function cardHTML(item, i) {
-  const isV = item.tipo === 'video';
-
-  // Para video: <video preload="metadata"> carga el primer frame como thumb
-  const media = isV
-    ? `<video src="${item.src}#t=0.1" preload="metadata" muted playsinline
-         tabindex="-1" style="pointer-events:none"
-         onerror="this.closest('.gal-card').classList.add('loading')"></video>`
-    : `<img src="${item.src}" alt="${item.label}" loading="lazy" decoding="async"
-         onerror="this.closest('.gal-card').classList.add('loading');this.style.display='none'">`;
-
-  const icon = isV
-    ? `<svg width="13" height="13" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`
-    : `<svg width="13" height="13" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" fill="none" stroke="var(--deep)" stroke-width="2"/></svg>`;
-
-  return `<div class="gal-card" data-idx="${i}" onclick="galOpen(${i})">
-    ${media}
-    <div class="gal-overlay" style="display: none;">
-      <div class="gal-play-ring">${icon}</div>
-      <span class="gal-label">${item.label}</span>
-      <span class="gal-sublabel">${item.sub}</span>
-    </div>
-    <span class="gal-pill${isV?' v':''}">${isV?'▶ video':'foto'}</span>
-  </div>`;
-}
-
-function filterGal(f, btn) {
-  galFilter = f;
-  document.querySelectorAll('.gal-filter').forEach(b => b.classList.remove('active'));
+function filterGal(f,btn){
+  galFilter=f;
+  document.querySelectorAll('.gal-filter').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderGaleria();
 }
 
-/* ── MODAL ─────────────────────────────────────────────── */
-
-function galOpen(idx) {
-  galCurrent = idx;
-  _galRenderStage('right');
-  document.getElementById('galModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  _galSwipeHintOnce();
-}
-
-function galClose() {
-  document.getElementById('galModal').classList.remove('open');
-  document.body.style.overflow = '';
-  galStopAuto();
-  _galClearStage();
-}
-
-function galModalTap(e) {
-  if (e.target === document.getElementById('galModal')) galClose();
-}
-
-/* navegar ─── */
-function galNav(dir) {
-  _galClearStage();
-  galCurrent = (galCurrent + dir + galItems.length) % galItems.length;
-  _galRenderStage(dir > 0 ? 'right' : 'left');
-  if (galAuto) _galResetProg();
-}
-
-/* render contenido del stage */
-function _galRenderStage(dir) {
-  const item = galItems[galCurrent];
-  if (!item) return;
-
-  const stage = document.getElementById('galStage');
-
-  // Crear el elemento media
-  let el;
-  if (item.tipo === 'video') {
-    el = document.createElement('video');
-    el.src     = item.src;
-    el.controls   = true;
-    el.autoplay   = true;
-    el.muted      = true;   // autoplay necesita muted en Chrome/Safari
-    el.playsInline = true;
-    el.loop       = false;
-    el.style.cssText = 'max-width:100%;max-height:100%;width:100%;height:auto;object-fit:contain;background:#000';
-    el.onerror = () => {
-      el.replaceWith(_errorMsg('Video no encontrado — verificá assets/'));
-    };
-    // Unmute si el usuario interactúa
-    el.addEventListener('click', () => { el.muted = false; }, { once:true });
-  } else {
-    el = document.createElement('img');
-    el.src = item.src;
-    el.alt = item.label;
-    el.style.cssText = 'max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block';
-    el.onerror = () => {
-      el.replaceWith(_errorMsg('Imagen no encontrada — verificá assets/'));
-    };
+/* MODAL — muestra imagen/video en tamaño original con scroll */
+function openModal(i){mIdx=i;renderModal();document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';stopAuto();}
+function closeModalOut(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
+function renderModal(){
+  const item=filteredGI[mIdx];
+  document.getElementById('mTitle').textContent=item.l;
+  document.getElementById('mSub').textContent=item.s+' · '+item.c;
+  document.getElementById('mCounter').textContent=`${mIdx+1}/${filteredGI.length}`;
+  const fb=BG[mIdx%BG.length];
+  if(item.t==='foto'){
+    document.getElementById('modalMedia').innerHTML=`
+      <div class="m-inner" style="background:${fb};overflow:auto;align-items:flex-start;justify-content:center;padding:0">
+        <img src="${item.src}" alt="${item.l}"
+          style="max-width:100%;display:block;margin:auto"
+          onerror="this.style.display='none';this.parentNode.style.background='${fb}'">
+      </div>`;
+  }else{
+    document.getElementById('modalMedia').innerHTML=`
+      <div class="m-inner" style="background:#000;padding:0">
+        <video src="${item.src}" controls autoplay muted playsinline
+          style="max-width:100%;max-height:68vh;display:block;margin:auto"
+          onerror="this.outerHTML='<div style=padding:40px;color:rgba(255,255,255,.5);font-size:13px>Video no disponible. Agregá el archivo a /assets/</div>'">
+        </video>
+      </div>`;
   }
-
-  // Clase de animación de entrada
-  const animClass = dir === 'right' ? 'slide-enter-right' : 'slide-enter-left';
-  el.classList.add(animClass);
-
-  // Insertar antes de las flechas y el hint
-  const prev = stage.querySelector('.gal-arrow.prev');
-  stage.insertBefore(el, prev);
-
-  // Info footer
-  document.getElementById('galTitle').textContent   = item.label;
-  document.getElementById('galSub').textContent     = item.sub + (item.cat ? ' · ' + item.cat : '');
-  document.getElementById('galCounter').textContent = `${galCurrent + 1} / ${galItems.length}`;
 }
-
-function _galClearStage() {
-  const stage = document.getElementById('galStage');
-  // Eliminar imgs y videos (dejar flechas y hint)
-  [...stage.children].forEach(child => {
-    if (child.tagName === 'IMG' || child.tagName === 'VIDEO') {
-      if (child.tagName === 'VIDEO') { child.pause(); child.src = ''; }
-      child.remove();
-    }
-  });
-}
-
-function _errorMsg(txt) {
-  const d = document.createElement('div');
-  d.style.cssText = 'color:rgba(255,255,255,.35);padding:40px 24px;text-align:center;font-size:13px;line-height:1.7';
-  d.textContent = txt;
-  return d;
-}
-
-/* swipe touch en el stage */
-let _tsX = null, _tsY = null;
-document.addEventListener('touchstart', e => {
-  if (!document.getElementById('galModal').classList.contains('open')) return;
-  const t = e.touches[0];
-  _tsX = t.clientX; _tsY = t.clientY;
-}, { passive:true });
-
-document.addEventListener('touchend', e => {
-  if (!document.getElementById('galModal').classList.contains('open')) return;
-  if (_tsX === null) return;
-  const dx = e.changedTouches[0].clientX - _tsX;
-  const dy = e.changedTouches[0].clientY - _tsY;
-  // Solo swipe horizontal pronunciado
-  if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.4) {
-    galNav(dx < 0 ? 1 : -1);
-  }
-  _tsX = null; _tsY = null;
-}, { passive:true });
-
-/* teclado */
-document.addEventListener('keydown', e => {
-  if (!document.getElementById('galModal').classList.contains('open')) return;
-  if (e.key === 'ArrowRight' || e.key === 'l') galNav(1);
-  if (e.key === 'ArrowLeft'  || e.key === 'j') galNav(-1);
-  if (e.key === 'Escape')  galClose();
-  if (e.key === ' ') { e.preventDefault(); galToggleAuto(); }
+function mNav(d){mIdx=(mIdx+d+filteredGI.length)%filteredGI.length;renderModal();if(mAuto)resetProg();}
+function mTogglePlay(){mAuto=!mAuto;document.getElementById('mPlayBtn').textContent=mAuto?'⏸':'▶';mAuto?startAuto():stopAuto();}
+function startAuto(){resetProg();mTimer=setInterval(()=>mNav(1),4200);}
+function stopAuto(){clearInterval(mTimer);mAuto=false;document.getElementById('mPlayBtn').textContent='▶';const p=document.getElementById('modalProg');p.style.transition='none';p.style.width='0%';}
+function resetProg(){const p=document.getElementById('modalProg');p.style.transition='none';p.style.width='0%';setTimeout(()=>{p.style.transition='width 4.2s linear';p.style.width='100%';},40);}
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('modalOverlay').classList.contains('open'))return;
+  if(e.key==='ArrowRight')mNav(1);
+  if(e.key==='ArrowLeft')mNav(-1);
+  if(e.key==='Escape')closeModal();
 });
-
-/* autoplay */
-function galToggleAuto() {
-  galAuto = !galAuto;
-  document.getElementById('galPlayBtn').textContent = galAuto ? '⏸' : '▶';
-  galAuto ? galStartAuto() : galStopAuto();
-}
-function galStartAuto() {
-  _galResetProg();
-  galTimer = setInterval(() => galNav(1), GAL_SPEED);
-}
-function galStopAuto() {
-  clearInterval(galTimer); galTimer = null; galAuto = false;
-  document.getElementById('galPlayBtn').textContent = '▶';
-  const p = document.getElementById('galProg');
-  p.style.transition = 'none'; p.style.width = '0%';
-}
-function _galResetProg() {
-  const p = document.getElementById('galProg');
-  p.style.transition = 'none'; p.style.width = '0%';
-  p.getBoundingClientRect(); // force reflow
-  p.style.transition = `width ${GAL_SPEED}ms linear`;
-  p.style.width = '100%';
-}
-
-/* swipe hint (aparece solo la primera vez que se abre el modal en mobile) */
-let _hintShown = false;
-function _galSwipeHintOnce() {
-  if (_hintShown || window.innerWidth > 700) return;
-  _hintShown = true;
-  const h = document.getElementById('galSwipeHint');
-  if (h) { h.style.animation = 'none'; void h.offsetWidth; h.style.animation = 'hintFade 2.5s 0.5s ease forwards'; }
-}
-
-/* ── INIT ── */
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', renderGaleria);
-} else {
-  renderGaleria();
-}
 
 /* ── SERVICIOS ── */
 // Servicios de MARU (masajes + facial)
