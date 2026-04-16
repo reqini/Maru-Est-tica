@@ -386,6 +386,258 @@ footer{background:var(--bark);padding:70px 8% 40px;color:rgba(249,244,238,.7);}
   .hero-stats{flex-wrap:wrap;gap:24px;}
   .db-sidebar{width:160px;}
 }
+/* =========================
+   MOBILE FIRST OVERRIDES
+========================= */
+
+/* -------- LOGIN -------- */
+.login-box{
+  width: 92%;
+  max-width: 360px;
+  padding: 32px 20px;
+}
+
+.login-logo{
+  font-size: 20px;
+}
+
+.login-sub{
+  font-size: 11px;
+}
+
+/* -------- DASHBOARD BASE -------- */
+#dashboard{
+  overflow-y: auto;
+}
+
+/* NAVBAR DASHBOARD */
+.dn{
+  padding: 0 16px;
+  height: 56px;
+}
+
+.dn-brand{
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.dn-right{
+  gap: 8px;
+  font-size: 11px;
+}
+
+.dn-time{
+  display: none;
+}
+
+/* -------- LAYOUT -------- */
+.db-body{
+  flex-direction: column;
+}
+
+/* SIDEBAR -> MOBILE TOP SCROLL */
+.db-sidebar{
+  width: 100%;
+  flex-direction: row;
+  overflow-x: auto;
+  padding: 10px;
+  border-right: none;
+  border-bottom: 1px solid rgba(180,122,110,.12);
+}
+
+.db-sidebar-section{
+  display: none;
+}
+
+.db-menu{
+  flex-shrink: 0;
+  border-left: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 14px;
+  font-size: 12px;
+}
+
+.db-menu.active{
+  border-bottom-color: var(--rose);
+}
+
+/* ocultar footer sidebar en mobile */
+.db-sidebar-footer{
+  display: none;
+}
+
+/* -------- CONTENT -------- */
+.db-content{
+  padding: 16px;
+}
+
+/* TITULOS */
+.db-page-title{
+  font-size: 22px;
+}
+
+.db-page-sub{
+  font-size: 12px;
+}
+
+/* -------- STATS -------- */
+.db-stats{
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.db-stat{
+  padding: 14px;
+}
+
+.db-stat-n{
+  font-size: 22px;
+}
+
+/* -------- TURNOS CARDS -------- */
+.tc{
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tc-body{
+  width: 100%;
+}
+
+.tc-acts{
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.tb{
+  flex: 1;
+  justify-content: center;
+  padding: 8px;
+  font-size: 10px;
+}
+
+/* -------- FILTROS -------- */
+.db-filters{
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.db-search{
+  width: 100%;
+}
+
+/* -------- SEMANA GRID -------- */
+.wk-grid{
+  min-width: 500px;
+}
+
+.wk-grid-wrap{
+  overflow-x: auto;
+}
+
+/* -------- FORM NUEVO TURNO -------- */
+.nt-form{
+  padding: 20px;
+}
+
+.nt-row{
+  grid-template-columns: 1fr;
+}
+
+.nt-btns{
+  flex-direction: column;
+}
+
+.btn-dp{
+  width: 100%;
+}
+
+/* -------- MODAL EDIT -------- */
+.edit-modal{
+  padding: 20px;
+}
+
+/* -------- QUICK LIST -------- */
+.quick-item{
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.quick-item-time{
+  text-align: left;
+}
+
+/* =========================
+   TABLET (>=768px)
+========================= */
+@media(min-width:768px){
+
+  .db-body{
+    flex-direction: row;
+  }
+
+  .db-sidebar{
+    width: 180px;
+    flex-direction: column;
+    overflow: hidden;
+    border-bottom: none;
+    border-right: 1px solid rgba(180,122,110,.12);
+  }
+
+  .db-sidebar-section{
+    display: block;
+  }
+
+  .db-sidebar-footer{
+    display: block;
+  }
+
+  .db-menu{
+    border-bottom: none;
+    border-left: 3px solid transparent;
+  }
+
+  .db-menu.active{
+    border-left-color: var(--rose);
+  }
+
+  .db-content{
+    padding: 24px;
+  }
+
+  .db-stats{
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  .nt-row{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* =========================
+   DESKTOP (>=1024px)
+========================= */
+@media(min-width:1024px){
+
+  .dn-time{
+    display: block;
+  }
+
+  .db-sidebar{
+    width: 220px;
+  }
+
+  .db-stats{
+    grid-template-columns: repeat(4,1fr);
+  }
+
+  .db-content{
+    padding: 28px 32px;
+  }
+}
 </style>
 </head>
 <body>
